@@ -3,5 +3,7 @@ https://getbootstrap.com/docs/4.1/components/dropdowns/
 Faire séparemment un diagramme de classe d'analyse (sans les attributs/méthodes) et
 un diagramme de classe de conception (avec tout ce qu'il faut pour générer du code)
 
-Test n°3
-
+Fonctionnement de la moulinette:
+1 : On génère un planning avec tous les films
+2 : On peut enlever des films du planning (toutes les projections du film)
+3 : On replace manuellement les projections des films à replacer
