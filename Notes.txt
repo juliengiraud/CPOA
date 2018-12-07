@@ -7,3 +7,4 @@ Fonctionnement de la moulinette:
 1 : On génère un planning avec tous les films
 2 : On peut enlever des films du planning (toutes les projections du film)
 3 : On replace manuellement les projections des films à replacer
+
