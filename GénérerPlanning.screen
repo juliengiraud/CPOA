@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
   <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="913" height="625" measuredWidth="913" measuredHeight="625"/>
-  <widgets xsi:type="model:Combo" id="3" x="64" y="117" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="23" link="SelectionSalle.screen">
+  <widgets xsi:type="model:Combo" id="3" x="76" y="117" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="23" link="SelectionSalle.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Table" id="4" x="64" y="184" width="833" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Séance 1 - Salle 4]\n[Séance 1 - Salle 3],[Séance 1 - Salle 5],[Ajouter une séance],[Séance 1 - Salle 7],[Séance 1 - Salle 6]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Séance 2 - Salle 4]\n[Séance 2 - Salle 3],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2]&#xD;&#xA;[Ajouter une séance], [Séance 3 - Salle 2],[Ajouter une séance] ,[Séance 3 - Salle 2],[Séance 3 - Salle 2],[Séance 3 - Salle 4]\n[Séance 3 - Salle 3],[Séance 3 - Salle 2]" measuredWidth="833" measuredHeight="433" selection="13" rowHeight="35" textAlignment="Center" alternative="#eee">
+  <widgets xsi:type="model:Table" id="4" x="64" y="184" width="849" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Séance 1 - Salle 4]\n[Séance 1 - Salle 3],[Séance 1 - Salle 5],[Ajouter une séance],[Séance 1 - Salle 7],[Séance 1 - Salle 6]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Séance 2 - Salle 4]\n[Séance 2 - Salle 3],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2]&#xD;&#xA;[Ajouter une séance], [Séance 3 - Salle 2],[Ajouter une séance] ,[Séance 3 - Salle 2],[Séance 3 - Salle 2],[Séance 3 - Salle 4]\n[Séance 3 - Salle 3],[Séance 3 - Salle 2]" measuredWidth="849" measuredHeight="433" selection="13" verticalScrollbar="true" rowHeight="35" textAlignment="Center" alternative="#eee">
     <font/>
     <items link="SelectionSéance.screen" x="16" y="45" width="90" height="15" text="Séance 1 - Salle 1"/>
     <items link="SelectionVide.screen" x="133" y="45" width="101" height="15" text="Ajouter une séance"/>
-    <items x="264" y="38" width="90" height="15" text="Séance 1 - Salle 4"/>
-    <items x="264" y="53" width="90" height="15" text="Séance 1 - Salle 3"/>
-    <items x="383" y="45" width="90" height="15" text="Séance 1 - Salle 5"/>
-    <items x="494" y="45" width="101" height="15" text="Ajouter une séance"/>
-    <items x="617" y="45" width="90" height="15" text="Séance 1 - Salle 7"/>
-    <items x="730" y="45" width="90" height="15" text="Séance 1 - Salle 6"/>
+    <items x="263" y="38" width="90" height="15" text="Séance 1 - Salle 4"/>
+    <items x="263" y="53" width="90" height="15" text="Séance 1 - Salle 3"/>
+    <items x="382" y="45" width="90" height="15" text="Séance 1 - Salle 5"/>
+    <items x="493" y="45" width="101" height="15" text="Ajouter une séance"/>
+    <items x="616" y="45" width="90" height="15" text="Séance 1 - Salle 7"/>
+    <items x="729" y="45" width="90" height="15" text="Séance 1 - Salle 6"/>
     <items x="16" y="81" width="90" height="15" text="Séance 2 - Salle 1"/>
     <items x="133" y="81" width="101" height="15" text="Ajouter une séance"/>
-    <items x="264" y="74" width="90" height="15" text="Séance 2 - Salle 4"/>
-    <items x="264" y="89" width="90" height="15" text="Séance 2 - Salle 3"/>
-    <items x="383" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
-    <items x="500" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
-    <items x="617" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
-    <items x="730" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
+    <items x="263" y="74" width="90" height="15" text="Séance 2 - Salle 4"/>
+    <items x="263" y="89" width="90" height="15" text="Séance 2 - Salle 3"/>
+    <items x="382" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
+    <items x="499" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
+    <items x="616" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
+    <items x="729" y="81" width="90" height="15" text="Séance 2 - Salle 2"/>
     <items x="10" y="117" width="101" height="15" text="Ajouter une séance"/>
     <items x="139" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
-    <items x="257" y="117" width="101" height="15" text="Ajouter une séance"/>
-    <items x="383" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
-    <items x="500" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
-    <items x="617" y="110" width="90" height="15" text="Séance 3 - Salle 4"/>
-    <items x="617" y="125" width="90" height="15" text="Séance 3 - Salle 3"/>
-    <items x="730" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
+    <items x="256" y="117" width="101" height="15" text="Ajouter une séance"/>
+    <items x="382" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
+    <items x="499" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
+    <items x="616" y="110" width="90" height="15" text="Séance 3 - Salle 4"/>
+    <items x="616" y="125" width="90" height="15" text="Séance 3 - Salle 3"/>
+    <items x="729" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="6" x="406" y="56" text="Réainitialiser le planning" measuredWidth="148" measuredHeight="25">
+  <widgets xsi:type="model:Checkbox" id="7" x="600" y="117" text="Voir séances libres" measuredWidth="116" measuredHeight="23" link="SelectionJourVide.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Checkbox" id="7" x="520" y="117" text="Voir séances libres" measuredWidth="116" measuredHeight="23" link="SelectionJourVide.screen">
+  <widgets xsi:type="model:Combo" id="9" x="336" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" link="SelectionDate.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:VScrollbar" id="8" x="896" y="248" height="369" measuredWidth="17" measuredHeight="369"/>
-  <widgets xsi:type="model:Combo" id="9" x="293" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" link="SelectionDate.screen">
+  <widgets xsi:type="model:SearchField" id="10" x="760" y="117" text="Chercher un film" measuredWidth="120" measuredHeight="24">
     <font/>
   </widgets>
-  <widgets xsi:type="model:SearchField" id="10" x="648" y="117" text="Chercher un film" measuredWidth="120" measuredHeight="24">
-    <font/>
+  <widgets xsi:type="model:Button" id="12" x="390" y="56" text="Réinitialiser le planning" measuredWidth="182" measuredHeight="31" link="">
+    <font size="16px"/>
   </widgets>
   <hRuler/>
   <vRuler/>

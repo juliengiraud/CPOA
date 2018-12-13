@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
-  <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="777" height="577" measuredWidth="777" measuredHeight="577"/>
-  <widgets xsi:type="model:VScrollbar" id="7" x="782" y="151" height="369" measuredWidth="17" measuredHeight="369"/>
-  <widgets xsi:type="model:Label" id="8" x="64" y="48" text="Jour xx" measuredWidth="137" measuredHeight="67">
-    <font size="43px"/>
-  </widgets>
-  <widgets xsi:type="model:Table" id="9" x="61" y="128" width="720" height="392" text="Salle 1, Salle 2, Salle 3, Salle 4, Salle 5&#xD;&#xA;Séance 1, Séance 1, Séance 1, [Ajouter une séance], Séance 1&#xD;&#xA;[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],Séance 2, [Ajouter une séance]" measuredWidth="720" measuredHeight="392" textAlignment="Center" alternative="#eee">
-    <font size="15px"/>
-    <items x="440" y="32" width="126" height="20" text="Ajouter une séance"/>
-    <items x="8" y="60" width="126" height="20" text="Ajouter une séance"/>
-    <items x="152" y="60" width="126" height="20" text="Ajouter une séance"/>
-    <items x="296" y="60" width="126" height="20" text="Ajouter une séance"/>
-    <items x="584" y="60" width="126" height="20" text="Ajouter une séance"/>
-  </widgets>
-  <widgets xsi:type="model:Button" id="11" x="726" y="544" text="Retour" measuredWidth="55" measuredHeight="25" link="GénérerPlanning.screen">
+  <widgets xsi:type="model:Panel" id="12" x="32" y="16" width="913" height="625" measuredWidth="913" measuredHeight="625"/>
+  <widgets xsi:type="model:Table" id="13" x="64" y="133" width="849" height="433" text="Salle 1, Salle 2, Salle 3, Salle 4, Salle 5&#xD;&#xA;Séance 1, Séance 1, Séance 1, [Ajouter une séance], Séance 1&#xD;&#xA;[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],Séance 2, [Ajouter une séance]" measuredWidth="849" measuredHeight="433" selection="13" verticalScrollbar="true" rowHeight="65" textAlignment="Center" alternative="#eee">
     <font/>
+    <items x="523" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="31" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="195" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="359" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="693" y="155" width="101" height="15" text="Ajouter une séance"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="14" x="842" y="592" text="Retour" measuredWidth="55" measuredHeight="25" link="GénérerPlanning.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="72" y="43" text="Jour xx" measuredWidth="137" measuredHeight="67">
+    <font size="43px"/>
   </widgets>
   <hRuler/>
   <vRuler/>

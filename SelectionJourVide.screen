@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
-  <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="777" height="633" measuredWidth="777" measuredHeight="633"/>
-  <widgets xsi:type="model:Combo" id="2" x="64" y="117" width="311" text="Sélectionner une salle" measuredWidth="311" measuredHeight="23" link="SelectionSalle.screen">
+  <widgets xsi:type="model:Panel" id="10" x="32" y="16" width="913" height="625" measuredWidth="913" measuredHeight="625"/>
+  <widgets xsi:type="model:Combo" id="11" x="76" y="117" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="23" link="SelectionSalle.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Table" id="3" x="64" y="184" width="713" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;, [Ajouter une séance],,,[Ajouter une séance],,&#xD;&#xA;, [Ajouter une séance],,,,&#xD;&#xA;[Ajouter une séance],,[Ajouter une séance] ,,,," locked="true" measuredWidth="713" measuredHeight="433" rowHeight="65" textAlignment="Center" alternative="#eee">
+  <widgets xsi:type="model:Table" id="12" x="64" y="184" width="849" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;, [Ajouter une séance],,,[Ajouter une séance],,&#xD;&#xA;, [Ajouter une séance],,,,&#xD;&#xA;[Ajouter une séance],,[Ajouter une séance] ,,,," measuredWidth="849" measuredHeight="433" selection="13" verticalScrollbar="true" rowHeight="35" textAlignment="Center" alternative="#eee">
     <font/>
-    <items x="147" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="458" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="147" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="15" y="220" width="101" height="15" text="Ajouter une séance"/>
-    <items x="279" y="220" width="101" height="15" text="Ajouter une séance"/>
+    <items link="SelectionVide.screen" x="178" y="45" width="101" height="15" text="Ajouter une séance"/>
+    <items x="539" y="45" width="101" height="15" text="Ajouter une séance"/>
+    <items x="178" y="80" width="101" height="15" text="Ajouter une séance"/>
+    <items x="25" y="115" width="101" height="15" text="Ajouter une séance"/>
+    <items x="332" y="115" width="101" height="15" text="Ajouter une séance"/>
   </widgets>
-  <widgets xsi:type="model:Checkbox" id="6" x="648" y="117" text="Voir séances libres" measuredWidth="116" measuredHeight="23" selected="true" link="GénérerPlanning.screen">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:VScrollbar" id="7" x="776" y="248" height="369" measuredWidth="17" measuredHeight="369"/>
-  <widgets xsi:type="model:Button" id="8" x="347" y="64" text="Réainitialiser le planning" measuredWidth="148" measuredHeight="25" link="GénérerPlanning.screen">
+  <widgets xsi:type="model:Checkbox" id="13" x="600" y="117" text="Voir séances libres" measuredWidth="116" measuredHeight="23" selected="true" link="GénérerPlanning.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Combo" id="9" x="416" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" link="SelectionDate.screen">
+  <widgets xsi:type="model:Combo" id="15" x="336" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" link="SelectionDate.screen">
     <font/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="16" x="760" y="117" text="Chercher un film" measuredWidth="120" measuredHeight="24">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="17" x="390" y="56" text="Réinitialiser le planning" measuredWidth="182" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
   </widgets>
   <hRuler/>
   <vRuler/>
