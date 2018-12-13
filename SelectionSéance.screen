@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model:Screen xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="2" x="32" y="16" width="777" height="633" measuredWidth="777" measuredHeight="633"/>
+  <widgets xsi:type="model:Label" id="3" x="64" y="48" text="Lundi xx - Séance 1" measuredWidth="370" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="5" x="64" y="114" text="Nom du film" measuredWidth="186" measuredHeight="53">
+    <font size="32px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="7" x="480" y="192" width="272" height="344" measuredWidth="272" measuredHeight="344"/>
   <hRuler/>
   <vRuler/>
   <font size="12px"/>

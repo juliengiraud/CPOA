@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
   <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="777" height="633" measuredWidth="777" measuredHeight="633"/>
-  <widgets xsi:type="model:Combo" id="2" x="64" y="117" width="311" text="Sélectionner une salle" measuredWidth="311" measuredHeight="23" state="disabled">
+  <widgets xsi:type="model:Combo" id="2" x="64" y="117" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="23" state="disabled">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Table" id="3" x="64" y="184" width="713" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" measuredWidth="713" measuredHeight="433" selection="1" alternative="#eee">
+  <widgets xsi:type="model:Table" id="3" x="64" y="184" width="713" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" measuredWidth="713" measuredHeight="433" rowHeight="35" alternative="#eee">
     <font/>
   </widgets>
-  <widgets xsi:type="model:DateField" id="4" x="504" y="117" text="  /  /  " measuredWidth="58" measuredHeight="23" state="disabled"/>
   <widgets xsi:type="model:Button" id="5" x="359" y="64" text="Générer le planning" measuredWidth="123" measuredHeight="25" link="GénérerPlanning.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Checkbox" id="6" x="672" y="117" text="Voir jours libres" measuredWidth="101" measuredHeight="23" state="disabled">
+  <widgets xsi:type="model:Checkbox" id="6" x="520" y="117" text="Voir jours libres" measuredWidth="101" measuredHeight="23" state="disabled">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="7" x="296" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" state="disabled">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="8" x="648" y="117" text="Chercher un film" measuredWidth="120" measuredHeight="24" state="disabled">
     <font/>
   </widgets>
   <hRuler/>

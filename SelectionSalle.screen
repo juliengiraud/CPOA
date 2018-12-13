@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
   <widgets xsi:type="model:Panel" id="8" x="32" y="16" width="913" height="625" measuredWidth="913" measuredHeight="625"/>
-  <widgets xsi:type="model:Table" id="10" x="64" y="184" width="833" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]" measuredWidth="833" measuredHeight="433" selection="13" rowHeight="65" textAlignment="Center" alternative="#eee">
+  <widgets xsi:type="model:Table" id="10" x="64" y="133" width="833" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]" measuredWidth="833" measuredHeight="433" selection="13" rowHeight="65" textAlignment="Center" alternative="#eee">
     <font/>
-    <items link="SelectionSéance.screen" x="14" y="90" width="90" height="15" text="Séance 1 - Salle 1"/>
-    <items link="SelectionVide.screen" x="129" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="250" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="372" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="492" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="612" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="727" y="90" width="101" height="15" text="Ajouter une séance"/>
-    <items x="14" y="155" width="90" height="15" text="Séance 2 - Salle 1"/>
-    <items x="129" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="250" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="372" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="492" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="612" y="155" width="101" height="15" text="Ajouter une séance"/>
-    <items x="727" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items link="SelectionSéance.screen" x="8" y="90" width="90" height="15" text="Séance 1 - Salle 1"/>
+    <items link="SelectionVide.screen" x="117" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="237" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="357" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="477" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="597" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="719" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="8" y="155" width="90" height="15" text="Séance 2 - Salle 1"/>
+    <items x="117" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="237" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="357" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="477" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="597" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="719" y="155" width="101" height="15" text="Ajouter une séance"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="11" x="406" y="56" text="Réainitialiser le planning" measuredWidth="148" measuredHeight="25" link="GénérerPlanning.screen">
+  <widgets xsi:type="model:Button" id="11" x="842" y="592" text="Retour" measuredWidth="55" measuredHeight="25" link="GénérerPlanning.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:VScrollbar" id="13" x="896" y="248" height="369" measuredWidth="17" measuredHeight="369"/>
-  <widgets xsi:type="model:Label" id="15" x="72" y="96" text="Salle N°1" measuredWidth="176" measuredHeight="67">
+  <widgets xsi:type="model:VScrollbar" id="13" x="896" y="197" height="369" measuredWidth="17" measuredHeight="369"/>
+  <widgets xsi:type="model:Label" id="15" x="72" y="43" text="Salle N°1" measuredWidth="176" measuredHeight="67">
     <font size="43px"/>
   </widgets>
   <hRuler/>
