@@ -1,3 +1,4 @@
+git pull
 git add --all
 echo Entrez le motif du commit :
 read motif
