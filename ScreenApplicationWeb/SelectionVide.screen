@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="2" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="5" x="192" y="74" text="Mardi xx - Séance 1" measuredWidth="378" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="72" y="144" width="822" measuredWidth="822" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="7" x="673" y="77" text="Séance Vide" measuredWidth="221" measuredHeight="62">
+    <font size="40px"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="8" x="72" y="240" width="304" height="340" text="Film 1&#xD;&#xA;Film 2&#xD;&#xA;(bg:ffd37e)|Film 3&#xD;&#xA;Film 4&#xD;&#xA;Film 5&#xD;&#xA;Film 6&#xD;&#xA;Film 7&#xD;&#xA;Film 8&#xD;&#xA;Film 9&#xD;&#xA;Film 10" measuredWidth="304" measuredHeight="340" selection="2" verticalScrollbar="true" rowHeight="50" horizontalLines="true">
+    <font/>
+    <items x="0" y="2" width="287" height="50" text="Film 1"/>
+    <items x="0" y="52" width="287" height="50" text="Film 2"/>
+    <items x="0" y="102" width="287" height="50" text="(bg:ffd37e)|Film 3"/>
+    <items x="0" y="152" width="287" height="50" text="Film 4"/>
+    <items x="0" y="202" width="287" height="50" text="Film 5"/>
+    <items x="0" y="252" width="287" height="50" text="Film 6"/>
+    <items x="0" y="302" width="287" height="50" text="Film 7"/>
+    <items x="0" y="352" width="287" height="50" text="Film 8"/>
+    <items x="0" y="402" width="287" height="50" text="Film 9"/>
+    <items x="0" y="452" width="287" height="50" text="Film 10"/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="11" x="72" y="184" width="304" text="Catégorie du film" measuredWidth="304" measuredHeight="29">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="12" x="770" y="549" text="Ajouter la séance" measuredWidth="138" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="14" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="GénérerPlanning.screen" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:WidgetGroup" id="18" x="400" y="240" measuredWidth="508" measuredHeight="62">
+    <widgets xsi:type="model:HSlider" id="15" x="8" width="485" measuredWidth="485" measuredHeight="17" value="0"/>
+    <widgets xsi:type="model:Label" id="16" y="24" text="min\n30min" measuredWidth="39" measuredHeight="38" textAlignment="Center">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="17" x="480" y="24" text="max\n12h" measuredWidth="28" measuredHeight="38" textAlignment="Center">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="19" x="400" y="181" text="Durée de réservation de la séance" measuredWidth="297" measuredHeight="36">
+    <font size="20px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="20" x="673" y="549" text="Annuler" measuredWidth="75" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
-  <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="913" height="625" measuredWidth="913" measuredHeight="625"/>
-  <widgets xsi:type="model:Combo" id="3" x="76" y="117" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="23" link="SelectionSalle.screen">
+  <widgets xsi:type="model:Browser" id="13" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
     <font/>
   </widgets>
   <widgets xsi:type="model:Table" id="4" x="64" y="184" width="849" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Séance 1 - Salle 4]\n[Séance 1 - Salle 3],[Séance 1 - Salle 5],[Ajouter une séance],[Séance 1 - Salle 7],[Séance 1 - Salle 6]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Séance 2 - Salle 4]\n[Séance 2 - Salle 3],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2],[Séance 2 - Salle 2]&#xD;&#xA;[Ajouter une séance], [Séance 3 - Salle 2],[Ajouter une séance] ,[Séance 3 - Salle 2],[Séance 3 - Salle 2],[Séance 3 - Salle 4]\n[Séance 3 - Salle 3],[Séance 3 - Salle 2]" measuredWidth="849" measuredHeight="433" selection="13" verticalScrollbar="true" rowHeight="35" textAlignment="Center" alternative="#eee">
@@ -31,18 +30,22 @@
     <items x="616" y="125" width="90" height="15" text="Séance 3 - Salle 3"/>
     <items x="729" y="117" width="90" height="15" text="Séance 3 - Salle 2"/>
   </widgets>
-  <widgets xsi:type="model:Checkbox" id="7" x="600" y="117" text="Voir séances libres" measuredWidth="116" measuredHeight="23" link="SelectionJourVide.screen">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Combo" id="9" x="336" y="117" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="23" link="SelectionDate.screen">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:SearchField" id="10" x="760" y="117" text="Chercher un film" measuredWidth="120" measuredHeight="24">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Button" id="12" x="390" y="56" text="Réinitialiser le planning" measuredWidth="182" measuredHeight="31" link="">
+  <widgets xsi:type="model:Button" id="12" x="398" y="96" text="Réinitialiser le planning" measuredWidth="182" measuredHeight="31" link="RéinitialiserPlanning.screen">
     <font size="16px"/>
   </widgets>
+  <widgets xsi:type="model:Combo" id="14" x="64" y="144" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="29" link="SelectionSalle.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="15" x="576" y="144" text="Voir séances libres" measuredWidth="149" measuredHeight="29" link="SelectionJourVide.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="16" x="320" y="144" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="29" link="SelectionDate.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="17" x="766" y="144" text="Chercher un film" measuredWidth="147" measuredHeight="29">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="19" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="" src="../Festival_de_Cannes_Logo.svg.png"/>
   <hRuler/>
   <vRuler/>
   <font size="12px"/>

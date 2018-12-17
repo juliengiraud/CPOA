@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="17" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="13" x="64" y="184" width="849" height="385" text="Salle 1, Salle 2, Salle 3, Salle 4, Salle 5&#xD;&#xA;Séance 1, Séance 1, Séance 1, [Ajouter une séance], Séance 1&#xD;&#xA;[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],Séance 2, [Ajouter une séance]" measuredWidth="849" measuredHeight="385" selection="13" verticalScrollbar="true" rowHeight="65" textAlignment="Center" alternative="#eee">
+    <font/>
+    <items x="523" y="90" width="101" height="15" text="Ajouter une séance"/>
+    <items x="31" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="195" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="359" y="155" width="101" height="15" text="Ajouter une séance"/>
+    <items x="693" y="155" width="101" height="15" text="Ajouter une séance"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="14" x="846" y="584" text="Retour" measuredWidth="67" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="192" y="74" text="Jour xx" measuredWidth="137" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="19" x="72" y="144" width="822" measuredWidth="822" measuredHeight="6"/>
+  <widgets xsi:type="model:Image" id="21" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="GénérerPlanning.screen" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

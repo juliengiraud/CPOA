@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="15" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="410" y="96" text="Générer le planning" measuredWidth="157" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="10" x="64" y="184" width="849" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" measuredWidth="849" measuredHeight="433" selection="13" rowHeight="35" textAlignment="Center" alternative="#eee">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="16" x="64" y="144" width="208" text="Sélectionner une salle" measuredWidth="208" measuredHeight="29" state="disabled">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="17" x="576" y="144" text="Voir séances libres" measuredWidth="149" measuredHeight="29" state="disabled">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="18" x="320" y="144" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="29" state="disabled">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="19" x="766" y="144" text="Chercher un film" measuredWidth="147" measuredHeight="29" state="disabled">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="23" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
