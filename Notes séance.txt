@@ -1,0 +1,2 @@
+Séance du 17/12 :
+	Création du script SQL de création des tables avec contraintes
