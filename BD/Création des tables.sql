@@ -12,8 +12,8 @@ create table "Film"
     "duree"                  INTEGER,
     "titre"                  VARCHAR2(254),
     "filmID"                 INTEGER,
-    "CategorieID",           INTEGER,
-    "realisateurID",         INTEGER
+    "categorieID"            INTEGER,
+    "realisateurID"          INTEGER
 );
 
 create table "Jury" 
@@ -29,8 +29,8 @@ create table "Personne"
     "prenom"                 VARCHAR2(254),
     "nationnalite"           VARCHAR2(254),
     "personneID"             INTEGER,
-    "compagnonID"            INTEGER,
-    "juryID"                 INTEGER
+	"age"                    INTEGER,
+	"dateNaissance"          DATE
 );
 
 create table "Photo" 
@@ -62,7 +62,7 @@ create table "VIP"
     "importanceAcreditation" INTEGER,
     "type"                   INTEGER,
     "photoID"                INTEGER,
-    "personneID"             INTEGER
+    "compagnonID"            INTEGER
 );
 
 /*==============================================================*/
@@ -99,7 +99,22 @@ alter table "Salle"
 alter table "VIP"
     add constraint PK_VIP
         primary key ("VIPID");
-    
+
+/*==============================================================*/
+/* Index des tables                                             */
+/*==============================================================*/
+create index ASSOCIATION5_FK on "Film" (
+   "categorieID" ASC
+);
+
+create index ASSOCIATION7_FK2 on "Jury" (
+   
+);
+
+create index ASSOCIATION6_FK on "Personne" (
+   
+);
+
 /*==============================================================*/
 /* Clés étrangères des tables                                   */
 /*==============================================================*/
@@ -114,10 +129,6 @@ alter table "Film"
 alter table "Jury"
     add constraint FK_JURY_CATEGORIE_CATEGORI foreign key ("categorieID")
         references "Categorie" ("categorieID");
-
-alter table "Personne"
-    add constraint FK_PERSONNE_ASSOCIATI_PERSONNE foreign key ("compagnonID")
-        references "Personne" ("personneID");
 
 alter table "Personne"
     add constraint FK_PERSONNE_ASSOCIATI_JURY foreign key ("JuryID")
