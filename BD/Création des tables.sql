@@ -1,163 +1,172 @@
 /*==============================================================*/
 /* Création des tables                                          */
 /*==============================================================*/
-create table "Categorie" 
+create table Categorie
 (
-    "type"                   VARCHAR2(254),
-    "categorieID"            INTEGER
+    type                   VARCHAR(254),
+    categorieID            INTEGER
 );
 
-create table "Film" 
+create table Film 
 (
-    "duree"                  INTEGER,
-    "titre"                  VARCHAR2(254),
-    "filmID"                 INTEGER,
-    "categorieID"            INTEGER,
-    "realisateurID"          INTEGER
+    duree                  INTEGER,
+    titre                  VARCHAR(254),
+    filmID                 INTEGER,
+    categorieID            INTEGER,
+    realisateurID          INTEGER
 );
 
-create table "Jury" 
+create table Jury 
 (
-    "nbSeanceMax"            INTEGER,
-    "juryID"                 INTEGER,
-    "categorieID"            INTEGER
+    nbSeanceMax            INTEGER,
+    juryID                 INTEGER,
+    categorieID            INTEGER
 );
 
-create table "Personne" 
+create table Personne 
 (
-    "nom"                    VARCHAR2(254),
-    "prenom"                 VARCHAR2(254),
-    "nationnalite"           VARCHAR2(254),
-    "personneID"             INTEGER,
-	"age"                    INTEGER,
-	"dateNaissance"          DATE
+    nom                    VARCHAR(254),
+    prenom                 VARCHAR(254),
+    nationnalite           VARCHAR(254),
+    personneID             INTEGER,
+	age                    INTEGER,
+	dateNaissance          DATE,
+    juryID                 INTEGER
 );
 
-create table "Photo" 
+create table Photo 
 (
-    "nomPhoto"               VARCHAR2(254),
-    "photoID"                INTEGER,
-    "VIPID"                  INTEGER
+    nomPhoto               VARCHAR(254),
+    photoID                INTEGER
 );
 
-create table "Projection" 
+create table Projection 
 (
-    "projectionID"           INTEGER,
-    "salleID"                INTEGER,
-    "filmID"                 INTEGER,
-    "dateProjection"         DATE,
-    "heureProjection"        INTEGER,
-    "officielle"             SMALLINT
+    projectionID           INTEGER,
+    salleID                INTEGER,
+    filmID                 INTEGER,
+    dateProjection         DATE,
+    heureProjection        INTEGER,
+    officielle             SMALLINT
 );
 
-create table "Salle" 
+create table Salle 
 (
-    "salleID"                INTEGER,
-    "capacite"               INTEGER
+    salleID                INTEGER,
+    capacite               INTEGER
 );
 
-create table "VIP" 
+create table VIP 
 (
-    "VIPID"                  INTEGER,
-    "importanceAcreditation" INTEGER,
-    "type"                   INTEGER,
-    "photoID"                INTEGER,
-    "compagnonID"            INTEGER
+    VIPID                  INTEGER,
+    importanceAcreditation INTEGER,
+    typeVIP                INTEGER,
+    photoID                INTEGER,
+    compagnonID            INTEGER,
+    personneID             INTEGER
 );
 
 /*==============================================================*/
 /* Clés primaires des tables                                    */
 /*==============================================================*/
-alter table "Categorie" 
+alter table Categorie 
     add constraint PK_CATEGORIE
-        primary key ("categorieID");
+        primary key (categorieID);
 
-alter table "Film" 
+alter table Film 
     add constraint PK_FILM
-        primary key ("filmID");
+        primary key (filmID);
 
-alter table "Jury"
+alter table Jury
     add constraint PK_JURY
-        primary key ("juryID");
+        primary key (juryID);
 
-alter table "Personne"
+alter table Personne
     add constraint PK_PERSONNE
-        primary key ("personneID");
+        primary key (personneID);
 
-alter table "Photo"
+alter table Photo
     add constraint PK_PHOTO
-        primary key ("photoID");
+        primary key (photoID);
 
-alter table "ProjectionID"
+alter table Projection
     add constraint PK_PROJECTION
-        primary key ("projectionID");
+        primary key (projectionID);
 
-alter table "Salle"
+alter table Salle
     add constraint PK_SALLE
-        primary key ("salleID");
+        primary key (salleID);
 
-alter table "VIP"
+alter table VIP
     add constraint PK_VIP
-        primary key ("VIPID");
+        primary key (VIPID);
 
 /*==============================================================*/
 /* Index des tables                                             */
 /*==============================================================*/
-create index ASSOCIATION5_FK on "Film" (
-   "categorieID" ASC
+alter table Film add index(
+    categorieID,
+    realisateurID
 );
 
-create index ASSOCIATION7_FK2 on "Jury" (
-   
+alter table Jury add index(
+    categorieID
 );
 
-create index ASSOCIATION6_FK on "Personne" (
-   
+alter table Personne add index(
+    juryID
 );
+
+alter table Projection add index(
+    salleID,
+    filmID
+);
+
+alter table VIP add index(
+    photoID,
+    compagnonID
+);
+
 
 /*==============================================================*/
 /* Clés étrangères des tables                                   */
 /*==============================================================*/
-alter table "Film"
-    add constraint FK_FILM_ASSOCIATI_CATEGORI foreign key ("categorieID")
-        references "Categorie" ("categorieID");
+alter table Film
+    add constraint FK_FILM_ASSOCIATI_CATEGORI foreign key (categorieID)
+        references Categorie (categorieID);
 
-alter table "Film"
-    add constraint FK_FILM_REALISE_PERSONNE foreign key ("realisateurID")
-        references "Personne" ("personneID");
+alter table Film
+    add constraint FK_FILM_REALISE_PERSONNE foreign key (realisateurID)
+        references Personne (personneID);
 
-alter table "Jury"
-    add constraint FK_JURY_CATEGORIE_CATEGORI foreign key ("categorieID")
-        references "Categorie" ("categorieID");
+alter table Jury
+    add constraint FK_JURY_CATEGORIE_CATEGORI foreign key (categorieID)
+        references Categorie (categorieID);
 
-alter table "Personne"
-    add constraint FK_PERSONNE_ASSOCIATI_JURY foreign key ("JuryID")
-        references "Jury" ("juryID");
+alter table Personne
+   add constraint FK_PERSONNE_ASSOCIATI_JURY foreign key (juryID)
+      references Jury (juryID);
 
-alter table "Photo"
-    add constraint FK_PHOTO_ASSOCIATI_VIP foreign key ("VIPID")
-        references "VIP" ("VIPID");
+alter table Projection
+    add constraint FK_PROJECTI_ASSOCIATI_FILM foreign key (filmID)
+        references Film (filmID);
 
-alter table "Projection"
-    add constraint FK_PROJECTI_ASSOCIATI_FILM foreign key ("filmID")
-        references "Film" ("filmID");
+alter table Projection
+    add constraint FK_PROJECTI_ASSOCIATI_SALLE foreign key (salleID)
+        references Salle (salleID);
 
-alter table "Projection"
-    add constraint FK_PROJECTI_ASSOCIATI_SALLE foreign key ("salleID")
-        references "Salle" ("salleID");
-
-alter table "VIP"
-    add constraint FK_VIP_ASSOCIATI_PHOTO foreign key ("photoID")
-        references "Photo" ("photoID");
+alter table VIP
+    add constraint FK_VIP_ASSOCIATI_PHOTO foreign key (photoID)
+        references Photo (photoID);
       
-alter table "VIP"
-    add constraint FK_VIP_ASSOCIATI_PERSONNE foreign key ("personneID")
-        references "Personne" ("personneID");
+alter table VIP
+    add constraint FK_VIP_ASSOCIATI_PERSONNE foreign key (personneID)
+        references Personne (personneID);
 
 /*==============================================================*/
 /* Autre contraintes                                            */
 /*==============================================================*/
-alter table "VIP"
+alter table VIP
     add constraint CHK_PERSONNE CHECK
     (
         typeVIP = 'acteur'
@@ -165,3 +174,33 @@ alter table "VIP"
         OR typeVIP = 'journaliste'
         OR typeVIP = 'people'
     );
+
+
+/*==============================================================*/
+/* Suppression des tables                                       */
+/*==============================================================*/
+alter table Film
+    drop foreign key FK_FILM_ASSOCIATI_CATEGORI;
+
+alter table Film
+    drop foreign key FK_FILM_REALISE_PERSONNE;
+
+alter table Jury
+    drop foreign key FK_JURY_CATEGORIE_CATEGORI;
+
+alter table Personne
+   drop foreign key FK_PERSONNE_ASSOCIATI_JURY;
+
+alter table Projection
+    drop foreign key FK_PROJECTI_ASSOCIATI_FILM;
+
+alter table Projection
+    drop foreign key FK_PROJECTI_ASSOCIATI_SALLE;
+
+alter table VIP
+    drop foreign key FK_VIP_ASSOCIATI_PHOTO;
+      
+alter table VIP
+    drop foreign key FK_VIP_ASSOCIATI_PERSONNE;
+
+drop table Categorie, Film, Jury, Personne, Photo, Projection, Salle, VIP;

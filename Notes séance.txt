@@ -1,2 +1,6 @@
-S�ance du 17/12 :
-	Cr�ation du script SQL de cr�ation des tables avec contraintes
+Séance du 17/12 :
+	Création du script SQL de création des tables avec contraintes
+
+Séance du 18/12 :
+	Fin de la création du script de création des tables
+    Création de la base de donnée
