@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{CB8E8648-7221-456D-BAEA-431BC0B6EDF9}" Label="" LastModificationDate="1545129773" Name="Cannes" Objects="505" Symbols="104" Target="Java" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.3.0.3248"?>
+<?PowerDesigner AppLocale="UTF16" ID="{CB8E8648-7221-456D-BAEA-431BC0B6EDF9}" Label="" LastModificationDate="1545298457" Name="Cannes" Objects="505" Symbols="104" Target="Java" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.3.0.3248"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -2645,7 +2645,7 @@ Shadow=0</a:DisplayPreferences>
 <a:CreationDate>1543918222</a:CreationDate>
 <a:ModificationDate>1545129553</a:ModificationDate>
 <a:DestinationTextOffset>(-1012, 1600)</a:DestinationTextOffset>
-<a:Rect>((-15172,-28312), (5621,-7393))</a:Rect>
+<a:Rect>((-15209,-28312), (5621,-7393))</a:Rect>
 <a:ListOfPoints>((-15172,-7393),(-15172,-28312),(5621,-28312))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
@@ -2667,8 +2667,8 @@ SOURCE 0 Arial,8,N</a:FontList>
 <a:CreationDate>1543918315</a:CreationDate>
 <a:ModificationDate>1545129545</a:ModificationDate>
 <a:SourceTextOffset>(1412, 587)</a:SourceTextOffset>
-<a:Rect>((8490,-28460), (17992,-8605))</a:Rect>
-<a:ListOfPoints>((8490,-28460),(8490,-16327),(15968,-16327),(15968,-8605))</a:ListOfPoints>
+<a:Rect>((8490,-28460), (17955,-8605))</a:Rect>
+<a:ListOfPoints>((8490,-28460),(8490,-16327),(15968,-16327),(15963,-8605))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
 <a:LineColor>4194432</a:LineColor>
@@ -2689,7 +2689,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <a:CreationDate>1543920025</a:CreationDate>
 <a:ModificationDate>1545129553</a:ModificationDate>
 <a:SourceTextOffset>(1987, 1200)</a:SourceTextOffset>
-<a:Rect>((-16157,-5645), (15097,24435))</a:Rect>
+<a:Rect>((-16157,-5645), (15060,24435))</a:Rect>
 <a:ListOfPoints>((-16157,-5645),(13073,-5645),(13073,24435))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -2847,7 +2847,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1543918184</a:CreationDate>
 <a:ModificationDate>1545129545</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((6239,-12622), (25111,-6853))</a:Rect>
+<a:Rect>((6393,-12622), (24957,-6853))</a:Rect>
 <a:LineColor>128</a:LineColor>
 <a:FillColor>8637161</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4973,11 +4973,11 @@ DISPNAME 0 Arial,8,U</a:FontList>
 <c:Attributes>
 <o:Attribute Id="o142">
 <a:ObjectID>401CCFCB-8042-4BF3-A5DB-AB6495D5A290</a:ObjectID>
-<a:Name>numero</a:Name>
-<a:Code>numero</a:Code>
+<a:Name>salleID</a:Name>
+<a:Code>salleID</a:Code>
 <a:CreationDate>1543918495</a:CreationDate>
 <a:Creator>p1704709</a:Creator>
-<a:ModificationDate>1544522623</a:ModificationDate>
+<a:ModificationDate>1545298457</a:ModificationDate>
 <a:Modifier>p1704709</a:Modifier>
 <a:DataType>int</a:DataType>
 <a:Attribute.Visibility>-</a:Attribute.Visibility>
@@ -4997,11 +4997,11 @@ DISPNAME 0 Arial,8,U</a:FontList>
 <c:Operations>
 <o:Operation Id="o144">
 <a:ObjectID>2E5626A8-CD9B-4BBB-BAA7-E2410BD93DDD</a:ObjectID>
-<a:Name>getNumero</a:Name>
-<a:Code>getNumero</a:Code>
+<a:Name>getSalleID</a:Name>
+<a:Code>getSalleID</a:Code>
 <a:CreationDate>1544522622</a:CreationDate>
 <a:Creator>p1704709</a:Creator>
-<a:ModificationDate>1544522623</a:ModificationDate>
+<a:ModificationDate>1545298457</a:ModificationDate>
 <a:Modifier>p1704709</a:Modifier>
 <a:Stereotype>Getter</a:Stereotype>
 <a:ReturnType>int</a:ReturnType>
@@ -5013,11 +5013,11 @@ DISPNAME 0 Arial,8,U</a:FontList>
 </o:Operation>
 <o:Operation Id="o145">
 <a:ObjectID>854C3308-F953-458C-9176-91D03A45D0F5</a:ObjectID>
-<a:Name>setNumero</a:Name>
-<a:Code>setNumero</a:Code>
+<a:Name>setSalleID</a:Name>
+<a:Code>setSalleID</a:Code>
 <a:CreationDate>1544522622</a:CreationDate>
 <a:Creator>p1704709</a:Creator>
-<a:ModificationDate>1544522623</a:ModificationDate>
+<a:ModificationDate>1545298457</a:ModificationDate>
 <a:Modifier>p1704709</a:Modifier>
 <a:Stereotype>Setter</a:Stereotype>
 <a:ReturnType>void</a:ReturnType>
@@ -5026,11 +5026,11 @@ DISPNAME 0 Arial,8,U</a:FontList>
 <c:Parameters>
 <o:Parameter Id="o146">
 <a:ObjectID>54D4CA49-4E34-43B9-9833-69C95918549A</a:ObjectID>
-<a:Name>newNumero</a:Name>
-<a:Code>newNumero</a:Code>
+<a:Name>newSalleID</a:Name>
+<a:Code>newSalleID</a:Code>
 <a:CreationDate>1544522622</a:CreationDate>
 <a:Creator>p1704709</a:Creator>
-<a:ModificationDate>1544522623</a:ModificationDate>
+<a:ModificationDate>1545298457</a:ModificationDate>
 <a:Modifier>p1704709</a:Modifier>
 <a:Parameter.DataType>int</a:Parameter.DataType>
 <a:ParameterType>I</a:ParameterType>
@@ -7026,8 +7026,8 @@ Shadow=0</a:DisplayPreferences>
 <o:GeneralizationSymbol Id="o212">
 <a:CreationDate>1544457823</a:CreationDate>
 <a:ModificationDate>1545129340</a:ModificationDate>
-<a:Rect>((-1855,4196), (-855,22755))</a:Rect>
-<a:ListOfPoints>((-1382,4196),(-1382,14255),(-1328,14255),(-1328,22755))</a:ListOfPoints>
+<a:Rect>((-1845,4196), (-845,22628))</a:Rect>
+<a:ListOfPoints>((-1345,4196),(-1345,22628))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>4194432</a:LineColor>
@@ -7069,8 +7069,8 @@ SOURCE 0 Arial,8,N</a:FontList>
 <a:CreationDate>1545127041</a:CreationDate>
 <a:ModificationDate>1545129340</a:ModificationDate>
 <a:SourceTextOffset>(-3725, 0)</a:SourceTextOffset>
-<a:Rect>((-20384,8421), (-11775,27565))</a:Rect>
-<a:ListOfPoints>((-11775,26491),(-17365,26491),(-17365,8421))</a:ListOfPoints>
+<a:Rect>((-21002,8421), (-12294,28064))</a:Rect>
+<a:ListOfPoints>((-12294,26990),(-17365,26990),(-17365,8421))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
 <a:LineColor>4194432</a:LineColor>
@@ -7114,7 +7114,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1544457796</a:CreationDate>
 <a:ModificationDate>1544458656</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-13697,14783), (10275,32241))</a:Rect>
+<a:Rect>((-14315,13322), (10893,33702))</a:Rect>
 <a:LineColor>128</a:LineColor>
 <a:FillColor>8637161</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>

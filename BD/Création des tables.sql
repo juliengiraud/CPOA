@@ -127,7 +127,6 @@ alter table VIP add index(
     compagnonID
 );
 
-
 /*==============================================================*/
 /* Clés étrangères des tables                                   */
 /*==============================================================*/
@@ -174,7 +173,6 @@ alter table VIP
         OR typeVIP = 'journaliste'
         OR typeVIP = 'people'
     );
-
 
 /*==============================================================*/
 /* Suppression des tables                                       */
