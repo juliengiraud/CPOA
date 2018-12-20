@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
-  <widgets xsi:type="model:Browser" id="12" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
-    <font/>
-  </widgets>
+  <widgets xsi:type="model:Panel" id="22" x="32" y="16" width="912" height="624" measuredWidth="912" measuredHeight="624"/>
   <widgets xsi:type="model:Label" id="3" x="192" y="74" text="Lundi xx - Séance 1" measuredWidth="370" measuredHeight="67">
     <font size="43px"/>
   </widgets>

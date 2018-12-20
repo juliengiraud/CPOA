@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="2" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:Label" id="3" x="598" y="94" text="Vous êtes connecté en temps que : Username" measuredWidth="322" measuredHeight="28">
+    <font size="15px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="4" x="440" y="177" text="Rechercher un VIP" measuredWidth="158" measuredHeight="29">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="5" x="64" y="176" width="336" height="432" text="VIP 1&#xD;&#xA;VIP 2&#xD;&#xA;VIP 3&#xD;&#xA;VIP 4&#xD;&#xA;VIP 5&#xD;&#xA;VIP 6&#xD;&#xA;Rami Malek&#xD;&#xA;VIP 8&#xD;&#xA;VIP 9&#xD;&#xA;VIP 10&#xD;&#xA;VIP 11&#xD;&#xA;VIP 12&#xD;&#xA;VIP 13&#xD;&#xA;VIP 14&#xD;&#xA;VIP 15&#xD;&#xA;VIP 16&#xD;&#xA;VIP 17&#xD;&#xA;VIP 18&#xD;&#xA;VIP 19&#xD;&#xA;VIP 20" measuredWidth="336" measuredHeight="432" selection="6" verticalScrollbar="true" horizontalLines="true">
+    <font size="20px"/>
+    <items x="0" y="2" width="319" height="38" text="VIP 1"/>
+    <items x="0" y="40" width="319" height="38" text="VIP 2"/>
+    <items x="0" y="78" width="319" height="38" text="VIP 3"/>
+    <items x="0" y="116" width="319" height="38" text="VIP 4"/>
+    <items x="0" y="154" width="319" height="38" text="VIP 5"/>
+    <items x="0" y="192" width="319" height="38" text="VIP 6"/>
+    <items x="0" y="230" width="319" height="38" text="Rami Malek"/>
+    <items x="0" y="268" width="319" height="38" text="VIP 8"/>
+    <items x="0" y="306" width="319" height="38" text="VIP 9"/>
+    <items x="0" y="344" width="319" height="38" text="VIP 10"/>
+    <items x="0" y="382" width="319" height="38" text="VIP 11"/>
+    <items x="0" y="420" width="319" height="38" text="VIP 12"/>
+    <items x="0" y="458" width="319" height="38" text="VIP 13"/>
+    <items x="0" y="496" width="319" height="38" text="VIP 14"/>
+    <items x="0" y="534" width="319" height="38" text="VIP 15"/>
+    <items x="0" y="572" width="319" height="38" text="VIP 16"/>
+    <items x="0" y="610" width="319" height="38" text="VIP 17"/>
+    <items x="0" y="648" width="319" height="38" text="VIP 18"/>
+    <items x="0" y="686" width="319" height="38" text="VIP 19"/>
+    <items x="0" y="724" width="319" height="38" text="VIP 20"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="6" x="800" y="176" text="Ajouter un VIP" measuredWidth="120" measuredHeight="31">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="7" x="841" y="584" text="Modifier" measuredWidth="79" measuredHeight="31" link="ModifierVIP.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="8" x="826" y="121" text="Déconnection" measuredWidth="94" measuredHeight="25" link="NoConnexion.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="9" x="440" y="224" text="Rami Malek" measuredWidth="131" measuredHeight="40">
+    <font size="24px"/>
+  </widgets>
+  <widgets xsi:type="model:Text" id="10" x="440" y="296" width="304" height="276" text="Métier&#xD;&#xA;&#xD;&#xA;Nationalité&#xD;&#xA;&#xD;&#xA;Âge&#xD;&#xA;&#xD;&#xA;Compagnon&#xD;&#xA;&#xD;&#xA;" measuredWidth="304" measuredHeight="276">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="11" x="440" y="256" text="Identifiant" measuredWidth="84" measuredHeight="31">
+    <font size="17px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="12" x="751" y="240" width="169" height="225" measuredWidth="169" measuredHeight="225" border="true" src="../RamiMalek.jpg"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

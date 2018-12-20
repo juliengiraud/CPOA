@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="2" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="3" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:TextField" id="6" x="396" y="280" width="185" text="Identifiant" measuredWidth="185" measuredHeight="33">
+    <font size="19px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="7" x="397" y="328" width="184" text="Mot de passe" measuredWidth="184" measuredHeight="33">
+    <font size="19px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="8" x="449" y="416" text="Valider" measuredWidth="79" measuredHeight="35" link="AccueilVIP.screen">
+    <font size="19px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="9" x="363" y="168" text="Identification" measuredWidth="252" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

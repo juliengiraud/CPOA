@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
-  <widgets xsi:type="model:Browser" id="16" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
-    <font/>
-  </widgets>
+  <widgets xsi:type="model:Panel" id="25" x="32" y="16" width="912" height="624" measuredWidth="912" measuredHeight="624"/>
   <widgets xsi:type="model:Table" id="10" x="64" y="168" width="473" height="433" text="Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche&#xD;&#xA;[Séance 1 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]&#xD;&#xA;[Séance 2 - Salle 1], [Ajouter une séance], [Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance],[Ajouter une séance]" measuredWidth="473" measuredHeight="433" selection="13" verticalScrollbar="true" rowHeight="65" textAlignment="Center" alternative="#eee">
     <font/>
     <items link="SelectionSéance.screen" x="5" y="90" width="90" height="15" text="Séance 1 - Salle 1"/>

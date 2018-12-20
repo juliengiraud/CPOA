@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
-  <widgets xsi:type="model:Browser" id="15" x="32" y="16" width="913" height="625" text="Festival de Cannes&#xA;http://..." measuredWidth="913" measuredHeight="625">
-    <font/>
-  </widgets>
+  <widgets xsi:type="model:Panel" id="24" x="32" y="16" width="912" height="624" measuredWidth="912" measuredHeight="624"/>
   <widgets xsi:type="model:Button" id="5" x="410" y="96" text="Générer le planning" measuredWidth="157" measuredHeight="31" link="GénérerPlanning.screen">
     <font size="16px"/>
   </widgets>
