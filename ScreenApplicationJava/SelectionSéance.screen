@@ -20,6 +20,9 @@
     <font size="20px"/>
   </widgets>
   <widgets xsi:type="model:Image" id="21" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="GénérerPlanning.screen" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:Button" id="23" x="360" y="544" text="Supprimer la séance" measuredWidth="161" measuredHeight="31" background="#f00" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
   <hRuler/>
   <vRuler/>
   <font size="12px"/>
