@@ -40,7 +40,7 @@
   <widgets xsi:type="model:Combo" id="16" x="320" y="144" width="201" text="Sélectionner une date" measuredWidth="201" measuredHeight="29" link="SelectionDate.screen">
     <font size="16px"/>
   </widgets>
-  <widgets xsi:type="model:SearchField" id="17" x="766" y="144" text="Chercher un film" measuredWidth="147" measuredHeight="29">
+  <widgets xsi:type="model:SearchField" id="17" x="766" y="144" text="Chercher un film" measuredWidth="147" measuredHeight="29" link="RechercheFilm.screen">
     <font size="16px"/>
   </widgets>
   <widgets xsi:type="model:Image" id="19" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" src="../Festival_de_Cannes_Logo.svg.png"/>

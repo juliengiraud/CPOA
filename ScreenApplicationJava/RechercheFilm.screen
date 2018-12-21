@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="912" height="624" measuredWidth="912" measuredHeight="624"/>
+  <widgets xsi:type="model:Label" id="2" x="192" y="74" text="Rcherche pour &quot;La Grande&quot;" measuredWidth="517" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="712" y="156" measuredWidth="6" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="840" y="552" text="Retour" measuredWidth="67" measuredHeight="31" link="GénérerPlanning.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="72" y="144" width="822" measuredWidth="822" measuredHeight="6"/>
+  <widgets xsi:type="model:Image" id="8" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="GénérerPlanning.screen" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:List" id="11" x="72" y="192" width="820" height="340" text="*La Grande* vadrouille&#xD;&#xA;*La Grande* guerre&#xD;&#xA;*La Grande* bouffe&#xD;&#xA;*La Grande* muraille" measuredWidth="820" measuredHeight="340" border="false" verticalScrollbar="true" rowHeight="80">
+    <font size="32px" underline="true"/>
+    <items link="FicheFilm.screen" x="0" y="2" width="803" height="80" text="*La Grande* vadrouille"/>
+    <items x="0" y="82" width="803" height="80" text="*La Grande* guerre"/>
+    <items x="0" y="162" width="803" height="80" text="*La Grande* bouffe"/>
+    <items x="0" y="242" width="803" height="80" text="*La Grande* muraille"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

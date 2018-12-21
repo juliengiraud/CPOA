@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="1" x="32" y="16" width="912" height="624" measuredWidth="912" measuredHeight="624"/>
+  <widgets xsi:type="model:Label" id="2" x="192" y="74" text="La Grande Vadrouille" measuredWidth="397" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="712" y="156" measuredWidth="6" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="840" y="552" text="Retour" measuredWidth="67" measuredHeight="31" link="RechercheFilm.screen">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:VideoPlayer" id="6" x="691" y="200" width="204" height="136" measuredWidth="204" measuredHeight="136"/>
+  <widgets xsi:type="model:HLine" id="8" x="72" y="144" width="822" measuredWidth="822" measuredHeight="6"/>
+  <widgets xsi:type="model:Text" id="9" x="360" y="201" width="546" height="352" text="Catégorie : Film Hors Compétition&#xD;&#xA;&#xD;&#xA;Genre : Comédie, Guerre&#xD;&#xA;&#xD;&#xA;Réalisation : Gérard Oury&#xD;&#xA;&#xD;&#xA;Synospis :  En 1942, un avion anglais est abattu par les Allemands&#xD;&#xA;au-dessus de Paris. Les trois pilotes sautent en parachute et&#xD;&#xA;atterrissent dans différents endroits de la capitale. Ils sont aidés&#xD;&#xA;par deux civils français, un chef d'orchestre et un peintre en&#xD;&#xA;bâtiment qui acceptent de les mener en zone libre; ils&#xD;&#xA;deviennent ainsi, malgré eux, acteurs de la Résistance.&#xD;&#xA;&#xD;&#xA;Nationalité : Français, Britannique" measuredWidth="546" measuredHeight="352">
+    <font size="19px"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="10" x="64" y="78" width="112" height="60" measuredWidth="112" measuredHeight="60" link="GénérerPlanning.screen" src="../Festival_de_Cannes_Logo.svg.png"/>
+  <widgets xsi:type="model:Image" id="14" x="72" y="201" width="264" height="352" measuredWidth="264" measuredHeight="352" border="true" src="../LaGrandeVadrouille.jpg"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
