@@ -9,18 +9,21 @@ create table Categorie
 
 create table Film 
 (
-    duree                  INTEGER,
+    duree                  VARCHAR(10),
     titre                  VARCHAR(254),
     filmID                 INTEGER,
     categorieID            INTEGER,
-    realisateurID          INTEGER
+    realisateur1ID         INTEGER,
+    realisateur2ID         INTEGER,
+    realisateur3ID         INTEGER
 );
 
 create table Jury 
 (
     nbSeanceMax            INTEGER,
     juryID                 INTEGER,
-    categorieID            INTEGER
+    categorieID            INTEGER,
+    presidentID            INTEGER
 );
 
 create table Personne 
@@ -31,7 +34,8 @@ create table Personne
     personneID             INTEGER,
 	age                    INTEGER,
 	dateNaissance          DATE,
-    juryID                 INTEGER
+    juryID                 INTEGER,
+    metier                 VARCHAR(254)
 );
 
 create table Photo 
@@ -106,11 +110,14 @@ alter table VIP
 /*==============================================================*/
 alter table Film add index(
     categorieID,
-    realisateurID
+    realisateur1ID,
+    realisateur2ID,
+    realisateur3ID
 );
 
 alter table Jury add index(
-    categorieID
+    categorieID,
+    presidentID
 );
 
 alter table Personne add index(
@@ -135,12 +142,24 @@ alter table Film
         references Categorie (categorieID);
 
 alter table Film
-    add constraint FK_FILM_REALISE_PERSONNE foreign key (realisateurID)
+    add constraint FK_FILM_REALISE1_PERSONNE foreign key (realisateur1ID)
+        references Personne (personneID);
+
+alter table Film
+    add constraint FK_FILM_REALISE2_PERSONNE foreign key (realisateur2ID)
+        references Personne (personneID);
+
+alter table Film
+    add constraint FK_FILM_REALISE3_PERSONNE foreign key (realisateur3ID)
         references Personne (personneID);
 
 alter table Jury
     add constraint FK_JURY_CATEGORIE_CATEGORI foreign key (categorieID)
         references Categorie (categorieID);
+
+alter table Jury
+    add constraint FK_JURY_PRESIDENT_PERSONNE foreign key (presidentID)
+        references Personne (personneID);
 
 alter table Personne
    add constraint FK_PERSONNE_ASSOCIATI_JURY foreign key (juryID)
@@ -181,10 +200,19 @@ alter table Film
     drop foreign key FK_FILM_ASSOCIATI_CATEGORI;
 
 alter table Film
-    drop foreign key FK_FILM_REALISE_PERSONNE;
+    drop foreign key FK_FILM_REALISE1_PERSONNE;
+
+alter table Film
+    drop foreign key FK_FILM_REALISE2_PERSONNE;
+
+alter table Film
+    drop foreign key FK_FILM_REALISE3_PERSONNE;
 
 alter table Jury
     drop foreign key FK_JURY_CATEGORIE_CATEGORI;
+
+alter table Jury
+    drop foreign key FK_JURY_PRESIDENT_PERSONNE;
 
 alter table Personne
    drop foreign key FK_PERSONNE_ASSOCIATI_JURY;
