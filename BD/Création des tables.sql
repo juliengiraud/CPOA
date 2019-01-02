@@ -1,13 +1,13 @@
 /*==============================================================*/
 /* Création des tables                                          */
 /*==============================================================*/
-create table Categorie
+CREATE TABLE Categorie
 (
-    type                   VARCHAR(254),
+    TYPE                   VARCHAR(254),
     categorieID            INTEGER
 );
 
-create table Film 
+CREATE TABLE Film 
 (
     duree                  VARCHAR(10),
     titre                  VARCHAR(254),
@@ -18,7 +18,7 @@ create table Film
     realisateur3ID         INTEGER
 );
 
-create table Jury 
+CREATE TABLE Jury 
 (
     nbSeanceMax            INTEGER,
     juryID                 INTEGER,
@@ -26,7 +26,7 @@ create table Jury
     presidentID            INTEGER
 );
 
-create table Personne 
+CREATE TABLE Personne 
 (
     nom                    VARCHAR(254),
     prenom                 VARCHAR(254),
@@ -38,13 +38,13 @@ create table Personne
     metier                 VARCHAR(254)
 );
 
-create table Photo 
+CREATE TABLE Photo 
 (
     nomPhoto               VARCHAR(254),
     photoID                INTEGER
 );
 
-create table Projection 
+CREATE TABLE Projection 
 (
     projectionID           INTEGER,
     salleID                INTEGER,
@@ -54,13 +54,13 @@ create table Projection
     officielle             SMALLINT
 );
 
-create table Salle 
+CREATE TABLE Salle 
 (
     salleID                INTEGER,
     capacite               INTEGER
 );
 
-create table VIP 
+CREATE TABLE VIP 
 (
     VIPID                  INTEGER,
     importanceAcreditation INTEGER,
@@ -73,63 +73,63 @@ create table VIP
 /*==============================================================*/
 /* Clés primaires des tables                                    */
 /*==============================================================*/
-alter table Categorie 
-    add constraint PK_CATEGORIE
-        primary key (categorieID);
+ALTER TABLE Categorie 
+    ADD CONSTRAINT PK_CATEGORIE
+        PRIMARY KEY (categorieID);
 
-alter table Film 
-    add constraint PK_FILM
-        primary key (filmID);
+ALTER TABLE Film 
+    ADD CONSTRAINT PK_FILM
+        PRIMARY KEY (filmID);
 
-alter table Jury
-    add constraint PK_JURY
-        primary key (juryID);
+ALTER TABLE Jury
+    ADD CONSTRAINT PK_JURY
+        PRIMARY KEY (juryID);
 
-alter table Personne
-    add constraint PK_PERSONNE
-        primary key (personneID);
+ALTER TABLE Personne
+    ADD CONSTRAINT PK_PERSONNE
+        PRIMARY KEY (personneID);
 
-alter table Photo
-    add constraint PK_PHOTO
-        primary key (photoID);
+ALTER TABLE Photo
+    ADD CONSTRAINT PK_PHOTO
+        PRIMARY KEY (photoID);
 
-alter table Projection
-    add constraint PK_PROJECTION
-        primary key (projectionID);
+ALTER TABLE Projection
+    ADD CONSTRAINT PK_PROJECTION
+        PRIMARY KEY (projectionID);
 
-alter table Salle
-    add constraint PK_SALLE
-        primary key (salleID);
+ALTER TABLE Salle
+    ADD CONSTRAINT PK_SALLE
+        PRIMARY KEY (salleID);
 
-alter table VIP
-    add constraint PK_VIP
-        primary key (VIPID);
+ALTER TABLE VIP
+    ADD CONSTRAINT PK_VIP
+        PRIMARY KEY (VIPID);
 
 /*==============================================================*/
 /* Index des tables                                             */
 /*==============================================================*/
-alter table Film add index(
+ALTER TABLE Film ADD INDEX(
     categorieID,
     realisateur1ID,
     realisateur2ID,
     realisateur3ID
 );
 
-alter table Jury add index(
+ALTER TABLE Jury ADD INDEX(
     categorieID,
     presidentID
 );
 
-alter table Personne add index(
+ALTER TABLE Personne ADD INDEX(
     juryID
 );
 
-alter table Projection add index(
+ALTER TABLE Projection ADD INDEX(
     salleID,
     filmID
 );
 
-alter table VIP add index(
+ALTER TABLE VIP ADD INDEX(
     photoID,
     compagnonID
 );
@@ -137,55 +137,55 @@ alter table VIP add index(
 /*==============================================================*/
 /* Clés étrangères des tables                                   */
 /*==============================================================*/
-alter table Film
-    add constraint FK_FILM_ASSOCIATI_CATEGORI foreign key (categorieID)
-        references Categorie (categorieID);
+ALTER TABLE Film
+    ADD CONSTRAINT FK_FILM_ASSOCIATI_CATEGORI FOREIGN KEY (categorieID)
+        REFERENCES Categorie (categorieID);
 
-alter table Film
-    add constraint FK_FILM_REALISE1_PERSONNE foreign key (realisateur1ID)
-        references Personne (personneID);
+ALTER TABLE Film
+    ADD CONSTRAINT FK_FILM_REALISE1_PERSONNE FOREIGN KEY (realisateur1ID)
+        REFERENCES Personne (personneID);
 
-alter table Film
-    add constraint FK_FILM_REALISE2_PERSONNE foreign key (realisateur2ID)
-        references Personne (personneID);
+ALTER TABLE Film
+    ADD CONSTRAINT FK_FILM_REALISE2_PERSONNE FOREIGN KEY (realisateur2ID)
+        REFERENCES Personne (personneID);
 
-alter table Film
-    add constraint FK_FILM_REALISE3_PERSONNE foreign key (realisateur3ID)
-        references Personne (personneID);
+ALTER TABLE Film
+    ADD CONSTRAINT FK_FILM_REALISE3_PERSONNE FOREIGN KEY (realisateur3ID)
+        REFERENCES Personne (personneID);
 
-alter table Jury
-    add constraint FK_JURY_CATEGORIE_CATEGORI foreign key (categorieID)
-        references Categorie (categorieID);
+ALTER TABLE Jury
+    ADD CONSTRAINT FK_JURY_CATEGORIE_CATEGORI FOREIGN KEY (categorieID)
+        REFERENCES Categorie (categorieID);
 
-alter table Jury
-    add constraint FK_JURY_PRESIDENT_PERSONNE foreign key (presidentID)
-        references Personne (personneID);
+ALTER TABLE Jury
+    ADD CONSTRAINT FK_JURY_PRESIDENT_PERSONNE FOREIGN KEY (presidentID)
+        REFERENCES Personne (personneID);
 
-alter table Personne
-   add constraint FK_PERSONNE_ASSOCIATI_JURY foreign key (juryID)
-      references Jury (juryID);
+ALTER TABLE Personne
+   ADD CONSTRAINT FK_PERSONNE_ASSOCIATI_JURY FOREIGN KEY (juryID)
+      REFERENCES Jury (juryID);
 
-alter table Projection
-    add constraint FK_PROJECTI_ASSOCIATI_FILM foreign key (filmID)
-        references Film (filmID);
+ALTER TABLE Projection
+    ADD CONSTRAINT FK_PROJECTI_ASSOCIATI_FILM FOREIGN KEY (filmID)
+        REFERENCES Film (filmID);
 
-alter table Projection
-    add constraint FK_PROJECTI_ASSOCIATI_SALLE foreign key (salleID)
-        references Salle (salleID);
+ALTER TABLE Projection
+    ADD CONSTRAINT FK_PROJECTI_ASSOCIATI_SALLE FOREIGN KEY (salleID)
+        REFERENCES Salle (salleID);
 
-alter table VIP
-    add constraint FK_VIP_ASSOCIATI_PHOTO foreign key (photoID)
-        references Photo (photoID);
+ALTER TABLE VIP
+    ADD CONSTRAINT FK_VIP_ASSOCIATI_PHOTO FOREIGN KEY (photoID)
+        REFERENCES Photo (photoID);
       
-alter table VIP
-    add constraint FK_VIP_ASSOCIATI_PERSONNE foreign key (personneID)
-        references Personne (personneID);
+ALTER TABLE VIP
+    ADD CONSTRAINT FK_VIP_ASSOCIATI_PERSONNE FOREIGN KEY (personneID)
+        REFERENCES Personne (personneID);
 
 /*==============================================================*/
 /* Autre contraintes                                            */
 /*==============================================================*/
-alter table VIP
-    add constraint CHK_PERSONNE CHECK
+ALTER TABLE VIP
+    ADD CONSTRAINT CHK_PERSONNE CHECK
     (
         typeVIP = 'acteur'
         OR typeVIP = 'realisateur'
@@ -196,37 +196,37 @@ alter table VIP
 /*==============================================================*/
 /* Suppression des tables                                       */
 /*==============================================================*/
-alter table Film
-    drop foreign key FK_FILM_ASSOCIATI_CATEGORI;
+ALTER TABLE Film
+    DROP FOREIGN KEY FK_FILM_ASSOCIATI_CATEGORI;
 
-alter table Film
-    drop foreign key FK_FILM_REALISE1_PERSONNE;
+ALTER TABLE Film
+    DROP FOREIGN KEY FK_FILM_REALISE1_PERSONNE;
 
-alter table Film
-    drop foreign key FK_FILM_REALISE2_PERSONNE;
+ALTER TABLE Film
+    DROP FOREIGN KEY FK_FILM_REALISE2_PERSONNE;
 
-alter table Film
-    drop foreign key FK_FILM_REALISE3_PERSONNE;
+ALTER TABLE Film
+    DROP FOREIGN KEY FK_FILM_REALISE3_PERSONNE;
 
-alter table Jury
-    drop foreign key FK_JURY_CATEGORIE_CATEGORI;
+ALTER TABLE Jury
+    DROP FOREIGN KEY FK_JURY_CATEGORIE_CATEGORI;
 
-alter table Jury
-    drop foreign key FK_JURY_PRESIDENT_PERSONNE;
+ALTER TABLE Jury
+    DROP FOREIGN KEY FK_JURY_PRESIDENT_PERSONNE;
 
-alter table Personne
-   drop foreign key FK_PERSONNE_ASSOCIATI_JURY;
+ALTER TABLE Personne
+   DROP FOREIGN KEY FK_PERSONNE_ASSOCIATI_JURY;
 
-alter table Projection
-    drop foreign key FK_PROJECTI_ASSOCIATI_FILM;
+ALTER TABLE Projection
+    DROP FOREIGN KEY FK_PROJECTI_ASSOCIATI_FILM;
 
-alter table Projection
-    drop foreign key FK_PROJECTI_ASSOCIATI_SALLE;
+ALTER TABLE Projection
+    DROP FOREIGN KEY FK_PROJECTI_ASSOCIATI_SALLE;
 
-alter table VIP
-    drop foreign key FK_VIP_ASSOCIATI_PHOTO;
+ALTER TABLE VIP
+    DROP FOREIGN KEY FK_VIP_ASSOCIATI_PHOTO;
       
-alter table VIP
-    drop foreign key FK_VIP_ASSOCIATI_PERSONNE;
+ALTER TABLE VIP
+    DROP FOREIGN KEY FK_VIP_ASSOCIATI_PERSONNE;
 
-drop table Categorie, Film, Jury, Personne, Photo, Projection, Salle, VIP;
+DROP TABLE Categorie, Film, Jury, Personne, Photo, Projection, Salle, VIP;
