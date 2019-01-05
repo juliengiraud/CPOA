@@ -5,6 +5,7 @@ require_once(PATH_ENTITY . 'Categorie.php');
 
 // Retourne un tableau de catégories ou null
 class CategorieDAO extends DAO {
+    
     public function getCategories() {
         $res = $this -> queryAll('SELECT * FROM categorie');
         $i = 0;

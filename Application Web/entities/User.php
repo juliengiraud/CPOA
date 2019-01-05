@@ -1,19 +1,18 @@
 <?php
 
 class User {
-	private $id;
+	private $userID;
 	private $username;
-    private $dateInscription;
+	private $password;
 	
-	public function __construct($id, $username, $password, $dateInscription) {
-		$this -> id = $id;
-		$this -> username = $username;
-		$this -> password = $password;
-        $this -> dateInscription = $dateInscription;
+	public function __construct($newUserID, $newUsername, $newPassword) {
+		$this -> userID = $newUserID;
+		$this -> username = $newUsername;
+		$this -> password = $newPassword;
 	}
 	
-	public function getId() {
-		return $this -> id;
+	public function getUserID() {
+		return $this -> $userID;
 	}
 	
 	public function getUsername() {
@@ -22,10 +21,6 @@ class User {
     
     public function getPassword() {
 		return htmlspecialchars($this -> password);
-	}
-    
-    public function getDateInscription() {
-		return htmlspecialchars($this -> dateInscription);
 	}
 	
 }

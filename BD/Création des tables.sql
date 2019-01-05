@@ -54,13 +54,20 @@ CREATE TABLE Projection
     officielle             SMALLINT
 );
 
-CREATE TABLE Salle 
+CREATE TABLE Salle
 (
     salleID                INTEGER,
     capacite               INTEGER
 );
 
-CREATE TABLE VIP 
+CREATE TABLE User
+(
+    userID                 INTEGER,
+    username               VARCHAR(254),
+    password               VARCHAR(254)
+);
+
+CREATE TABLE VIP
 (
     VIPID                  INTEGER,
     importanceAcreditation INTEGER,
@@ -101,6 +108,10 @@ ALTER TABLE Salle
     ADD CONSTRAINT PK_SALLE
         PRIMARY KEY (salleID);
 
+ALTER TABLE User
+    ADD CONSTRAINT PK_USER
+        PRIMARY KEY (userID);
+
 ALTER TABLE VIP
     ADD CONSTRAINT PK_VIP
         PRIMARY KEY (VIPID);
@@ -127,6 +138,10 @@ ALTER TABLE Personne ADD INDEX(
 ALTER TABLE Projection ADD INDEX(
     salleID,
     filmID
+);
+
+ALTER TABLE User ADD INDEX(
+    userID
 );
 
 ALTER TABLE VIP ADD INDEX(
@@ -229,4 +244,4 @@ ALTER TABLE VIP
 ALTER TABLE VIP
     DROP FOREIGN KEY FK_VIP_ASSOCIATI_PERSONNE;
 
-DROP TABLE Categorie, Film, Jury, Personne, Photo, Projection, Salle, VIP;
+DROP TABLE Categorie, Film, Jury, Personne, Photo, Projection, Salle, User, VIP;

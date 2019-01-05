@@ -3,7 +3,7 @@
 require_once('./config/configuration.php');
 require_once('./lib/foncBase.php');
 
-require_once(PATH_ENTITY. 'User.php');
+require_once(PATH_ENTITY . 'User.php');
 session_start();
 
 if (!isset($_SESSION['lang'])) $_SESSION['lang'] = LANG;
@@ -17,13 +17,13 @@ if (!isset($_SESSION['logged'])) $_SESSION['logged'] = false;
 // Vérification de la page demandée 
 
 if (isset($_GET['page'])) {
-    $page = htmlspecialchars($_GET['page']); // http://.../index.php?page=toto
+    $page = htmlspecialchars($_GET['page']);
     if (!is_file(PATH_CONTROLLERS . $_GET['page'] . '.php')) { 
         $page = '404'; //page demandée inexistante
     }
 }
 else
-	$page = 'accueil'; //page d'accueil du site - http://.../index.php
+	$page = 'accueil';
 
 // Appel du controlleur
 require_once(PATH_CONTROLLERS . $page . '.php'); 

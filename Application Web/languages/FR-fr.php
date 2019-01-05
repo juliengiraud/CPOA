@@ -35,11 +35,11 @@ define('TITRE', 'Mes Photos');
 define('TITRE_PAGE_PHOTO', 'Les informations sur cette photo');
 define('ERREUR_QUERY', "Problème d'accès à la base de données. Contactez l'administrateur");
 
-//Header
+// Header
 
-//Menu
+// Menu
 
-//Messages erreures
+// Messages erreures
 define('ERREUR_CONNECT_BDD','Impossible de se connecter à la BDD !');
 define('ERREUR_QUERY_BDD','Une erreure est survenue lors de la requête SQL !');
 define('ERREUR_CAPTCHA','Merci de cocher le captcha');
@@ -65,7 +65,7 @@ define('ERREUR_PHOTO_MODIF','Modification impossible !');
 define('ERREUR_PHOTO_VANDALE','Cette photo ne vous appartient pas, vandale !');
 
 
-//Messages informations
+// Messages informations
 
 define('TEXTE_SELECTED_PHOTOS'," photo(s) selectionnée(s)");
 define('TEXTE_FORM_CAT_SUCCESS',"Categorie ajoutée !");
@@ -79,18 +79,17 @@ define('TEXTE_PHOTO_MODIF_SUCCESS',"Modification réussite");
 
 
 
-//Titres
-
+// Titres
 
 define('TITRE_PAGE_ACCUEIL_TOUS','Toutes les photos');
 define('TITRE_PAGE_ACCUEIL_CAT','Les photos de la categorie ');
-
+define('TITRE_PAGE_ACCUEIL', 'Page accueil VIP');
 define('TITRE_PAGE_ADDCAT','Quelle Categorie ?');
 define('TITRE_PAGE_ADDPHOTO','Quelle photo ?');
 
 
 
-//Forms
+// Forms
 
 define('FORM_QUESTION_CAT_AFFICHER','Quelles photos souhaitez-vous afficher ?');
 
