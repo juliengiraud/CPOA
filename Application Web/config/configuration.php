@@ -8,10 +8,6 @@ const BD_DBNAME = 'p1704709';
 const BD_USER = 'p1704709';
 const BD_PWD = 'cpe7ay5u';
 
-// Identifiants connexion espace administrateur
-const USERNAME = 'root';
-const PASSWORD = 'cpe7ay5u';
-
 // Langue du site
 const LANG ='FR-fr';
 
@@ -28,9 +24,9 @@ define('PATH_VIEWS', './views/v_');
 define('PATH_TEXTES', './languages/');
 
 // Sous-dossiers
-define('PATH_CSS', PATH_ASSETS.'css/');
-define('PATH_IMAGES', PATH_ASSETS.'images/');
-define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
+define('PATH_CSS', PATH_ASSETS . 'css/');
+define('PATH_IMAGES', PATH_ASSETS . 'images/');
+define('PATH_SCRIPTS', PATH_ASSETS . 'scripts/');
 define('PATH_GALERIE', 'galerie/');
 //define('PATH_LOG','log/');
 

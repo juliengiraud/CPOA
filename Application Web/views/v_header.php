@@ -19,16 +19,16 @@
 			<section class="container" >
 				<div class = "row">
 					<div class = "col-md-2 col-sm-2 col-xs-12">
-						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" class="img-circle">
+						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="120" class="img-rounded" />
 					</div>
 					<div class="col-md-10 col-sm-10 col-xs-12">
-						<h2><?= TITRE ?></h2>
+						<!-- <h2><?= TITRE ?></h2> -->
 					</div>
 				</div>
 			</section>
 		</header>
 		<!-- Menu -->
-		<?php include(PATH_VIEWS.'menu.php'); ?>
+		<?php include(PATH_VIEWS . 'menu.php'); ?>
 		<!-- Vue -->
 			<section class="container">
 				<div class = "row">

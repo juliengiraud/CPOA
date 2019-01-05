@@ -30,7 +30,7 @@ if (isset($_POST['username']) && (isset($_POST['pass']))) {
 	$_SESSION['logged'] = true;
     $_SESSION['user'] = $user;
     
-    header("Refresh:10; url=index.php");
+    header("Refresh:5; url=index.php");
 }
 
 require_once(PATH_VIEWS . $page . '.php');

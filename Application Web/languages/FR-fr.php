@@ -31,7 +31,7 @@ define('MESSAGE_ERREUR', "Une erreur s'est produite");
 define('ERREUR_ID_PHOTO', "Identifiant de photo incorrect dans l'URL");
 define('ERREUR_ID_CATEGORIE', "Identifiant de catégorie incorrect dans l'URL");
 
-define('TITRE', 'Mes Photos');
+//define('TITRE', '');
 define('TITRE_PAGE_PHOTO', 'Les informations sur cette photo');
 define('ERREUR_QUERY', "Problème d'accès à la base de données. Contactez l'administrateur");
 
