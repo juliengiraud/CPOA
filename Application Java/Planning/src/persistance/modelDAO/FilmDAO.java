@@ -1,4 +1,4 @@
-package persistance;
+package persistance.modelDAO;
 
 import persistance.interfaceDAO.IFilmDAO;
 import java.sql.Connection;
@@ -11,10 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import metier.Film;
+import persistance.DAO;
 
 public class FilmDAO extends DAO implements IFilmDAO {
     
-    public FilmDAO () throws SQLException {
+    public FilmDAO() throws SQLException {
         super();
     }
     

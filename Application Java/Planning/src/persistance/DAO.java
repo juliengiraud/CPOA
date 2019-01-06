@@ -3,7 +3,7 @@ package persistance;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-class DAO {
+public class DAO {
     
     protected static Connection connexionBD;
     

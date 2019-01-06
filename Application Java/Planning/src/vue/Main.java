@@ -3,7 +3,7 @@ package vue;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import metier.Film;
-import persistance.FilmDAO;
+import persistance.modelDAO.FilmDAO;
 
 public class Main {
     
