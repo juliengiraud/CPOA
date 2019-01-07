@@ -3,7 +3,7 @@
 /*==============================================================*/
 CREATE TABLE Categorie
 (
-    TYPE                   VARCHAR(254),
+    Type                   VARCHAR(254),
     categorieID            INTEGER
 );
 

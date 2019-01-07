@@ -1,47 +1,31 @@
 <?php
+
 class Photo {
-    private $_photoid;
-    private $_nomfich;
-    private $_description;
-    private $_catid;
+	
+    private $_nomPhoto;
+    private $_photoID;
     
-    public function __construct($photoid, $nomfich, $description, $catid) {
+    public function __construct($nomPhoto, $photoID) {
+        $this -> _nomPhoto = $nomPhoto;
+        $this -> _photoID = $photoID;
+    }
+    
+    public function getNomPhoto() {
+        return $this -> _nomPhoto;
+    }
+    
+    public function setNomPhoto($nomPhoto) {
+        $this -> _nomPhoto = $nomPhoto;
+    }
+	
+	public function getPhotoID() {
+        return $this -> _photoID;
+    }
+    
+    public function setPhotoID($photoID) {
         $this -> _photoid = $photoid;
-        $this -> _nomfich = $nomfich;
-        $this -> _description = $description;
-        $this -> _catid = $catid;
-    }
-    
-    public function setPhotoid($photoid) {
-        $this -> _photoid = $photoid;
-    }
-    
-    public function getPhotoid() {
-        return $this -> _photoid;
-    }
-    
-    public function setNomfich($nomfich) {
-        $this -> _nomfich = $nomfich;
-    }
-    
-    public function getNomfich() {
-        return $this -> _nomfich;
-    }
-    
-    public function setDescription($description) {
-        $this -> _description = $description;
-    }
-    
-    public function getDescription() {
-        return $this -> _description;
-    }
-    
-    public function setCatid($catid) {
-        $this -> _catid = $catid;
-    }
-    
-    public function getCatid() {
-        return $this -> _catid;
-    }
+	}
+	
 }
+
 ?>

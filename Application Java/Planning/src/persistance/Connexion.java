@@ -47,7 +47,7 @@ public class Connexion extends MariaDbDataSource {
                 mds.setDatabaseName(prop.getProperty("base"));
                 mds.setUser(prop.getProperty("user"));
                 mds.setPassword(prop.getProperty("pwd"));
-                // pas de service Ã  dÃ©finir pour MariaDB
+                // pas de service à définir pour MariaDB
             }
             catch (SQLException ex) {
                 Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
