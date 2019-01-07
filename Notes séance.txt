@@ -1,10 +1,21 @@
-﻿Séance du 17/12 :
+﻿Séance du 17/12/2018 :
 	Création du script SQL de création des tables avec contraintes
 
-Séance du 18/12 :
+Séance du 18/12/2018 :
 	Fin de la création du script de création des tables
     Création de la base de donnée
 
-Séance du 20/12 :
+Séance du 20/12/2018 :
 	Fin de la création des storyboards (maquettes)
 	Mise en page du compte-rendu, ajout du code
+
+Pendant les vacances :
+	Ajout des données dans la base de données
+	Réalisation de la connexion avec DAO en PHP
+	Réalisation de la connexion avec DAO en Java
+	Ajout des classes auto-générées en Java
+
+Séance du 07/01/2019 :
+	Ajout des classes en PHP
+	Début de l'ajout des models d'accès aux données en PHP
+	Début de l'interface graphique en PHP
