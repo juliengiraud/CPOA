@@ -6,6 +6,11 @@
 <!--  Début de la page -->
 <h1><?= TITRE_PAGE_ACCUEIL ?></h1>
 
+
+<p>BONJOUR</p>
+
+
+
 <!--  Fin de la page -->
 
 <!--  Pied de page -->

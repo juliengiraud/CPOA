@@ -1,6 +1,6 @@
 <?php
 // Liste des constantes des textes affichés sur le site
-define('LOGO', 'Logo de la compagnie'); // Affiché si image non trouvée
+define('LOGO', 'Logo du festval de Cannes'); // Affiché si image non trouvée
 define('TOUTES_PHOTOS', 'Toutes les photos');
 define('PHOTOS_CATEGORIE', 'Les photos de la catégorie ');
 define('MENU_ACCUEIL', 'Accueil');
@@ -25,6 +25,7 @@ define('ERREUR_FORM_CONNEXION_PASSWORD','Mot de passe incorrect !');
 define('TEXTE_FORM_CONNEXION_SUCCESS1',"Bienvenue ");
 define('TEXTE_FORM_CONNEXION_SUCCESS2',", redirection vers l'accueil en cours");
 define('MENU_DECONNEXION','Deconnexion');
+define('TITRE','Titre');
 
 define('TEXTE_PAGE_404', "Oups, la page demandée n'existe pas !");
 define('MESSAGE_ERREUR', "Une erreur s'est produite");
@@ -39,7 +40,7 @@ define('ERREUR_QUERY', "Problème d'accès à la base de données. Contactez l'a
 
 // Menu
 
-// Messages erreures
+// Messages erreurs
 define('ERREUR_CONNECT_BDD','Impossible de se connecter à la BDD !');
 define('ERREUR_QUERY_BDD','Une erreure est survenue lors de la requête SQL !');
 define('ERREUR_CAPTCHA','Merci de cocher le captcha');

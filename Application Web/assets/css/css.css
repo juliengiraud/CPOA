@@ -26,20 +26,33 @@
 .error {
 	color:#a94442;
 }
-.footer{	
-	bottom: auto;
-	background-color: #818181;
-	color: #fff;
-	width: 100%;
-	height:auto;
-	margin-top: 40px;
+
+footer {
+	position: absolute;
+	text-align: center;
+	font-size: 15px;
+	color: #818181;
+	bottom : 0;
 }
+*/
 .header {
-	background-color: #49B47C;
+	
 	color: #fff;
 	width: 100%;
 	padding:10px 0px;
 }
+
+.nav {
+	color : blue;
+}
+
+@media (max-width: 765px){
+	img{
+		height : 120px;
+		text-align : center;
+	}
+}
+
 .label{
 	color:#333;
 }
@@ -54,8 +67,9 @@
 /* Slider */
  /* Slideshow container */
 .slideshow-container {
+  text-align : center;
   max-width: 2000px;
-  position: relative;
+  position: fixed;
   margin: auto;
 }
 
