@@ -23,3 +23,5 @@ Séance du 07/01/2019 :
 Séance du 08/01/2019 :
 	Fin de l'ajout des models en PHP
 	Avancement de l'affichage PHP
+	Ajout de quelques nouvelles valeurs en BD pour les tests
+	Quelques correctifs sur le projet en Java

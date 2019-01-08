@@ -104,6 +104,7 @@ INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNa
 INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNaissance, juryID) VALUES (NULL, 'CHANG', 'Réalisateur', NULL, 89, NULL, NULL, NULL);
 INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNaissance, juryID) VALUES ('Kristian', 'LEVRING', 'Réalisateur', NULL, 90, NULL, NULL, NULL);
 INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNaissance, juryID) VALUES ('David', 'MICHOD', 'Réalisateur', NULL, 91, NULL, NULL, NULL);
+INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNaissance, juryID) VALUES ('Rami', 'Malek', NULL, NULL, 92, NULL, NULL, NULL);
 
 /*==============================================================*/
 /* Ajout des jurys                                              */
@@ -240,3 +241,33 @@ INSERT INTO Film (filmID, categorieID, realisateur1ID, realisateur2ID, realisate
 /* Ajout de l'utilisateur de l'interface web (mdp = '1234')     */
 /*==============================================================*/
 INSERT INTO User (userID, username, password) VALUES (0, 'michel', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+
+/*==============================================================*/
+/* Ajout des photos                                             */
+/*==============================================================*/
+INSERT INTO Photo (nomPhoto, photoID) VALUES ('logo.png', 0);
+INSERT INTO Photo (nomPhoto, photoID) VALUES ('RamiMalek.jpg', 1);
+
+/*==============================================================*/
+/* Ajout des salles                                             */
+/*==============================================================*/
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (0, null, 'GRAND THÉÂTRE LUMIÈRE');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (1, null, 'SALLE DU SOIXANTIÈME');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (2, null, 'SALLE DEBUSSY');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (3, null, 'SALLE BUÑUEL');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (4, null, 'SALLE BAZIN');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (5, null, 'THÉÂTRE CROISETTE / JW MARRIOT');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (6, null, 'ESPACE MIRAMAR');
+
+/*==============================================================*/
+/* Ajout des projections                                        */
+/*==============================================================*/
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (0, 0, 0, '2019-05-09', '9h15', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (1, 0, 2, '2019-05-09', '20h30', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (2, 1, 4, '2019-05-10', '8h30', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (3, 4, 1, '2019-05-10', '13h00', 0);
+
+/*==============================================================*/
+/* Ajout des VIP                                                */
+/*==============================================================*/
+INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (0, NULL, NULL, 1, NULL, 92);

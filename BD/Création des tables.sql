@@ -57,7 +57,8 @@ CREATE TABLE Projection
 CREATE TABLE Salle
 (
     salleID                INTEGER,
-    capacite               INTEGER
+    capacite               INTEGER,
+    nomSalle               VARCHAR(254)
 );
 
 CREATE TABLE User
