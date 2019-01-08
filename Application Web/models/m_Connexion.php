@@ -1,5 +1,5 @@
 <?php
-// Implémente le pattern Singleton
+
 class Connexion {
     private $_bdd = null;
     private static $_instance = null;
@@ -17,7 +17,7 @@ class Connexion {
     private function __wakeup() {}
 
     public static function getInstance() {
-        if(is_null(self::$_instance)) {
+        if (is_null(self::$_instance)) {
             self::$_instance = new Connexion();
         }
         return self::$_instance;

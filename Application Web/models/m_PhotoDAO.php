@@ -14,13 +14,16 @@ class PhotoDAO extends DAO {
         }
         return null;
     }
-	
-	public function addPhoto($nomPhoto, $photoID) {
-        return $this -> queryBdd("INSERT INTO Photo (nomPhoto, photoID) VALUES (?, ?);", array($nomPhoto, $photoID));
-    }
+    
+    // Ajoute la photo en base et retourne son ID
+	public function ajouterPhoto($nomPhoto) {
+        // Récupération d'un identifiant libre
+        $res = $this -> queryRow('SELECT MAX(photoID) FROM Photo');
+        $photoID = $res['MAX(photoID)'] + 1;
 
-    public function getLastId() {
-        return $this -> insertId();
+        // Ajoute la photo
+        $this -> queryBdd("INSERT INTO Photo (nomPhoto, photoID) VALUES (?, ?);", array($nomPhoto, $photoID));
+        return $photoID;
     }
 	
 }

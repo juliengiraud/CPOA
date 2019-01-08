@@ -19,3 +19,7 @@ Séance du 07/01/2019 :
 	Ajout des classes en PHP
 	Début de l'ajout des models d'accès aux données en PHP
 	Début de l'interface graphique en PHP
+
+Séance du 08/01/2019 :
+	Fin de l'ajout des models en PHP
+	Avancement de l'affichage PHP

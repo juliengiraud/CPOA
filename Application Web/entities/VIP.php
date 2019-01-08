@@ -4,18 +4,16 @@ class VIP extends Personne {
 	
 	private $_VIPID;
 	private $_importanceAcreditation;
-	private $_type;
-	private $_photoID;
-	private $_personneID;
+	private $_typeVIP;
+	private $_personne;
 	private $_photo;
 	private $_conjoint;
 	
-	public function __construct($VIPID, $importanceAcreditation, $type, $photoID, $personneID, $photo, $conjoint) {
+	public function __construct($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $conjoint) {
 		$this -> _VIPID = $VIPID;
 		$this -> _importanceAcreditation = $importanceAcreditation;
-		$this -> _type = $type;
-		$this -> _photoID = $photoID;
-		$this -> _personneID = $personneID;
+		$this -> _typeVIP = $typeVIP;
+		$this -> _personne = $personne;
 		$this -> _photo = $photo;
 		$this -> _conjoint = $conjoint;
 	}
@@ -36,28 +34,20 @@ class VIP extends Personne {
         $this -> _importanceAcreditation = $importanceAcreditation;
     }
 	
-	public function getType() {
-        return $this -> _type;
+	public function getTypeVIP() {
+        return $this -> _typeVIP;
     }
     
-    public function setType($type) {
+    public function setTypeVIP($typeVIP) {
         $this -> _type = $type;
     }
 	
-	public function getPhotoID() {
-        return $this -> _photoID;
+	public function getPersonne() {
+        return $this -> _personne;
     }
     
-    public function setPhotoID($photoID) {
-        $this -> _photoID = $photoID;
-    }
-	
-	public function getPersonneID() {
-        return $this -> _personneID;
-    }
-    
-    public function setPersonneID($personneID) {
-        $this -> _personneID = $personneID;
+    public function setPersonne($personne) {
+        $this -> _personne = $personne;
     }
 	
 	public function getPhoto() {
