@@ -30,7 +30,7 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger( FilmDAO.class.getName() ).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategorieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categorie;
     }

@@ -11,6 +11,10 @@ import metier.Personne;
 import persistance.DAO;
 
 public class RealisateurDAO extends DAO implements IRealisateurDAO {
+    
+    public RealisateurDAO() throws SQLException {
+        super();
+    }
 
     @Override
     public ArrayList<Personne> getLesRealisateurs(int filmID) {
@@ -26,7 +30,7 @@ public class RealisateurDAO extends DAO implements IRealisateurDAO {
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger( FilmDAO.class.getName() ).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RealisateurDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listePersonne;
     }

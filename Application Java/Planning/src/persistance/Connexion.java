@@ -53,7 +53,7 @@ public class Connexion extends MariaDbDataSource {
             }
         }
         else {
-            System.out.println("---(la source de data existe deja)") ;
+            //System.out.println("---(la source de data existe deja)") ;
         }
         return mds;
         

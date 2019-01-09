@@ -67,5 +67,9 @@ public class Personne {
     public void setDateNaissance(Date newDateNaissance) {
         this.dateNaissance = newDateNaissance;
     }
+    
+    public String toString() {
+        return "Nom : " + this.nom + ", Prénom : " + this.prenom + ", Nationalité : " + this.nationnalite + ", PersonneID : " + this.personneID + ", Age : " + this.age + ", Date de naissance : " + this.dateNaissance;
+    }
 
 }

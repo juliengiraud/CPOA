@@ -51,7 +51,7 @@ public class Film {
     }
     
     public String toString() {
-        return this.titre + " " + this.duree + " " + this.filmID + " " + this.categorie.toString();
+        return "Titre : " + this.titre + ", Durée : " + this.duree + ", FilmID : " + this.filmID + ", Catégorie : " + this.categorie.toString() + ", Réalisateurs : " + this.realisateurs.toString();
     }
 
 }

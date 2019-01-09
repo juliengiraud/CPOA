@@ -315,7 +315,7 @@ INSERT INTO Realise (filmID, personneID) VALUES (57, (SELECT personneID FROM Per
 /*COURT METRAGE HORS COMPETITION*/
 
 /*SEANCE DE MINUIT*/
-INSERT INTO Realise (filmID, personneID) VALUES (58, (SELECT personneID FROM Personne WHERE Personne.prenom = NULL AND Personne.nom = 'CHANG'));
+INSERT INTO Realise (filmID, personneID) VALUES (58, (SELECT personneID FROM Personne WHERE Personne.nom = 'CHANG'));
 INSERT INTO Realise (filmID, personneID) VALUES (59, (SELECT personneID FROM Personne WHERE Personne.prenom = 'Kristian' AND Personne.nom = 'LEVRING'));
 INSERT INTO Realise (filmID, personneID) VALUES (60, (SELECT personneID FROM Personne WHERE Personne.prenom = 'David' AND Personne.nom = 'MICHOD'));
 

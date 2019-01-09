@@ -25,7 +25,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
         Statement stmt;
         List<Film> listeFilms = null;
         Categorie categorie;
-        ArrayList<Personne> realisateurs = new ArrayList<>();
+        ArrayList<Personne> realisateurs;
         String query = "SELECT * FROM Film";
         try {
             CategorieDAO categorieDAO = new CategorieDAO();
@@ -40,7 +40,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger( FilmDAO.class.getName() ).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listeFilms;
     }
