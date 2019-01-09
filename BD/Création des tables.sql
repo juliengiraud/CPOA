@@ -1,51 +1,46 @@
 /*==============================================================*/
 /* Création des tables                                          */
 /*==============================================================*/
-CREATE TABLE Categorie
-(
+CREATE TABLE Categorie (
     Type                   VARCHAR(254),
     categorieID            INTEGER
 );
 
-CREATE TABLE Film 
-(
+CREATE TABLE Film (
     duree                  VARCHAR(10),
     titre                  VARCHAR(254),
     filmID                 INTEGER,
-    categorieID            INTEGER,
-    realisateur1ID         INTEGER,
-    realisateur2ID         INTEGER,
-    realisateur3ID         INTEGER
+    categorieID            INTEGER
 );
 
-CREATE TABLE Jury 
-(
+CREATE TABLE Jure (
+    juryID                 INTEGER,
+    personneID             INTEGER
+);
+
+CREATE TABLE Jury (
     nbSeanceMax            INTEGER,
     juryID                 INTEGER,
     categorieID            INTEGER,
     presidentID            INTEGER
 );
 
-CREATE TABLE Personne 
-(
+CREATE TABLE Personne (
     nom                    VARCHAR(254),
     prenom                 VARCHAR(254),
     nationnalite           VARCHAR(254),
     personneID             INTEGER,
 	age                    INTEGER,
 	dateNaissance          DATE,
-    juryID                 INTEGER,
     metier                 VARCHAR(254)
 );
 
-CREATE TABLE Photo 
-(
+CREATE TABLE Photo (
     nomPhoto               VARCHAR(254),
     photoID                INTEGER
 );
 
-CREATE TABLE Projection 
-(
+CREATE TABLE Projection (
     projectionID           INTEGER,
     salleID                INTEGER,
     filmID                 INTEGER,
@@ -54,22 +49,24 @@ CREATE TABLE Projection
     officielle             SMALLINT
 );
 
-CREATE TABLE Salle
-(
+CREATE TABLE Realise (
+    personneID             INTEGER,
+    filmID                 INTEGER
+);
+
+CREATE TABLE Salle (
     salleID                INTEGER,
     capacite               INTEGER,
     nomSalle               VARCHAR(254)
 );
 
-CREATE TABLE User
-(
+CREATE TABLE User (
     userID                 INTEGER,
     username               VARCHAR(254),
     password               VARCHAR(254)
 );
 
-CREATE TABLE VIP
-(
+CREATE TABLE VIP (
     VIPID                  INTEGER,
     importanceAcreditation INTEGER,
     typeVIP                INTEGER,
@@ -121,10 +118,12 @@ ALTER TABLE VIP
 /* Index des tables                                             */
 /*==============================================================*/
 ALTER TABLE Film ADD INDEX(
-    categorieID,
-    realisateur1ID,
-    realisateur2ID,
-    realisateur3ID
+    categorieID
+);
+
+ALTER TABLE Jure ADD INDEX(
+    juryID,
+    personneID
 );
 
 ALTER TABLE Jury ADD INDEX(
@@ -138,6 +137,11 @@ ALTER TABLE Personne ADD INDEX(
 
 ALTER TABLE Projection ADD INDEX(
     salleID,
+    filmID
+);
+
+ALTER TABLE Realise ADD INDEX(
+    personneID,
     filmID
 );
 
@@ -157,17 +161,13 @@ ALTER TABLE Film
     ADD CONSTRAINT FK_FILM_ASSOCIATI_CATEGORI FOREIGN KEY (categorieID)
         REFERENCES Categorie (categorieID);
 
-ALTER TABLE Film
-    ADD CONSTRAINT FK_FILM_REALISE1_PERSONNE FOREIGN KEY (realisateur1ID)
+ALTER TABLE Jure
+    ADD CONSTRAINT FK_JURE_PERSONNE FOREIGN KEY (personneID)
         REFERENCES Personne (personneID);
 
-ALTER TABLE Film
-    ADD CONSTRAINT FK_FILM_REALISE2_PERSONNE FOREIGN KEY (realisateur2ID)
-        REFERENCES Personne (personneID);
-
-ALTER TABLE Film
-    ADD CONSTRAINT FK_FILM_REALISE3_PERSONNE FOREIGN KEY (realisateur3ID)
-        REFERENCES Personne (personneID);
+ALTER TABLE Jure
+    ADD CONSTRAINT FK_JURE_JURY FOREIGN KEY (juryID)
+        REFERENCES Jury (juryID);
 
 ALTER TABLE Jury
     ADD CONSTRAINT FK_JURY_CATEGORIE_CATEGORI FOREIGN KEY (categorieID)
@@ -177,10 +177,6 @@ ALTER TABLE Jury
     ADD CONSTRAINT FK_JURY_PRESIDENT_PERSONNE FOREIGN KEY (presidentID)
         REFERENCES Personne (personneID);
 
-ALTER TABLE Personne
-   ADD CONSTRAINT FK_PERSONNE_ASSOCIATI_JURY FOREIGN KEY (juryID)
-      REFERENCES Jury (juryID);
-
 ALTER TABLE Projection
     ADD CONSTRAINT FK_PROJECTI_ASSOCIATI_FILM FOREIGN KEY (filmID)
         REFERENCES Film (filmID);
@@ -188,6 +184,14 @@ ALTER TABLE Projection
 ALTER TABLE Projection
     ADD CONSTRAINT FK_PROJECTI_ASSOCIATI_SALLE FOREIGN KEY (salleID)
         REFERENCES Salle (salleID);
+
+ALTER TABLE Realise
+    ADD CONSTRAINT FK_REALISE_PERSONNE FOREIGN KEY (personneID)
+        REFERENCES Personne (personneID);
+
+ALTER TABLE Realise
+    ADD CONSTRAINT FK_REALISE_FILM FOREIGN KEY (filmID)
+        REFERENCES Film (filmID);
 
 ALTER TABLE VIP
     ADD CONSTRAINT FK_VIP_ASSOCIATI_PHOTO FOREIGN KEY (photoID)
