@@ -8,48 +8,50 @@ public class Film {
     private String titre;
     private int filmID;
     private Categorie categorie;
-    private ArrayList<Realisateur> realisateurs;
+    private ArrayList<Personne> realisateurs;
     
-    public Film(String newDuree, String newTitre, int newID, Categorie newCate, Realisateur newRea1, Realisateur newRea2, Realisateur newRea3) {
-          this.duree = newDuree;
-          this.titre = newTitre;
-          this.filmID = newID;
-          this.categorie = newCate;
-          this.realisateurs.add(newRea1);
-          this.realisateurs.add(newRea2);
-          this.realisateurs.add(newRea3);
-     }    
+    public Film(String newDuree, String newTitre, int newID, Categorie newCate, ArrayList<Personne> newRealisateurs) {
+        this.duree = newDuree;
+        this.titre = newTitre;
+        this.filmID = newID;
+        this.categorie = newCate;
+        this.realisateurs = newRealisateurs;
+    }
     
     public String getDuree() {
-        return duree;
+        return this.duree;
     }
     
     public void setDuree(String newDuree) {
-        duree = newDuree;
+        this.duree = newDuree;
     }
     
     public String getTitre() {
-        return titre;
+        return this.titre;
     }
     
     public void setTitre(String newTitre) {
-        titre = newTitre;
+        this.titre = newTitre;
     }
     
     public int getFilmID() {
-        return filmID;
+        return this.filmID;
     }
     
     public void setFilmID(int newFilmID) {
-        filmID = newFilmID;
+        this.filmID = newFilmID;
     }
 
-    public int getCategorie() {
-        return categorie;
+    public Categorie getCategorie() {
+        return this.categorie;
     }
     
-    public void setCategorie(int newCategorie) {
-        categorie = newCategorie;
+    public void setCategorie(Categorie newCategorie) {
+        this.categorie = newCategorie;
+    }
+    
+    public String toString() {
+        return this.titre + " " + this.duree + " " + this.filmID + " " + this.categorie.toString();
     }
 
 }

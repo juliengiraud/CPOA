@@ -7,7 +7,7 @@ class PersonneDAO extends DAO {
 	
 	// Retourne une personne correspondant à son ID ou null
 	public function getPersonne($id) {
-        $res = $this -> queryRow("SELECT * FROM Personne WHERE personneID = ?", $id);
+        $res = $this -> queryRow("SELECT * FROM Personne WHERE personneID = ?", array($id));
         $i = 0;
         if ($res) {
             return new Personne($res['nom'], $res['prenom'], $res['nationnalite'], $res['personneID'], $res['age'], $res['dateNaissance'], $res['metier']);
@@ -28,7 +28,7 @@ class PersonneDAO extends DAO {
 
     // Retourne l'identifiant de la personne si elle se trouve en base
     public function existe($nom, $prenom) {
-        $res = $this -> queryRow('SELECT * FROM Personne WHERE nom = ? AND prenom = ?', $nom, $prenom);
+        $res = $this -> queryRow('SELECT * FROM Personne WHERE nom = ? AND prenom = ?', array($nom, $prenom));
         if ($res) {
             return $res['personneID'];
         }

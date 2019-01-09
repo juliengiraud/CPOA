@@ -5,9 +5,9 @@ public class Categorie {
     private String type;
     private int categorieID;
     
-    public Categorie(String newType, int ID) {
+    public Categorie(String newType, int id) {
         this.type = newType;
-        this.categorieID = ID;
+        this.categorieID = id;
     }
     
     public String getType() {
@@ -24,6 +24,10 @@ public class Categorie {
     
     public void setCategorieID(int newCategorieID) {
         categorieID = newCategorieID;
+    }
+    
+    public String toString() {
+        return this.type + " " + this.categorieID;
     }
 
 }

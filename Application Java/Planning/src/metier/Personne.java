@@ -21,51 +21,51 @@ public class Personne {
     }
     
     public String getNom() {
-        return nom;
+        return this.nom;
     }
     
     public void setNom(String newNom) {
-        nom = newNom;
+        this.nom = newNom;
     }
     
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
     
     public void setPrenom(String newPrenom) {
-        prenom = newPrenom;
+        this.prenom = newPrenom;
     }
     
     public String getNationnalite() {
-        return nationnalite;
+        return this.nationnalite;
     }
     
     public void setNationnalite(String newNationnalite) {
-        nationnalite = newNationnalite;
+        this.nationnalite = newNationnalite;
     }
     
     public int getPersonneID() {
-        return personneID;
+        return this.personneID;
     }
     
     public void setPersonneID(int newPersonneID) {
-        personneID = newPersonneID;
+        this.personneID = newPersonneID;
     }
     
     public int getAge() {
-        return age;
+        return this.age;
     }
     
     public void setAge(int newAge) {
-        age = newAge;
+        this.age = newAge;
     }
     
     public Date getDateNaissance() {
-        return dateNaissance;
+        return this.dateNaissance;
     }
     
     public void setDateNaissance(Date newDateNaissance) {
-        dateNaissance = newDateNaissance;
+        this.dateNaissance = newDateNaissance;
     }
 
 }

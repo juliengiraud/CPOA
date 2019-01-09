@@ -15,4 +15,8 @@ public class DAO {
         
     }
     
+    public Connection connectTestDAO() {
+        return connexionBD;
+    }
+    
 }

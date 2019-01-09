@@ -12,59 +12,59 @@ public class Projection {
     private Film film;
 
     public Projection(Date newDateProjection, int newHeureProjection, java.lang.Boolean newOfficielle, int newProjectionID, Salle newSalle, Film newFilm) {
-         this.dateProjection = newDateProjection;
-         this.heureProjection = newHeureProjection;
-         this.officielle = newOfficielle;
-         this.salle = newSalle;
-         this.film = newFilm;
+        this.dateProjection = newDateProjection;
+        this.heureProjection = newHeureProjection;
+        this.officielle = newOfficielle;
+        this.salle = newSalle;
+        this.film = newFilm;
     }
     
     public Date getDateProjection() {
-        return dateProjection;
+        return this.dateProjection;
     }
     
     public void setDateProjection(Date newDateProjection) {
-        dateProjection = newDateProjection;
+        this.dateProjection = newDateProjection;
     }
     
     public int getHeureProjection() {
-        return heureProjection;
+        return this.heureProjection;
     }
     
     public void setHeureProjection(int newHeureProjection) {
-        heureProjection = newHeureProjection;
+        this.heureProjection = newHeureProjection;
     }
     
     public java.lang.Boolean getOfficielle() {
-        return officielle;
+        return this.officielle;
     }
     
     public void setOfficielle(java.lang.Boolean newOfficielle) {
-        officielle = newOfficielle;
+        this.officielle = newOfficielle;
     }
     
     public int getProjectionID() {
-        return projectionID;
+        return this.projectionID;
     }
     
     public void setProjectionID(int newProjectionID) {
-        projectionID = newProjectionID;
+        this.projectionID = newProjectionID;
     }
 
-    public int getSalle() {
-        return salle;
+    public Salle getSalle() {
+        return this.salle;
     }
     
-    public void setSalle(int newSalle) {
-        salle = newSalle;
+    public void setSalle(Salle newSalle) {
+        this.salle = newSalle;
     }
 
-    public int getFilm() {
-        return film;
+    public Film getFilm() {
+        return this.film;
     }
     
-    public void setFilm(int newFilm) {
-        film = newFilm;
+    public void setFilm(Film newFilm) {
+        this.film = newFilm;
     }
 
 }

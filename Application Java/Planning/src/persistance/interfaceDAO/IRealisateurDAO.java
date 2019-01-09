@@ -1,14 +1,10 @@
 package persistance.interfaceDAO;
 
-import java.sql.Connection;
-import java.util.List;
-import javax.sql.DataSource;
-import metier.Realisateur;
+import java.util.ArrayList;
+import metier.Personne;
 
 public interface IRealisateurDAO {
     
-    public List<Realisateur> getRealisateurs();
-    public void setDataSource(DataSource ds);
-    public void setConnection(Connection connexionBD);
+    ArrayList<Personne> getLesRealisateurs(int filmID);
     
 }

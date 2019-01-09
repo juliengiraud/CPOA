@@ -14,7 +14,7 @@ public class Main {
         ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilms();
         
         for (Film film : films) {
-            System.out.println(film.getTitre());
+            System.out.println(film.toString());
         }
         
         System.out.println("Il y a " + films.size() + " films.");

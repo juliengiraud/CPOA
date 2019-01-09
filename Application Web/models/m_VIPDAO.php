@@ -7,9 +7,10 @@ class VIPDAO extends DAO {
 	
 	// Retourne un tableau de VIP ou null
 	public function getLesVIP() {
-		require_once(PATH_ENTITY . 'PersonneDAO.php');
-		require_once(PATH_ENTITY . 'PhotoDAO.php');
+		require_once(PATH_MODELS . 'PersonneDAO.php');
+		require_once(PATH_MODELS . 'PhotoDAO.php');
 		$res = $this -> queryAll('SELECT * FROM VIP');
+		$i = 0;
         if ($res) {
             foreach ($res as $ligne) {
 				$VIPID = $ligne['VIPID'];
@@ -19,8 +20,9 @@ class VIPDAO extends DAO {
 				$personne = $personneDAO -> getPersonne($ligne['personneID']);
 				$photoDAO = new PhotoDAO();
 				$photo = $photoDAO -> getPhoto($ligne['photoID']);
-				$conjoint = $personneDAO -> getPersonne($ligne['conjointID']);
-                $tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $conjoint);
+				$compagnon = $personneDAO -> getPersonne($ligne['compagnonID']);
+                $tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon);
+				$i++;
             }
             return $tab;
         }
@@ -31,7 +33,7 @@ class VIPDAO extends DAO {
 	public function rechercherVIP($recherche) {
 		require_once(PATH_ENTITY . 'PersonneDAO.php');
 		require_once(PATH_ENTITY . 'PhotoDAO.php');
-		$res = $this -> queryAll('SELECT * FROM VIP WHERE nom = ? OR prenom = ?', $recherche, $recherche); // Ça serait cool de faire en sorte de rechercher les VIP dont les nom/prénoms commencent par le terme de recherche
+		$res = $this -> queryAll('SELECT * FROM VIP WHERE nom = ? OR prenom = ?', array($recherche, $recherche)); // Ça serait cool de faire en sorte de rechercher les VIP dont les nom/prénoms commencent par le terme de recherche
         if ($res) {
             foreach ($res as $ligne) {
 				$VIPID = $ligne['VIPID'];
@@ -44,8 +46,8 @@ class VIPDAO extends DAO {
 				$photoDAO = new PhotoDAO();
 				$photo = $photoDAO -> getPhoto($ligne['photoID']);
 
-				$conjoint = $personneDAO -> getPersonne($ligne['conjointID']);
-                $tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $conjoint);
+				$compagnon = $personneDAO -> getPersonne($ligne['compagnonID']);
+                $tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon);
             }
             return $tab;
         }
@@ -53,7 +55,7 @@ class VIPDAO extends DAO {
 	}
 	
 	// Ajoute un VIP en base
-	public function ajouterVIP($nom, $prenom, $metier, $nationnalite, $age, $nomConjoint, $prenomConjoint, $nomPhoto) {
+	public function ajouterVIP($nom, $prenom, $metier, $nationnalite, $age, $nomCompagnon, $prenomCompagnon, $nomPhoto) {
 		require_once(PATH_ENTITY . 'PersonneDAO.php');
 		require_once(PATH_ENTITY . 'PersonneDAO.php');
 		$personneDAO = new PersonneDAO();
@@ -66,9 +68,9 @@ class VIPDAO extends DAO {
 		}
 
 		// Si le compagnon existe et qu'il n'est pas dans la table personne, on l'ajoute
-		$compagnonID = $personneDAO -> existe($nomConjoint, $prenomConjoint);
+		$compagnonID = $personneDAO -> existe($nomCompagnon, $prenomCompagnon);
 		if ($compagnonID == false) {
-			$compagnonID = $personneDAO -> ajouterPersonne($nomConjoint, $prenomConjoint);
+			$compagnonID = $personneDAO -> ajouterPersonne($nomCompagnon, $prenomCompagnon);
 		}
 		
 		// Ajout de la photo en base

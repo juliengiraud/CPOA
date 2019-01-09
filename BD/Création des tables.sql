@@ -2,7 +2,7 @@
 /* Création des tables                                          */
 /*==============================================================*/
 CREATE TABLE Categorie (
-    Type                   VARCHAR(254),
+    type                   VARCHAR(254),
     categorieID            INTEGER
 );
 
@@ -129,10 +129,6 @@ ALTER TABLE Jure ADD INDEX(
 ALTER TABLE Jury ADD INDEX(
     categorieID,
     presidentID
-);
-
-ALTER TABLE Personne ADD INDEX(
-    juryID
 );
 
 ALTER TABLE Projection ADD INDEX(

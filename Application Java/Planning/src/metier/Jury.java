@@ -15,68 +15,34 @@ public class Jury {
         this.membres.addAll(membres);
     }
     
-    public java.util.Collection<Personne> getMembres() {
-        if (membres == null)
-            membres = new ArrayList<>();
-        return membres;
-    }
-    
-    public java.util.Iterator getIteratorMembres() {
-        if (membres == null)
-            membres = new ArrayList<>();
-        return membres.iterator();
-    }
-    
-    public void setMembres(java.util.Collection<Personne> newMembres) {
-        removeAllMembres();
-        for (java.util.Iterator iter = newMembres.iterator(); iter.hasNext();)
-            addMembres((Personne)iter.next());
-    }
-    
-    public void addMembres(Personne newPersonne) {
-        if (newPersonne == null)
-            return;
-        if (this.membres == null)
-            this.membres = new ArrayList<>();
-        if (!this.membres.contains(newPersonne))
-            this.membres.add(newPersonne);
-    }
-    
-    public void removeMembres(Personne oldPersonne) {
-        if (oldPersonne == null)
-            return;
-        if (this.membres != null)
-            if (this.membres.contains(oldPersonne))
-                this.membres.remove(oldPersonne);
-    }
-    
-    public void removeAllMembres() {
-        if (membres != null)
-            membres.clear();
-    }
-    
     public int getNbSeanceMax() {
-        return nbSeanceMax;
+        return this.nbSeanceMax;
     }
     
     public void setNbSeanceMax(int newNbSeanceMax) {
-        nbSeanceMax = newNbSeanceMax;
+        this.nbSeanceMax = newNbSeanceMax;
     }
     
     public int getJuryID() {
-        return juryID;
+        return this.juryID;
     }
     
     public void setJuryID(int newJuryID) {
-        juryID = newJuryID;
+        this.juryID = newJuryID;
     }
 
-    public int getCategorie() {
-        return categorie;
+    public Categorie getCategorie() {
+        return this.categorie;
     }
     
-    public void setCategorie(int newCategorie) {
-        categorie = newCategorie;
+    public void setCategorie(Categorie newCategorie) {
+        this.categorie = newCategorie;
+    }
+    
+    public java.util.Collection<Personne> getMembres() {
+        if (this.membres == null)
+            this.membres = new ArrayList<>();
+        return this.membres;
     }
 
 }

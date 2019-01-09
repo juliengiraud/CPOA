@@ -7,7 +7,7 @@ class PhotoDAO extends DAO {
 	
 	// Retourne une image correspondant à son ID ou null
 	public function getPhoto($id) {
-        $res = $this -> queryRow("SELECT * FROM Photo WHERE photoID = ?", $id);
+        $res = $this -> queryRow("SELECT * FROM Photo WHERE photoID = ?", array($id));
         $i = 0;
         if ($res) {
             return new Photo($res['nomPhoto'], $res['photoID']);

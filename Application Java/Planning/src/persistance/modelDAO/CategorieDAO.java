@@ -1,15 +1,10 @@
 package persistance.modelDAO;
 
-import persistance.interfaceDAO.IFilmDAO;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.DataSource;
 import metier.Categorie;
 import persistance.DAO;
 import persistance.interfaceDAO.ICategorieDAO;
@@ -21,18 +16,23 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
     }
 
     @Override
-    public List<Categorie> getCategories() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Categorie getCategoriByID(int id) {
+        
+        ResultSet rset;
+        Statement stmt;
+        Categorie categorie = null;
+        String query = "SELECT * FROM Categorie WHERE categorieID = " + id;
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                categorie = new Categorie(rset.getString(1), rset.getInt(2));
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger( FilmDAO.class.getName() ).log(Level.SEVERE, null, ex);
+        }
+        return categorie;
     }
 
-    @Override
-    public void setDataSource(DataSource ds) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setConnection(Connection connexionBD) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

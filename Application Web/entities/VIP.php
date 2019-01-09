@@ -1,5 +1,7 @@
 <?php
 
+require_once(PATH_ENTITY . 'Personne.php');
+
 class VIP extends Personne {
 	
 	private $_VIPID;
@@ -7,15 +9,15 @@ class VIP extends Personne {
 	private $_typeVIP;
 	private $_personne;
 	private $_photo;
-	private $_conjoint;
+	private $_compagnon;
 	
-	public function __construct($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $conjoint) {
+	public function __construct($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon) {
 		$this -> _VIPID = $VIPID;
 		$this -> _importanceAcreditation = $importanceAcreditation;
 		$this -> _typeVIP = $typeVIP;
 		$this -> _personne = $personne;
 		$this -> _photo = $photo;
-		$this -> _conjoint = $conjoint;
+		$this -> _compagnon = $compagnon;
 	}
 	
 	public function getVIPID() {
@@ -54,16 +56,17 @@ class VIP extends Personne {
 		return $this -> _photo;
 	}
 	
-	public fonction setPhoto($photo) {
+	public function setPhoto($photo) {
 		$this -> _photo = $photo;
 	}
 	
-	public function getConjoint() {
-		return $this -> _conjoint;
+	public function getCompagnon() {
+		return $this -> _compagnon;
 	}
 	
-	public function setConjoint($conjoint) {
-		$this -> _conjoint = $conjoint;
+	public function setCompagnon($compagnon) {
+		$this -> _compagnon = $compagnon;
+	}
 	
 }
 
