@@ -33,7 +33,7 @@ class VIPDAO extends DAO {
 	public function rechercherVIP($recherche) {
 		require_once(PATH_MODELS . 'PersonneDAO.php');
 		require_once(PATH_MODELS . 'PhotoDAO.php');
-		$res = $this -> queryAll('SELECT * FROM VIP WHERE nom = ? OR prenom = ?', array($recherche, $recherche)); // Ça serait cool de faire en sorte de rechercher les VIP dont les nom/prénoms commencent par le terme de recherche
+		$res = $this -> queryAll("SELECT * FROM VIP JOIN Personne ON VIP.personneID = Personne.personneID WHERE nom REGEXP'?' OR prenom REGEXP'?'", array($recherche, $recherche)); // Ça serait cool de faire en sorte de rechercher les VIP dont les nom/prénoms commencent par le terme de recherche
         if ($res) {
             foreach ($res as $ligne) {
 				$VIPID = $ligne['VIPID'];
