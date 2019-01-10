@@ -353,3 +353,7 @@ INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProj
 /* Ajout des VIP                                                */
 /*==============================================================*/
 INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (0, NULL, NULL, 1, 38, 92);
+INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (1, NULL, NULL, 1, 12, 17);
+INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (2, NULL, NULL, 1, 15, 22);
+INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (3, NULL, NULL, 1, 42, 48);
+INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (4, NULL, NULL, 1, NULL, 8);
