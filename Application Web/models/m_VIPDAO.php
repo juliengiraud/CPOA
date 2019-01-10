@@ -33,7 +33,14 @@ class VIPDAO extends DAO {
 	public function rechercherVIP($recherche) {
 		require_once(PATH_MODELS . 'PersonneDAO.php');
 		require_once(PATH_MODELS . 'PhotoDAO.php');
-		$res = $this -> queryAll("SELECT * FROM VIP JOIN Personne ON VIP.personneID = Personne.personneID WHERE nom REGEXP'?' OR prenom REGEXP'?'", array($recherche, $recherche)); // Ça serait cool de faire en sorte de rechercher les VIP dont les nom/prénoms commencent par le terme de recherche
+		$mots = explode(" ", $recherche);
+		$requette = "SELECT * FROM VIP JOIN Personne ON VIP.personneID = Personne.personneID WHERE nom REGEXP'" . $mots[0] . "' OR prenom REGEXP'" . $mots[0] ."'";
+		for ($i = 1; $i < count($mots); $i++) {
+			$requette = $requette . " OR nom REGEXP'" . $mots[$i] . "' OR prenom REGEXP'" . $mots[$i] . "'";
+		}
+		echo $requette;
+		$res = $this -> queryAll($requette);
+		$i = 0;
         if ($res) {
             foreach ($res as $ligne) {
 				$VIPID = $ligne['VIPID'];
@@ -47,7 +54,8 @@ class VIPDAO extends DAO {
 				$photo = $photoDAO -> getPhoto($ligne['photoID']);
 
 				$compagnon = $personneDAO -> getPersonne($ligne['compagnonID']);
-                $tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon);
+				$tab[$i] = new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon);
+				$i++;
             }
             return $tab;
         }
