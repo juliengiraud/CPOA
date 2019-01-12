@@ -1,9 +1,12 @@
 package persistance.modelDAO;
 
-import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
-import javax.sql.DataSource;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import metier.Salle;
 import persistance.DAO;
 import persistance.interfaceDAO.ISalleDAO;
@@ -16,21 +19,41 @@ public class SalleDAO extends DAO implements ISalleDAO {
 
     @Override
     public List<Salle> getSalles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet rset;
+        Statement stmt;
+        List<Salle> listeSalles = null;
+        String query = "SELECT * FROM Salle";
+        try {
+            stmt = connexionBD.createStatement();
+            listeSalles = new ArrayList<>();
+            rset = stmt.executeQuery(query);
+            while (rset.next()) {
+                listeSalles.add(new Salle(rset.getInt(1), rset.getInt(2), rset.getString(3)));
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(SalleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listeSalles;
     }
 
     @Override
-    public void setDataSource(DataSource ds) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setConnection(Connection connexionBD) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Salle getSalle(int salleID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Salle getSalle(int id) {
+        ResultSet rset;
+        Statement stmt;
+        Salle salle = null;
+        String query = "SELECT * FROM Salle WHERE salleID = " + id;
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                salle = new Salle(rset.getInt(1), rset.getInt(2), rset.getString(3));
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(SalleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return salle;
     }
     
 }

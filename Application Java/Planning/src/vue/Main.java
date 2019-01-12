@@ -2,23 +2,22 @@ package vue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import metier.Film;
-import persistance.modelDAO.FilmDAO;
+import metier.*;
+import persistance.modelDAO.*;
 
 public class Main {
     
     public static void main(String[] args) throws SQLException {
         
-        FilmDAO filmDAO = new FilmDAO();
+        ProjectionDAO projectionDAO = new ProjectionDAO();
         
-        ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilmsByTitre("le sel la de le");
-        //ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilms();
+        ArrayList<Projection> projections = (ArrayList<Projection>) projectionDAO.getProjections();
         
-        films.forEach((film) -> {
-            System.out.println(film.toString());
+        projections.forEach((projection) -> {
+            System.out.println(projection.toString());
         });
         
-        System.out.println("Il y a " + films.size() + " films.");
+        //System.out.println();
     
     }
 

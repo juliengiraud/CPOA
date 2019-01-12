@@ -33,10 +33,10 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
                 int id = rset.getInt(1);
                 int salleID = rset.getInt(2);
                 SalleDAO salleDAO = new SalleDAO();
-                Salle salle = salleDAO.getSalle(salleID); // À faire
+                Salle salle = salleDAO.getSalle(salleID);
                 int filmID = rset.getInt(2);
                 FilmDAO filmDAO = new FilmDAO();
-                Film film = filmDAO.getFilm(filmID); // Fait
+                Film film = filmDAO.getFilm(filmID);
                 String date = rset.getString(4);
                 String heure = rset.getString(5);
                 Boolean officielle = (rset.getInt(6) != 0);

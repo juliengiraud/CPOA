@@ -65,5 +65,10 @@ public class Projection {
     public void setFilm(Film newFilm) {
         this.film = newFilm;
     }
+    
+    @Override
+    public String toString() {
+        return "Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", ProjectionID : " + this.projectionID + ", " + this.salle.toString() + ", " + this.film.toString();
+    }
 
 }
