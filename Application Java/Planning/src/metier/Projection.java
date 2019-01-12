@@ -1,17 +1,16 @@
 package metier;
 
-import java.util.Date;
 
 public class Projection {
 
-    private Date dateProjection;
-    private int heureProjection;
-    private java.lang.Boolean officielle;
+    private String dateProjection;
+    private String heureProjection;
+    private Boolean officielle;
     private int projectionID;
     private Salle salle;
     private Film film;
 
-    public Projection(Date newDateProjection, int newHeureProjection, java.lang.Boolean newOfficielle, int newProjectionID, Salle newSalle, Film newFilm) {
+    public Projection(int newProjectionID, Salle newSalle, Film newFilm, String newDateProjection, String newHeureProjection, Boolean newOfficielle) {
         this.dateProjection = newDateProjection;
         this.heureProjection = newHeureProjection;
         this.officielle = newOfficielle;
@@ -19,19 +18,19 @@ public class Projection {
         this.film = newFilm;
     }
     
-    public Date getDateProjection() {
+    public String getDateProjection() {
         return this.dateProjection;
     }
     
-    public void setDateProjection(Date newDateProjection) {
+    public void setDateProjection(String newDateProjection) {
         this.dateProjection = newDateProjection;
     }
     
-    public int getHeureProjection() {
+    public String getHeureProjection() {
         return this.heureProjection;
     }
     
-    public void setHeureProjection(int newHeureProjection) {
+    public void setHeureProjection(String newHeureProjection) {
         this.heureProjection = newHeureProjection;
     }
     

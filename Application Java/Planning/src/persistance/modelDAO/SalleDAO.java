@@ -28,5 +28,9 @@ public class SalleDAO extends DAO implements ISalleDAO {
     public void setConnection(Connection connexionBD) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    Salle getSalle(int salleID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -1,6 +1,5 @@
 package persistance.modelDAO;
 
-import persistance.interfaceDAO.IFilmDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +11,7 @@ import metier.Categorie;
 import metier.Film;
 import metier.Personne;
 import persistance.DAO;
+import persistance.interfaceDAO.IFilmDAO;
 
 public class FilmDAO extends DAO implements IFilmDAO {
     
@@ -80,6 +80,30 @@ public class FilmDAO extends DAO implements IFilmDAO {
     @Override
     public List<Film> getLesFilmsByCategorie(Categorie categorie) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Film getFilm(int filmID) {
+        ResultSet rset;
+        Statement stmt;
+        Film film = null;
+        Categorie categorie;
+        ArrayList<Personne> realisateurs;
+        String query = "SELECT * FROM Film WHERE filmID = " + filmID;
+        try {
+            CategorieDAO categorieDAO = new CategorieDAO();
+            RealisateurDAO realisateurDAO = new RealisateurDAO();
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                categorie = categorieDAO.getCategoriByID(rset.getInt(4));
+                realisateurs = realisateurDAO.getLesRealisateurs(rset.getInt(3));
+                film = new Film(rset.getString(1), rset.getString(2), rset.getInt(3), categorie, realisateurs);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return film;
     }
     
 }

@@ -44,8 +44,8 @@ CREATE TABLE Projection (
     projectionID           INTEGER,
     salleID                INTEGER,
     filmID                 INTEGER,
-    dateProjection         DATE,
-    heureProjection        INTEGER,
+    dateProjection         VARCHAR(10),
+    heureProjection        VARCHAR(5),
     officielle             SMALLINT
 );
 

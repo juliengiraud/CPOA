@@ -11,7 +11,8 @@ public class Main {
         
         FilmDAO filmDAO = new FilmDAO();
         
-        ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilmsByTitre("une nuit");
+        ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilmsByTitre("le sel la de le");
+        //ArrayList<Film> films = (ArrayList<Film>) filmDAO.getLesFilms();
         
         films.forEach((film) -> {
             System.out.println(film.toString());

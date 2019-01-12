@@ -344,10 +344,10 @@ INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (6, null, 'ESPACE MIRAMAR
 /*==============================================================*/
 /* Ajout des projections                                        */
 /*==============================================================*/
-INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (0, 0, 0, '2019-05-09', '9h15', 1);
-INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (1, 0, 2, '2019-05-09', '20h30', 1);
-INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (2, 1, 4, '2019-05-10', '8h30', 1);
-INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (3, 4, 1, '2019-05-10', '13h00', 0);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (0, 0, 0, '09/05/2019', '9h15', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (1, 0, 2, '09/05/2019', '20h30', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (2, 1, 4, '10/05/2019', '8h30', 1);
+INSERT INTO Projection (projectionID, salleID, filmID, dateProjection, heureProjection, officielle) VALUES (3, 4, 1, '10/05/2019', '13h00', 0);
 
 /*==============================================================*/
 /* Ajout des VIP                                                */
