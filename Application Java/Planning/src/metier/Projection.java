@@ -11,6 +11,7 @@ public class Projection {
     private Film film;
 
     public Projection(int newProjectionID, Salle newSalle, Film newFilm, String newDateProjection, String newHeureProjection, Boolean newOfficielle) {
+        this.projectionID = newProjectionID;
         this.dateProjection = newDateProjection;
         this.heureProjection = newHeureProjection;
         this.officielle = newOfficielle;
@@ -68,7 +69,7 @@ public class Projection {
     
     @Override
     public String toString() {
-        return "Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", ProjectionID : " + this.projectionID + ", " + this.salle.toString() + ", " + this.film.toString();
+        return "ProjectionID : " + this.projectionID + ", Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", " + this.salle.toString() + ", " + this.film.toString();
     }
 
 }

@@ -50,13 +50,57 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
     
     @Override
-    public int ajouterProjection(Projection projection) {
-        return 0;
+    public int ajouterProjection(String date, String heure, Boolean newOfficielle, Salle salle, Film film) {
+        ResultSet rset;
+        Statement stmt;
+        int projectionID = getNewProjectionID();
+        int salleID = salle.getSalleID();
+        int filmID = film.getFilmID();
+        int officielle = newOfficielle ? 1 : 0;
+        String query = "INSERT INTO Projection VALUES (" + projectionID + ", " + salleID + ", " + filmID + ", '" + date + "', '" + heure + "', " + officielle + ")";
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                return projectionID;
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
+    public int getNewProjectionID() {
+        ResultSet rset;
+        Statement stmt;
+        int projectionID = -1;
+        String query = "SELECT MAX(projectionID) FROM Projection";
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                projectionID = rset.getInt(1) + 1;
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return projectionID;
+    }
+    
     @Override
     public void supprimerProjection(int id) {
-        
+        ResultSet rset;
+        Statement stmt;
+        String query = "DELETE FROM Projection WHERE projectionID = " + id;
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

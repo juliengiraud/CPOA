@@ -20,6 +20,31 @@ public class FilmDAO extends DAO implements IFilmDAO {
     }
     
     @Override
+    public Film getFilm(int filmID) {
+        ResultSet rset;
+        Statement stmt;
+        Film film = null;
+        Categorie categorie;
+        ArrayList<Personne> realisateurs;
+        String query = "SELECT * FROM Film WHERE filmID = " + filmID;
+        try {
+            CategorieDAO categorieDAO = new CategorieDAO();
+            RealisateurDAO realisateurDAO = new RealisateurDAO();
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                categorie = categorieDAO.getCategoriByID(rset.getInt(4));
+                realisateurs = realisateurDAO.getLesRealisateurs(rset.getInt(3));
+                film = new Film(rset.getString(1), rset.getString(2), rset.getInt(3), categorie, realisateurs);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return film;
+    }
+    
+    @Override
     public List<Film> getLesFilms() {
         ResultSet rset;
         Statement stmt;
@@ -80,30 +105,6 @@ public class FilmDAO extends DAO implements IFilmDAO {
     @Override
     public List<Film> getLesFilmsByCategorie(Categorie categorie) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Film getFilm(int filmID) {
-        ResultSet rset;
-        Statement stmt;
-        Film film = null;
-        Categorie categorie;
-        ArrayList<Personne> realisateurs;
-        String query = "SELECT * FROM Film WHERE filmID = " + filmID;
-        try {
-            CategorieDAO categorieDAO = new CategorieDAO();
-            RealisateurDAO realisateurDAO = new RealisateurDAO();
-            stmt = connexionBD.createStatement();
-            rset = stmt.executeQuery(query);
-            if (rset.next()) {
-                categorie = categorieDAO.getCategoriByID(rset.getInt(4));
-                realisateurs = realisateurDAO.getLesRealisateurs(rset.getInt(3));
-                film = new Film(rset.getString(1), rset.getString(2), rset.getInt(3), categorie, realisateurs);
-            }
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(FilmDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return film;
     }
     
 }
