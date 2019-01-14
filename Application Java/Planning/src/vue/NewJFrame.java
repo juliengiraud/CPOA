@@ -60,6 +60,11 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jComboBoxSelectionnerDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSelectionnerDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSelectionnerDateActionPerformed(evt);
+            }
+        });
 
         jCheckBoxVoirSeanceLibre.setText("Voir les séances libres");
         jCheckBoxVoirSeanceLibre.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +159,11 @@ public class NewJFrame extends javax.swing.JFrame {
         String salle = (String) jComboBoxSelectionnerSalle.getSelectedItem();
         Traitement.selectionnerSalle(salle);
     }//GEN-LAST:event_jComboBoxSelectionnerSalleActionPerformed
+
+    private void jComboBoxSelectionnerDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectionnerDateActionPerformed
+        String date = (String) jComboBoxSelectionnerDate.getSelectedItem();
+        Traitement.selectionnerDate(date);
+    }//GEN-LAST:event_jComboBoxSelectionnerDateActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGenererPlaning;

@@ -12,20 +12,6 @@ public class Main {
         
         ProjectionDAO projectionDAO = new ProjectionDAO();
         SalleDAO salleDAO = new SalleDAO();
-        FilmDAO filmDAO = new FilmDAO();
-        
-        //Salle salle = salleDAO.getSalle(2);
-        //Film film = filmDAO.getFilm(13);
-        
-        //projectionDAO.ajouterProjection("12/05/2019", "9h30", false, salle, film);
-        //projectionDAO.supprimerProjection(6);
-        
-        ArrayList<Projection> projections = (ArrayList<Projection>) projectionDAO.getProjections();
-        
-        projections.forEach((projection) -> {
-            //System.out.println(projection.toString());
-        });
-        
         
         // Création de la fenêtre du planning
         try {
@@ -47,31 +33,35 @@ public class Main {
             fenetre.get_jCheckBoxVoirSeanceLibre().setText("Voir les séances libres");
             
             List<Salle> arraySalle = salleDAO.getSalles();
-            String[] salles = new String[arraySalle.size()];
+            String[] salles = new String[arraySalle.size() + 1];
             salles[0] = "Sélectionner une salle";
-            for (int i = 1; i < arraySalle.size(); i++) {
-                salles[i] = arraySalle.get(i).getNom();
+            for (int i = 1; i < arraySalle.size() + 1; i++) {
+                salles[i] = arraySalle.get(i - 1).getNom();
             }
             fenetre.get_jComboBoxSelectionnerSalle().setModel(new javax.swing.DefaultComboBoxModel<>(salles));
             
-            String[] dates = new String[] { "Date 1", "Date 2", "Date 3", "Date 4" };
+            List<String> arrayDate = projectionDAO.getDates();
+            String[] dates = new String[arrayDate.size() + 1];
+            dates[0] = "Sélectionner une date";
+            for (int i = 1; i < arrayDate.size() + 1; i++) {
+                dates[i] = arrayDate.get(i - 1);
+            }
             fenetre.get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
             
-            //fenetre.get_jScrollPane1();
-            
-            String[] semaine = new String[] {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
-            fenetre.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(new Object [][] {
-        {null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null}
-    }, semaine));
+            updatePlanning(fenetre, new String[7][8]);
             
             fenetre.get_textFieldRecherche();
             
             fenetre.setVisible(true);
         });
+        
     
+    }
+    
+    public static void updatePlanning(NewJFrame f, String[][] newTab) {
+        String[] semaine = new String[] {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
+        String[][] tab = newTab;
+        f.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(tab, semaine));
     }
 
 }

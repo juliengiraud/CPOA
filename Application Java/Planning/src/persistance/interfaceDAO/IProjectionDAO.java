@@ -7,8 +7,9 @@ import metier.Salle;
 
 public interface IProjectionDAO {
     
-    public List<Projection> getProjections();
     public int ajouterProjection(String date, String heure, Boolean newOfficielle, Salle salle, Film film);
+    public List<String> getDates();
+    public List<Projection> getProjections();
     public void supprimerProjection(int id);
     
 }

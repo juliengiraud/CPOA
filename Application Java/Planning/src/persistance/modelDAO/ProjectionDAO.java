@@ -20,6 +20,51 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
 
     @Override
+    public List<String> getDates() {
+        ResultSet rset;
+        Statement stmt;
+        List<String> listeDates = null;
+        String query = "SELECT dateProjection FROM Projection GROUP BY dateProjection";
+        try {
+            stmt = connexionBD.createStatement();
+            listeDates = new ArrayList<>();
+            rset = stmt.executeQuery(query);
+            while (rset.next()) {
+                listeDates.add(rset.getString(1));
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (String date : listeDates) {
+            System.out.println(date);
+        }
+        return listeDates;
+    }
+    
+    @Override
+    public int ajouterProjection(String date, String heure, Boolean newOfficielle, Salle salle, Film film) {
+        ResultSet rset;
+        Statement stmt;
+        int projectionID = getNewProjectionID();
+        int salleID = salle.getSalleID();
+        int filmID = film.getFilmID();
+        int officielle = newOfficielle ? 1 : 0;
+        String query = "INSERT INTO Projection VALUES (" + projectionID + ", " + salleID + ", " + filmID + ", '" + date + "', '" + heure + "', " + officielle + ")";
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+            if (rset.next()) {
+                return projectionID;
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    @Override
     public List<Projection> getProjections() {
         ResultSet rset;
         Statement stmt;
@@ -47,28 +92,6 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
             Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listeProjections;
-    }
-    
-    @Override
-    public int ajouterProjection(String date, String heure, Boolean newOfficielle, Salle salle, Film film) {
-        ResultSet rset;
-        Statement stmt;
-        int projectionID = getNewProjectionID();
-        int salleID = salle.getSalleID();
-        int filmID = film.getFilmID();
-        int officielle = newOfficielle ? 1 : 0;
-        String query = "INSERT INTO Projection VALUES (" + projectionID + ", " + salleID + ", " + filmID + ", '" + date + "', '" + heure + "', " + officielle + ")";
-        try {
-            stmt = connexionBD.createStatement();
-            rset = stmt.executeQuery(query);
-            if (rset.next()) {
-                return projectionID;
-            }
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
     }
 
     public int getNewProjectionID() {
