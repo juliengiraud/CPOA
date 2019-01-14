@@ -28,6 +28,24 @@ class VIPDAO extends DAO {
         }
         return null;
 	}
+
+	public function getVIP($id) {
+		require_once(PATH_MODELS . 'PersonneDAO.php');
+		require_once(PATH_MODELS . 'PhotoDAO.php');
+		$res = $this -> queryRaw('SELECT * FROM VIP WHERE VIPID = ?', array($id));
+        if ($res) {
+            $VIPID = $res['VIPID'];
+			$importanceAcreditation = $res['importanceAcreditation'];
+			$typeVIP = $res['typeVIP'];
+			$personneDAO = new PersonneDAO();
+			$personne = $personneDAO -> getPersonne($res['personneID']);
+			$photoDAO = new PhotoDAO();
+			$photo = $photoDAO -> getPhoto($res['photoID']);
+			$compagnon = $personneDAO -> getPersonne($res['compagnonID']);
+			return new VIP($VIPID, $importanceAcreditation, $typeVIP, $personne, $photo, $compagnon);
+        }
+        return null;
+	}
 	
 	// Retourne un tableau de VIP ou null
 	public function rechercherVIP($recherche) {
@@ -38,7 +56,6 @@ class VIPDAO extends DAO {
 		for ($i = 1; $i < count($mots); $i++) {
 			$requette = $requette . " OR nom REGEXP'" . $mots[$i] . "' OR prenom REGEXP'" . $mots[$i] . "'";
 		}
-		echo $requette;
 		$res = $this -> queryAll($requette);
 		$i = 0;
         if ($res) {
@@ -65,7 +82,7 @@ class VIPDAO extends DAO {
 	// Ajoute un VIP en base
 	public function ajouterVIP($nom, $prenom, $metier, $nationnalite, $age, $nomCompagnon, $prenomCompagnon, $nomPhoto) {
 		require_once(PATH_MODELS . 'PersonneDAO.php');
-		require_once(PATH_MODELS . 'PersonneDAO.php');
+		require_once(PATH_MODELS . 'PhotoDAO.php');
 		$personneDAO = new PersonneDAO();
 		$photoDAO = new PhotoDAO();
 
@@ -90,6 +107,10 @@ class VIPDAO extends DAO {
 		
 		// Ajout du VIP en base
 		return $this -> queryBdd("INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (?, null, null, ?, ?, ?)", array($VIPID, $photoID, $compagnonID, $personneID));
+	}
+
+	public function supprimerVIP($id) {
+		return $this -> queryBdd("DELETE FROM Projection WHERE projectionID = ?", array($id));
 	}
 	
 }
