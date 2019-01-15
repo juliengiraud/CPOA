@@ -4,6 +4,8 @@ function choixAlert($message, $arg=null) {
     $alert = array();
     switch($message) {
         //Erreures
+		case 'VIPNonTrouvé' :
+			$alert['messageAlert'] = ERREUR_RECHERCHE_VIP;
         case 'categorie' :
 	        $alert['messageAlert'] = ERREUR_ID_CATEGORIE;
 	        break;

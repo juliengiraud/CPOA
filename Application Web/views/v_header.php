@@ -34,6 +34,7 @@
 										<li>
 											<form action="index.php?page=accueil" method="post">
 												<input type="text" name="recherche">
+												<input class="btn" type="submit" value="Rechercher">
 											</form>
 										</li>
 									</ul>

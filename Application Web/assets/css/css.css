@@ -9,6 +9,11 @@
  * http://www.opensource.org/licenses/MIT
  */
  
+ 
+ #tableau
+{
+	width : 50%;
+}
 
 .bouton{
 	border:none;
@@ -62,6 +67,16 @@ footer {
 .titre_base{
 	background-color: #818181;
 	color: #fff;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
 }
 
 /* Slider */

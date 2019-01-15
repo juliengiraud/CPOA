@@ -41,6 +41,8 @@ define('ERREUR_QUERY', "Problème d'accès à la base de données. Contactez l'a
 // Menu
 
 // Messages erreurs
+define('ERREUR_RECHERCHE_VIP','Aucun VIP ne correspond à vos critères de recherche');
+
 define('ERREUR_CONNECT_BDD','Impossible de se connecter à la BDD !');
 define('ERREUR_QUERY_BDD','Une erreure est survenue lors de la requête SQL !');
 define('ERREUR_CAPTCHA','Merci de cocher le captcha');
