@@ -3,6 +3,8 @@ package persistance.modelDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.Categorie;
@@ -33,6 +35,26 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
             Logger.getLogger(CategorieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categorie;
+    }
+
+    @Override
+    public List<Categorie> getLesCategories() {
+        ResultSet rset;
+        Statement stmt;
+        List<Categorie> listeCategories = null;
+        String query = "SELECT * FROM Categorie";
+        try {
+            stmt = connexionBD.createStatement();
+            listeCategories = new ArrayList<>();
+            rset = stmt.executeQuery(query);
+            while (rset.next()) {
+                listeCategories.add(new Categorie(rset.getString(1), rset.getInt(2)));
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(CategorieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listeCategories;
     }
 
 }

@@ -11,5 +11,6 @@ public interface IProjectionDAO {
     public List<String> getDates();
     public List<Projection> getProjections();
     public void supprimerProjection(int id);
+    public void supprimerProjections();
     
 }

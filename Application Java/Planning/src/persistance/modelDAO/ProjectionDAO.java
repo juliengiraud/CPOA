@@ -123,5 +123,19 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
         }
     }
 
+    @Override
+    public void supprimerProjections() {
+        ResultSet rset;
+        Statement stmt;
+        String query = "DELETE FROM Projection";
+        try {
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery(query);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }
