@@ -36,9 +36,6 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
         catch (SQLException ex) {
             Logger.getLogger(ProjectionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (String date : listeDates) {
-            System.out.println(date);
-        }
         return listeDates;
     }
     

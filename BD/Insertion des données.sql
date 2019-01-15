@@ -110,16 +110,16 @@ INSERT INTO Personne (prenom, nom, metier, nationnalite, personneID, age, dateNa
 /* Ajout des jurys                                              */
 /*==============================================================*/
 /*LONGS METRAGES : Jane Campion*/
-INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (NULL, 0, 0, 0);
+INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (3, 0, 0, 0);
 
 /*Courts métrages : Abbas Kiarostami*/
-INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (NULL, 1, 1, 9);
+INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (100, 1, 1, 9);
 
 /*Un certain regard : Pablo Trapero*/
-INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (NULL, 2, 2, 14);
+INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (4, 2, 2, 14);
 
 /*Caméra d'or : Nicole Garcia*/
-INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (NULL, 3, 6, 19);
+INSERT INTO Jury (nbSeanceMax, juryID, categorieID, presidentID) VALUES (3, 3, 6, 19);
 
 /*==============================================================*/
 /* Ajout des jurés                                              */
@@ -333,13 +333,11 @@ INSERT INTO Photo (nomPhoto, photoID) VALUES ('RamiMalek.jpg', 1);
 /*==============================================================*/
 /* Ajout des salles                                             */
 /*==============================================================*/
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (0, null, 'GRAND THÉÂTRE LUMIÈRE');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (1, null, 'SALLE DU SOIXANTIÈME');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (2, null, 'SALLE DEBUSSY');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (3, null, 'SALLE BUÑUEL');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (4, null, 'SALLE BAZIN');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (5, null, 'THÉÂTRE CROISETTE / JW MARRIOT');
-INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (6, null, 'ESPACE MIRAMAR');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (0, 2400, 'Grand Théâtre Lumière');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (1, 1000, 'Debussy');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (2, 500, 'Buñuel');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (3, 1000, 'Soixantième');
+INSERT INTO Salle (salleID, capacite, nomSalle) VALUES (4, 500, 'Bazin');
 
 /*==============================================================*/
 /* Ajout des projections                                        */
