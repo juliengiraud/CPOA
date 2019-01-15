@@ -32,7 +32,7 @@ class VIPDAO extends DAO {
 	public function getVIP($id) {
 		require_once(PATH_MODELS . 'PersonneDAO.php');
 		require_once(PATH_MODELS . 'PhotoDAO.php');
-		$res = $this -> queryRaw('SELECT * FROM VIP WHERE VIPID = ?', array($id));
+		$res = $this -> queryRow('SELECT * FROM VIP WHERE VIPID = ?', array($id));
         if ($res) {
             $VIPID = $res['VIPID'];
 			$importanceAcreditation = $res['importanceAcreditation'];
