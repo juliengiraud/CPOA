@@ -80,7 +80,7 @@ class VIPDAO extends DAO {
 	}
 	
 	// Ajoute un VIP en base
-	public function ajouterVIP($nom, $prenom, $metier, $nationnalite, $age, $nomCompagnon, $prenomCompagnon, $nomPhoto) {
+	public function ajouterVIP($nom, $prenom, $metier, $nationalite, $age, $nomCompagnon, $prenomCompagnon, $nomPhoto) {
 		require_once(PATH_MODELS . 'PersonneDAO.php');
 		require_once(PATH_MODELS . 'PhotoDAO.php');
 		$personneDAO = new PersonneDAO();
@@ -89,7 +89,7 @@ class VIPDAO extends DAO {
 		// Test si le VIP ajouté existe dans la table personne, si non, on l'ajoute
 		$personneID = $personneDAO -> existe($nom, $prenom);
 		if ($personneID == false) {
-			$personneID = $personneDAO -> ajouterPersonne($nom, $prenom, $metier, $nationnalite, $age);
+			$personneID = $personneDAO -> ajouterPersonne($nom, $prenom, $metier, $nationalite, $age);
 		}
 
 		// Si le compagnon existe et qu'il n'est pas dans la table personne, on l'ajoute
@@ -106,11 +106,12 @@ class VIPDAO extends DAO {
 		$VIPID = $res['MAX(VIPID)'] + 1;
 		
 		// Ajout du VIP en base
-		return $this -> queryBdd("INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (?, null, null, ?, ?, ?)", array($VIPID, $photoID, $compagnonID, $personneID));
+		$this -> queryBdd("INSERT INTO VIP (VIPID, importanceAcreditation, typeVIP, photoID, compagnonID, personneID) VALUES (?, null, null, ?, ?, ?)", array($VIPID, $photoID, $compagnonID, $personneID));
+		return $VIPID;
 	}
 
 	public function supprimerVIP($id) {
-		return $this -> queryBdd("DELETE FROM Projection WHERE projectionID = ?", array($id));
+		return $this -> queryBdd("DELETE FROM VIP WHERE VIPID = ?", array($id));
 	}
 	
 }

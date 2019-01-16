@@ -31,11 +31,16 @@ if($VIPS!=null){
 		echo '" style="display:block;width:100%;height:100%;">'.$personne -> getPrenom().'</a></td></tr>';
 	}
 	echo '</table></div>';
-}
-else if($VIPS=null){
-	$erreur = "VIPNonTrouvé";
-}
-?>
+	?>
+	<form action="index.php?page=ajouterVIP" method="post">
+		<input class='btn' type='submit' value='Ajouter un VIP'></input>
+	</form>
+<?php }
+else{ ?>
+	<script>alert("<?php echo htmlspecialchars('Aucun VIP ne correspond à cette recherche', ENT_QUOTES); ?>")</script>
+	<?php
+	header('Refresh:0; url=index.php');
+ } ?>
 
 
 

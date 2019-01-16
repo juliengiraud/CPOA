@@ -13,6 +13,9 @@ if (!$_SESSION['logged']) {
 if(isset($_GET['id'])){
 	$VIPDAO = new VIPDAO();
 	$VIP = $VIPDAO -> getVIP(htmlspecialchars($_GET['id']));
+	$Personne = $VIP -> getPersonne();
+	$Photo = $VIP -> getPhoto();
+	$Compagnon = $VIP -> getCompagnon();
 }
 
 

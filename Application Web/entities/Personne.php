@@ -4,16 +4,16 @@ class Personne {
 	
 	private $_nom;
 	private $_prenom;
-	private $_nationnalite;
+	private $_nationalite;
 	private $_personneID;
 	private $_age;
 	private $_dateNaissance;
 	private $_metier;
 	
-	public function __construct($nom, $prenom, $nationnalite, $personneID, $age, $dateNaissance, $metier) {
+	public function __construct($nom, $prenom, $nationalite, $personneID, $age, $dateNaissance, $metier) {
 		$this -> _nom = $nom;
 		$this -> _prenom = $prenom;
-		$this -> _nationnalite = $nationnalite;
+		$this -> _nationalite = $nationalite;
 		$this -> _personneID = $personneID;
 		$this -> _age = $age;
 		$this -> _dateNaissance = $dateNaissance;
@@ -36,12 +36,12 @@ class Personne {
         $this -> _prenom = $prenom;
     }
 	
-	public function getNationnalite() {
-        return $this -> _nationnalite;
+	public function getNationalite() {
+        return $this -> _nationalite;
     }
     
-    public function setNationnalite($nationnalite) {
-        $this -> _nationnalite = $nationnalite;
+    public function setNationalite($nationnalite) {
+        $this -> _nationalite = $nationnalite;
     }
 	
 	public function getPersonneID() {

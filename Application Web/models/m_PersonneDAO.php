@@ -22,8 +22,8 @@ class PersonneDAO extends DAO {
         $personneID = $res['MAX(personneID)'] + 1;
 
         // Ajout de la personne
-        $this -> queryBdd("INSERT INTO Personne (nom, prenom, metier, nationnalite, personneID, age, dateNaissance, juryID) VALUES (?, ?, ?, ?, ?, ?, ?, null)", array($nom, $prenom, $metier, $nationnalite, $personneID, $age, $dateNaissance));
-        return $this['personneID'];
+        $this -> queryBdd("INSERT INTO Personne (nom, prenom, metier, nationnalite, personneID, age, dateNaissance) VALUES (?, ?, ?, ?, ?, ?, ?)", array($nom, $prenom, $metier, $nationnalite, $personneID, $age, $dateNaissance));
+        return $personneID;
     }
 
     // Retourne l'identifiant de la personne si elle se trouve en base
