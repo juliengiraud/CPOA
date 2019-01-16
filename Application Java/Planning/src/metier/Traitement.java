@@ -41,9 +41,9 @@ public class Traitement {
         projectionDAO.supprimerProjections();
         String[] heuresCM = {"9h", "9h30", "10h", "10h30", "11h", "11h30", "12h", "12h30", "13h", "13h30", "14h", "14h30", "15h", "15h30", "16h", "16h30", "17h", "17h30", "18h", "18h30", "19h", "19h30", "20h", "20h30"};
         String[] heuresLM = {"9h", "12h30", "16h", "19h30"};
-        int nbFilmCM = 0, dateCM = 9;
-        String sdateCM = "";
-        Salle salle = null;
+        String dateLM;
+        int nbFilmCM = 0, nbFilmLMC = 0, date, heure;
+        Salle salle = null, salle2 = null;
         for (Film film : films) {
             switch (film.getCategorie().getType()) {
                 case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
@@ -52,19 +52,32 @@ public class Traitement {
                     // 2 fois par jour
                     // Tout doit etre place dans les 11 premiers jours
                     // Seance du lendemain
+                    for (Salle s : salles) {
+                        if (s.getSalleID() == 0) {
+                            salle = s;
+                        }
+                        if (s.getSalleID() == 3) {
+                            salle2 = s;
+                        }
+                    }
+                    date = 9 + (nbFilmLMC/2);
+                    heure = (nbFilmLMC%2);
+                    dateLM = intToString(date) + "/05/2019";
+                    projectionDAO.ajouterProjection(dateLM, heuresLM[heure], true, salle, film);
+                    projectionDAO.ajouterProjection(dateLM, heuresLM[(heure + 2)%4], true, salle, film);
+                    projectionDAO.ajouterProjection(intToString(date + 1) + "/05/2019", heuresLM[heure], true, salle2, film);
+                    nbFilmLMC = nbFilmLMC + 1;
                     break;
                 
                 case "COURT METRAGE EN COMPETITION": // Buñuel
                     // Projete une seule fois
+                    // Tout le meme jour
                     for (Salle s : salles) {
                         if (s.getSalleID() == 2) {
                             salle = s;
                         }
                     }
-                    if (dateCM < 10) {
-                        sdateCM = "09";
-                        projectionDAO.ajouterProjection(sdateCM, heuresCM[nbFilmCM++], true, salle, film);
-                    }
+                    projectionDAO.ajouterProjection("09/05/2019", heuresCM[nbFilmCM++], true, salle, film);
                     break;
                 
                 case "UN CERTAIN REGARD": // Debussy, seance du lendemain a Bazin
@@ -91,19 +104,8 @@ public class Traitement {
                     //break;
             }
         }
+        updateProjection();
         
-        
-    }
-    
-    public static void updateProjection() {
-        int date, x;
-        int[] y = {-1, -1, -1, -1, -1, -1, -1};
-        for (Projection p : projectionsAffichables) {
-            date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
-            x = (date + 1)%7;
-            y[x] = y[x] + 1;
-            Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y[x], x);
-        }
     }
 
     public static void rechercherFilm(String film) {
@@ -130,6 +132,79 @@ public class Traitement {
         else {
             System.out.println("Affichage de toutes les séances");
         }
+    }
+    
+    public static void updateProjection() {
+        int date, x, y;
+        String[] heuresCM = {"9h00", "9h30", "10h", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
+        String[] heuresLM = {"9h00", "12h30", "16h00", "19h30"};
+        /*
+        for (Projection p : projectionsAffichables) {
+            date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
+            x = (date + 1)%7;
+            y[x] = y[x] + 1;
+            Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y[x], x);
+        }*/
+        List<Projection> ps = projectionDAO.getProjections();
+        for (Projection p : ps) {
+            switch(p.getSalle().getSalleID()) {
+                case 0: // Grand Théâtre Lumière
+                    date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
+                    x = (date + 5)%7;
+                    y = 0;
+                    for (int i = 0; i < heuresLM.length; i++) {
+                        if (p.getHeureProjection().equals(heuresLM[i])) {
+                            if (date < 16) {
+                                y = i + 1;
+                            }
+                            else {
+                                y = i + 7;
+                            }
+                        }
+                    }
+                    Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
+                    break;
+                
+                case 1: // Debussy
+                    break;
+                
+                case 2: // Buñuel
+                    break;
+                
+                case 3: // Soixantième
+                    date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
+                    x = (date + 5)%7;
+                    y = 0;
+                    for (int i = 0; i < heuresLM.length; i++) {
+                        if (p.getHeureProjection().equals(heuresLM[i])) {
+                            if (date < 16) {
+                                y = i + 54;
+                            }
+                            else {
+                                y = i + 60;
+                            }
+                        }
+                    }
+                    Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
+                    break;
+                
+                case 4: // Bazin
+                    break;
+                
+            }
+        }
+    }
+
+    private static String intToString(int date) {
+        String sdate;
+        int nb1 = 0, nb2 = 0;
+        if (date < 10) {
+            sdate = "0" + date;
+        }
+        else {
+            sdate = "" + date;
+        }
+        return sdate;
     }
 
 }

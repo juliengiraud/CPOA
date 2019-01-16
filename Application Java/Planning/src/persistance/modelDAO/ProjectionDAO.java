@@ -76,7 +76,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
                 int salleID = rset.getInt(2);
                 SalleDAO salleDAO = new SalleDAO();
                 Salle salle = salleDAO.getSalle(salleID);
-                int filmID = rset.getInt(2);
+                int filmID = rset.getInt(3);
                 FilmDAO filmDAO = new FilmDAO();
                 Film film = filmDAO.getFilm(filmID);
                 String date = rset.getString(4);
