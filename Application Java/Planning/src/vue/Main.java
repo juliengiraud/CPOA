@@ -12,9 +12,9 @@ public class Main {
     public static void main(String args[]) throws SQLException {
         
         Traitement t = new Traitement();
-        ProjectionDAO projectionDAO = new ProjectionDAO();
+        t.getProjectionDAO().supprimerProjections();
         SalleDAO salleDAO = new SalleDAO();
-        String[] semaine = new String[] {"Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"};
+        String[] Semaine = new String[] {"Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"};
         
         // Création de la fenêtre du planning
         try {
@@ -43,42 +43,40 @@ public class Main {
             }
             f.get_jComboBoxSelectionnerSalle().setModel(new javax.swing.DefaultComboBoxModel<>(salles));
             
-            List<String> arrayDate = projectionDAO.getDates();
-            String[] dates = new String[arrayDate.size() + 1];
+            
+            
+            String[] dates = new String[1];
             dates[0] = "Sélectionner une date";
-            for (int i = 1; i < arrayDate.size() + 1; i++) {
-                dates[i] = arrayDate.get(i - 1);
-            }
             f.get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
             
             String[][] planning = {
-            {"semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1"},
+            {"Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière"},
             {"09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière"},
             {"12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière"},
             {"16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière"},
             {"19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière"},
             {},
-            {"semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2"},
+            {"Semaine 2 - Lumière", "Semaine 2 - Lumière", "Semaine 2 - Lumière", "Semaine 2 - Lumière", "Semaine 2 - Lumière", "Semaine 2 - Lumière", "Semaine 2 - Lumière"},
             {"09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière"},
             {"12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière", "12h30 - Théâtre Lumière"},
             {"16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière", "16h00 - Théâtre Lumière"},
             {"19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière", "19h30 - Théâtre Lumière"},
             {},
             {},
-            {"semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1"},
+            {"Semaine 1 - Debussy", "Semaine 1 - Debussy", "Semaine 1 - Debussy", "Semaine 1 - Debussy", "Semaine 1 - Debussy", "Semaine 1 - Debussy", "Semaine 1 - Debussy"},
             {"09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy"},
             {"12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy"},
             {"16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy"},
             {"19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy"},
             {},
-            {"semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2"},
+            {"Semaine 2 - Debussy", "Semaine 2 - Debussy", "Semaine 2 - Debussy", "Semaine 2 - Debussy", "Semaine 2 - Debussy", "Semaine 2 - Debussy", "Semaine 2 - Debussy"},
             {"09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy", "09h00 - Debussy"},
             {"12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy", "12h30 - Debussy"},
             {"16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy", "16h00 - Debussy"},
             {"19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy", "19h30 - Debussy"},
             {},
             {},
-            {"premier jour"},
+            {"Premier jour - Buñuel"},
             {"09h00 - Buñuel"},
             {"09h30 - Buñuel"},
             {"10h00 - Buñuel"},
@@ -105,31 +103,32 @@ public class Main {
             {"20h30 - Buñuel"},
             {},
             {},
-            {"semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1"},
+            {"Semaine 1 - Soixantième", "Semaine 1 - Soixantième", "Semaine 1 - Soixantième", "Semaine 1 - Soixantième", "Semaine 1 - Soixantième", "Semaine 1 - Soixantième", "Semaine 1 - Soixantième"},
             {"09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième"},
             {"12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième"},
             {"16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième"},
             {"19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième"},
             {},
-            {"semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2"},
+            {"Semaine 2 - Soixantième", "Semaine 2 - Soixantième", "Semaine 2 - Soixantième", "Semaine 2 - Soixantième", "Semaine 2 - Soixantième", "Semaine 2 - Soixantième", "Semaine 2 - Soixantième"},
             {"09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième", "09h00 - Soixantième"},
             {"12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième", "12h30 - Soixantième"},
             {"16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième", "16h00 - Soixantième"},
             {"19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième", "19h30 - Soixantième"},
             {},
             {},
-            {"semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1", "semaine 1"},
+            {"Semaine 1 - Bazin", "Semaine 1 - Bazin", "Semaine 1 - Bazin", "Semaine 1 - Bazin", "Semaine 1 - Bazin", "Semaine 1 - Bazin", "Semaine 1 - Bazin"},
             {"09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin"},
             {"12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin"},
             {"16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin"},
             {"19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin"},
             {},
-            {"semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2", "semaine 2"},
+            {"Semaine 2 - Bazin", "Semaine 2 - Bazin", "Semaine 2 - Bazin", "Semaine 2 - Bazin", "Semaine 2 - Bazin", "Semaine 2 - Bazin", "Semaine 2 - Bazin"},
             {"09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin", "09h00 - Bazin"},
             {"12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin", "12h30 - Bazin"},
             {"16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin", "16h00 - Bazin"},
-            {"19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin"}};
-            f.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(planning, semaine));
+            {"19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin"},
+            {}};
+            f.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(planning, Semaine));
             
             f.get_textFieldRecherche();
             

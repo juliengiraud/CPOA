@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import metier.Categorie;
 import metier.Film;
 import metier.Projection;
 import metier.Salle;
@@ -66,23 +67,38 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
         ResultSet rset;
         Statement stmt;
         List<Projection> listeProjections = null;
-        String query = "SELECT * FROM Projection";
+        String query = "SELECT * FROM Projection JOIN Salle JOIN Film JOIN Categorie ON Projection.salleID = Salle.salleID AND Projection.filmID = Film.filmID AND Film.categorieID = Categorie.categorieID";
         try {
             stmt = connexionBD.createStatement();
             listeProjections = new ArrayList<>();
             rset = stmt.executeQuery(query);
+            int projectionID, salleID, filmID, capacite, categorieID;
+            String date, heure, nomSalle, titre, type, duree;
+            Boolean officielle;
+            Salle salle;
+            Film film;
+            Categorie categorie;
             while (rset.next()) {
-                int id = rset.getInt(1);
-                int salleID = rset.getInt(2);
-                SalleDAO salleDAO = new SalleDAO();
-                Salle salle = salleDAO.getSalle(salleID);
-                int filmID = rset.getInt(3);
-                FilmDAO filmDAO = new FilmDAO();
-                Film film = filmDAO.getFilm(filmID);
-                String date = rset.getString(4);
-                String heure = rset.getString(5);
-                Boolean officielle = (rset.getInt(6) != 0);
-                listeProjections.add(new Projection(id, salle, film, date, heure, officielle));
+                projectionID = rset.getInt(1);
+                salleID = rset.getInt(2);
+                filmID = rset.getInt(3);
+                date = rset.getString(4);
+                heure = rset.getString(5);
+                officielle = (rset.getInt(6) != 0);
+                //salleID = rset.getInt(7);
+                capacite = rset.getInt(8);
+                nomSalle = rset.getString(9);
+                duree = rset.getString(10);
+                titre = rset.getString(11);
+                //filmID = rset.getInt(12);
+                categorieID = rset.getInt(13);
+                type = rset.getString(14);
+                //categorieID = rset.getInt(15);
+                salle = new Salle(salleID, capacite, heure);
+                categorie = new Categorie(type, categorieID);
+                film = new Film(duree, titre, filmID, categorie, null);
+                
+                listeProjections.add(new Projection(projectionID, salle, film, date, heure, officielle));
             }
         }
         catch (SQLException ex) {

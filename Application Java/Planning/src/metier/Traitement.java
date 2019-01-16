@@ -1,6 +1,7 @@
 package metier;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import persistance.modelDAO.*;
 import vue.Main;
@@ -16,35 +17,29 @@ public class Traitement {
     private static List<Categorie> categories = null;
     private static SalleDAO salleDAO = null;
     private static List<Salle> salles = null;
+    private static String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
+    private static String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
     
     public Traitement() throws SQLException {
-        if (Traitement.projectionDAO == null) {
-            Traitement.projectionDAO = new ProjectionDAO();
-            Traitement.projections = projectionDAO.getProjections();
-        }
-        if (Traitement.filmDAO == null) {
-            Traitement.filmDAO = new FilmDAO();
-            Traitement.films = filmDAO.getLesFilms();
-        }
-        if (Traitement.categorieDAO == null) {
-            Traitement.categorieDAO = new CategorieDAO();
-            Traitement.categories = categorieDAO.getLesCategories();
-        }
-        if (Traitement.salleDAO == null) {
-            Traitement.salleDAO = new SalleDAO();
-            Traitement.salles = salleDAO.getSalles();
-        }
+        Traitement.projectionDAO = new ProjectionDAO();
+        Traitement.projections = projectionDAO.getProjections();
+        Traitement.filmDAO = new FilmDAO();
+        Traitement.films = filmDAO.getLesFilms();
+        Traitement.categorieDAO = new CategorieDAO();
+        Traitement.categories = categorieDAO.getLesCategories();
+        Traitement.salleDAO = new SalleDAO();
+        Traitement.salles = salleDAO.getSalles();
     }
     
     public static void genererPlaning() throws SQLException {
         System.out.println("Générer le planning");
         projectionDAO.supprimerProjections();
-        String[] heuresCM = {"9h", "9h30", "10h", "10h30", "11h", "11h30", "12h", "12h30", "13h", "13h30", "14h", "14h30", "15h", "15h30", "16h", "16h30", "17h", "17h30", "18h", "18h30", "19h", "19h30", "20h", "20h30"};
-        String[] heuresLM = {"9h", "12h30", "16h", "19h30"};
         String dateLM;
-        int nbFilmCM = 0, nbFilmLMC = 0, date, heure;
+        int nbFilmCM = 0, nbFilmLMC = 0, nbFilmUCR = 0, date, heure, i = 0;
         Salle salle = null, salle2 = null;
+        List<Film> file = new ArrayList<>();
         for (Film film : films) {
+            System.out.println("For film : " + ++i);
             switch (film.getCategorie().getType()) {
                 case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
                     // 3 par jour max
@@ -84,26 +79,33 @@ public class Traitement {
                     // 4 par jour max
                     // Tout doit etre place dans les 9 premiers jours
                     // Seance du lendemain
+                    for (Salle s : salles) {
+                        if (s.getSalleID() == 1) {
+                            salle = s;
+                        }
+                        if (s.getSalleID() == 4) {
+                            salle2 = s;
+                        }
+                    }
+                    date = 9 + (nbFilmUCR/4);
+                    heure = (nbFilmUCR%4);
+                    dateLM = intToString(date) + "/05/2019";
+                    projectionDAO.ajouterProjection(dateLM, heuresLM[heure], true, salle, film);
+                    projectionDAO.ajouterProjection(intToString(date + 1) + "/05/2019", heuresLM[heure], true, salle2, film);
+                    nbFilmUCR = nbFilmUCR + 1;
                     break;
                 
                 case "LONG METRAGE HORS COMPETITION": // Théâtre Lumière
                     // Projete 1 ou 2 fois
+                    // On va les traiter une fois les LMC tous ajoutés
+                    file.add(film);
                     break;
-                
-                //case "COURT METRAGE HORS COMPETITION":
-                    // Tout doit etre place le 1er jour
-                    // Projete 1 ou 2 fois
-                    //break;
-                
-                //case "SEANCE DE MINUIT": // pas de salle
-                    // Projete une seule fois
-                    //break;
-                
-                //case "CAMERA D'OR":
-                    // Projete une seule fois
-                    //break;
+            }
+            for (Film f : file) {
+                //Compléter les séances du théâtre Lumière
             }
         }
+        System.out.println("Appel de update");
         updateProjection();
         
     }
@@ -135,63 +137,64 @@ public class Traitement {
     }
     
     public static void updateProjection() {
-        int date, x, y;
-        String[] heuresCM = {"9h00", "9h30", "10h", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
-        String[] heuresLM = {"9h00", "12h30", "16h00", "19h30"};
-        /*
-        for (Projection p : projectionsAffichables) {
-            date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
-            x = (date + 1)%7;
-            y[x] = y[x] + 1;
-            Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y[x], x);
-        }*/
+        
+        List<String> arrayDate = projectionDAO.getDates();
+        String[] dates = new String[arrayDate.size() + 1];
+        dates[0] = "Sélectionner une date";
+        for (int i = 1; i < arrayDate.size() + 1; i++) {
+            dates[i] = arrayDate.get(i - 1);
+        }
+        Main.getFenetre().get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
+        System.out.println("Debut de update");
+        int date = 0, x = 0, y = 0, j = 0;
         List<Projection> ps = projectionDAO.getProjections();
         for (Projection p : ps) {
+            System.out.println("Projection : " + ++j);
+            date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
+            x = (date + 5)%7;
             switch(p.getSalle().getSalleID()) {
                 case 0: // Grand Théâtre Lumière
-                    date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
-                    x = (date + 5)%7;
-                    y = 0;
                     for (int i = 0; i < heuresLM.length; i++) {
                         if (p.getHeureProjection().equals(heuresLM[i])) {
-                            if (date < 16) {
-                                y = i + 1;
-                            }
-                            else {
-                                y = i + 7;
-                            }
+                            y = (date < 16) ? i + 1 : i + 7;
                         }
                     }
-                    Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
                     break;
                 
                 case 1: // Debussy
+                    for (int i = 0; i < heuresLM.length; i++) {
+                        if (p.getHeureProjection().equals(heuresLM[i])) {
+                            y = (date < 16) ? i + 14 : i + 20;
+                        }
+                    }
                     break;
                 
                 case 2: // Buñuel
+                    for (int i = 0; i < heuresCM.length; i++) {
+                        if (p.getHeureProjection().equals(heuresCM[i])) {
+                            y = i + 27;
+                        }
+                    }
                     break;
                 
                 case 3: // Soixantième
-                    date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
-                    x = (date + 5)%7;
-                    y = 0;
                     for (int i = 0; i < heuresLM.length; i++) {
                         if (p.getHeureProjection().equals(heuresLM[i])) {
-                            if (date < 16) {
-                                y = i + 54;
-                            }
-                            else {
-                                y = i + 60;
-                            }
+                            y = (date < 16) ? i + 54 : i + 60;
                         }
                     }
-                    Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
                     break;
                 
                 case 4: // Bazin
+                    for (int i = 0; i < heuresLM.length; i++) {
+                        if (p.getHeureProjection().equals(heuresLM[i])) {
+                            y = (date < 16) ? i + 67 : i + 73;
+                        }
+                    }
                     break;
                 
             }
+            Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
         }
     }
 
@@ -205,6 +208,11 @@ public class Traitement {
             sdate = "" + date;
         }
         return sdate;
+    }
+    
+    
+    public static ProjectionDAO getProjectionDAO() {
+        return Traitement.projectionDAO;
     }
 
 }
