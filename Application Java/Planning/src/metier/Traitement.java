@@ -35,7 +35,7 @@ public class Traitement {
         System.out.println("Générer le planning");
         projectionDAO.supprimerProjections();
         String dateLM;
-        int nbFilmCM = 0, nbFilmLMC = 0, nbFilmUCR = 0, date, heure, i = 0;
+        int nbFilmCM = 0, nbFilmLMC = 0, nbFilmLM = 0, nbFilmUCR = 0, date, heure, i = 0;
         Salle salle = null, salle2 = null;
         List<Film> file = new ArrayList<>();
         for (Film film : films) {
@@ -100,10 +100,21 @@ public class Traitement {
                     // On va les traiter une fois les LMC tous ajoutés
                     file.add(film);
                     break;
+            } // Fin du switch
+            
+        } // Fin du for
+        for (Film f : file) {
+            //Compléter les séances du théâtre Lumière
+            for (Salle s : salles) {
+                if (s.getSalleID() == 0) {
+                    salle = s;
+                }
             }
-            for (Film f : file) {
-                //Compléter les séances du théâtre Lumière
-            }
+            date = 9 + nbFilmLMC/2 + 1 + nbFilmLM/4;
+            heure = nbFilmLM%4;
+            dateLM = intToString(date) + "/05/2019";
+            projectionDAO.ajouterProjection(dateLM, heuresLM[heure], false, salle, f);
+            nbFilmLM = nbFilmLM + 1;
         }
         System.out.println("Appel de update");
         updateProjection();
