@@ -41,7 +41,7 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
     public List<Categorie> getLesCategories() {
         ResultSet rset;
         Statement stmt;
-        List<Categorie> listeCategories = null;
+        List<Categorie> listeCategories = new ArrayList<>();
         String query = "SELECT * FROM Categorie";
         try {
             stmt = connexionBD.createStatement();

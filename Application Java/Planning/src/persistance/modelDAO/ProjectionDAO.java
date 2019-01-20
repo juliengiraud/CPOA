@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import metier.Categorie;
-import metier.Film;
-import metier.Projection;
-import metier.Salle;
+import metier.*;
 import persistance.DAO;
 import persistance.interfaceDAO.IProjectionDAO;
 
@@ -66,11 +63,10 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     public List<Projection> getProjections() {
         ResultSet rset;
         Statement stmt;
-        List<Projection> listeProjections = null;
+        List<Projection> listeProjections = new ArrayList<>();
         String query = "SELECT * FROM Projection JOIN Salle JOIN Film JOIN Categorie ON Projection.salleID = Salle.salleID AND Projection.filmID = Film.filmID AND Film.categorieID = Categorie.categorieID";
         try {
             stmt = connexionBD.createStatement();
-            listeProjections = new ArrayList<>();
             rset = stmt.executeQuery(query);
             int projectionID, salleID, filmID, capacite, categorieID;
             String date, heure, nomSalle, titre, type, duree;
@@ -78,6 +74,8 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
             Salle salle;
             Film film;
             Categorie categorie;
+            RealisateurDAO realisateurDAO = new RealisateurDAO();
+            List<Personne> realisateurs;
             while (rset.next()) {
                 projectionID = rset.getInt(1);
                 salleID = rset.getInt(2);
@@ -94,9 +92,10 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
                 categorieID = rset.getInt(13);
                 type = rset.getString(14);
                 //categorieID = rset.getInt(15);
-                salle = new Salle(salleID, capacite, heure);
+                salle = new Salle(salleID, capacite, nomSalle);
                 categorie = new Categorie(type, categorieID);
-                film = new Film(duree, titre, filmID, categorie, null);
+                realisateurs = realisateurDAO.getLesRealisateurs(filmID);
+                film = new Film(duree, titre, filmID, categorie, realisateurs);
                 
                 listeProjections.add(new Projection(projectionID, salle, film, date, heure, officielle));
             }

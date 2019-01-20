@@ -69,9 +69,12 @@ public class Projection {
     
     @Override
     public String toString() {
-        //return "ProjectionID : " + this.projectionID + ", Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", " + this.salle.toString() + ", " + this.film.toString();
         return this.heureProjection + " - " + this.film.getTitre();
         
+    }
+
+    public String toString2() {
+        return "ProjectionID : " + this.projectionID + ", Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", " + this.salle.toString() + ", " + this.film.toString();
     }
 
 }

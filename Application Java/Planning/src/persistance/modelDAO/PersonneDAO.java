@@ -11,10 +11,5 @@ public class PersonneDAO extends DAO implements IPersonneDAO {
     public PersonneDAO() throws SQLException {
         super();
     }
-
-    /*@Override
-    public List<Personne> getPersonnes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
     
 }

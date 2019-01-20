@@ -3,6 +3,7 @@ package vue;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import metier.Projection;
 import metier.Traitement;
 
 /*
@@ -33,6 +34,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButtonGenererPlaning = new javax.swing.JButton();
         jComboBoxSelectionnerSalle = new javax.swing.JComboBox<>();
         jComboBoxSelectionnerDate = new javax.swing.JComboBox<>();
@@ -41,6 +43,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jButtonRechercherFilm = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePlanning = new javax.swing.JTable();
+        jLabelDate = new javax.swing.JLabel();
+        jLabelTitre = new javax.swing.JLabel();
+        jLabelHeure = new javax.swing.JLabel();
+        jLabelSalle = new javax.swing.JLabel();
+        jLabelSalleCapacite = new javax.swing.JLabel();
+        jLabelDuree = new javax.swing.JLabel();
+        jLabelCategorie = new javax.swing.JLabel();
+        jLabelRealisateurs = new javax.swing.JLabel();
+        jButtonSupprimerAjouterSeance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 700));
@@ -90,35 +101,80 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTablePlanning.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTablePlanning.setAutoscrolls(false);
-        jTablePlanning.setFocusable(false);
+        jTablePlanning.setCellSelectionEnabled(true);
         jTablePlanning.setRequestFocusEnabled(false);
-        jTablePlanning.setRowSelectionAllowed(false);
+        jTablePlanning.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePlanningMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablePlanning);
+
+        jLabelDate.setText("Date");
+
+        jLabelTitre.setText("Titre");
+
+        jLabelHeure.setText("Heure");
+
+        jLabelSalle.setText("Salle");
+
+        jLabelSalleCapacite.setText("Capacité");
+
+        jLabelDuree.setText("Durée");
+
+        jLabelCategorie.setText("Categorie");
+
+        jLabelRealisateurs.setText("Realisateurs");
+
+        jButtonSupprimerAjouterSeance.setText("Supprimer/Ajouter la séance");
+        jButtonSupprimerAjouterSeance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSupprimerAjouterSeanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonGenererPlaning, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBoxSelectionnerSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxSelectionnerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBoxVoirSeanceLibre)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonRechercherFilm)))
+                        .addComponent(jLabelCategorie)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 520, Short.MAX_VALUE)))
+                        .addComponent(textFieldRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDuree)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelTitre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRechercherFilm)))
+                .addGap(302, 302, 302)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSalle)
+                    .addComponent(jLabelSalleCapacite)
+                    .addComponent(jLabelRealisateurs))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonSupprimerAjouterSeance, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelHeure, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(161, 161, 161))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonGenererPlaning, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBoxSelectionnerSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxSelectionnerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBoxVoirSeanceLibre)
+                        .addGap(30, 30, 30)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,16 +183,35 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButtonGenererPlaning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonRechercherFilm)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxSelectionnerSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxSelectionnerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBoxVoirSeanceLibre))
-                    .addComponent(textFieldRecherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxSelectionnerSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSelectionnerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBoxVoirSeanceLibre))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelDate)
+                        .addComponent(jLabelSalle)
+                        .addComponent(jLabelTitre))
+                    .addComponent(jButtonRechercherFilm))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelHeure)
+                            .addComponent(jLabelSalleCapacite))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonSupprimerAjouterSeance)
+                            .addComponent(jLabelRealisateurs)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelCategorie)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelDuree)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,13 +250,31 @@ public class NewJFrame extends javax.swing.JFrame {
         String date = (String) jComboBoxSelectionnerDate.getSelectedItem();
         Traitement.selectionnerDate(date);
     }//GEN-LAST:event_jComboBoxSelectionnerDateActionPerformed
+
+    private void jTablePlanningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePlanningMouseClicked
+        Traitement.selectionnerSeance(evt);
+    }//GEN-LAST:event_jTablePlanningMouseClicked
+
+    private void jButtonSupprimerAjouterSeanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerAjouterSeanceActionPerformed
+        Traitement.supprimerSeance(evt);
+    }//GEN-LAST:event_jButtonSupprimerAjouterSeanceActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonGenererPlaning;
     private javax.swing.JButton jButtonRechercherFilm;
+    private javax.swing.JButton jButtonSupprimerAjouterSeance;
     private javax.swing.JCheckBox jCheckBoxVoirSeanceLibre;
     private javax.swing.JComboBox<String> jComboBoxSelectionnerDate;
     private javax.swing.JComboBox<String> jComboBoxSelectionnerSalle;
+    private javax.swing.JLabel jLabelCategorie;
+    private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelDuree;
+    private javax.swing.JLabel jLabelHeure;
+    private javax.swing.JLabel jLabelRealisateurs;
+    private javax.swing.JLabel jLabelSalle;
+    private javax.swing.JLabel jLabelSalleCapacite;
+    private javax.swing.JLabel jLabelTitre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePlanning;
     private java.awt.TextField textFieldRecherche;
@@ -193,6 +286,10 @@ public class NewJFrame extends javax.swing.JFrame {
     
     public javax.swing.JButton get_jButtonRechercherFilm() {
         return this.jButtonRechercherFilm;
+    }
+    
+    public javax.swing.JButton get_jButtonSupprimerAjouterSeance() {
+        return this.jButtonSupprimerAjouterSeance;
     }
     
     public javax.swing.JCheckBox get_jCheckBoxVoirSeanceLibre() {
@@ -217,6 +314,38 @@ public class NewJFrame extends javax.swing.JFrame {
     
     public java.awt.TextField get_textFieldRecherche() {
         return this.textFieldRecherche;
+    }
+    
+    public javax.swing.JLabel get_jLabelCategorie() {
+        return this.jLabelCategorie;
+    }
+    
+    public javax.swing.JLabel get_jLabelDate() {
+        return this.jLabelDate;
+    }
+    
+    public javax.swing.JLabel get_jLabelDuree() {
+        return this.jLabelDuree;
+    }
+    
+    public javax.swing.JLabel get_jLabelHeure() {
+        return this.jLabelHeure;
+    }
+    
+    public javax.swing.JLabel get_jLabelRealisateurs() {
+        return this.jLabelRealisateurs;
+    }
+    
+    public javax.swing.JLabel get_jLabelSalle() {
+        return this.jLabelSalle;
+    }
+    
+    public javax.swing.JLabel get_jLabelSalleCapacite() {
+        return this.jLabelSalleCapacite;
+    }
+    
+    public javax.swing.JLabel get_jLabelTitre() {
+        return this.jLabelTitre;
     }
     
 }

@@ -21,11 +21,10 @@ public class SalleDAO extends DAO implements ISalleDAO {
     public List<Salle> getSalles() {
         ResultSet rset;
         Statement stmt;
-        List<Salle> listeSalles = null;
+        List<Salle> listeSalles = new ArrayList<>();
         String query = "SELECT * FROM Salle";
         try {
             stmt = connexionBD.createStatement();
-            listeSalles = new ArrayList<>();
             rset = stmt.executeQuery(query);
             while (rset.next()) {
                 listeSalles.add(new Salle(rset.getInt(1), rset.getInt(2), rset.getString(3)));

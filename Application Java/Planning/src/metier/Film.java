@@ -1,6 +1,6 @@
 package metier;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Film {
      
@@ -8,9 +8,9 @@ public class Film {
     private String titre;
     private int filmID;
     private Categorie categorie;
-    private ArrayList<Personne> realisateurs;
+    private List<Personne> realisateurs;
     
-    public Film(String newDuree, String newTitre, int newID, Categorie newCate, ArrayList<Personne> newRealisateurs) {
+    public Film(String newDuree, String newTitre, int newID, Categorie newCate, List<Personne> newRealisateurs) {
         this.duree = newDuree;
         this.titre = newTitre;
         this.filmID = newID;
@@ -50,8 +50,23 @@ public class Film {
         this.categorie = newCategorie;
     }
     
+    @Override
     public String toString() {
         return "Titre : " + this.titre + ", Durée : " + this.duree + ", FilmID : " + this.filmID + ", Catégorie : " + this.categorie.toString() + ", Réalisateurs : " + this.realisateurs.toString();
+    }
+
+    String getRealisateursToString() {
+        String r = "";
+        for (int i = 0; i < realisateurs.size(); i ++) {
+            Personne p = realisateurs.get(i);
+            if (i == 0) {
+                r = r + p.getPrenom() + " " + p.getNom();
+            }
+            else {
+                r = r + ", " + p.getPrenom() + " " + p.getNom();
+            }
+        }
+        return r;
     }
 
 }

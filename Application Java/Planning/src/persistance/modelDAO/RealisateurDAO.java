@@ -3,8 +3,9 @@ package persistance.modelDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import persistance.interfaceDAO.IRealisateurDAO;
 import java.util.ArrayList;
+import persistance.interfaceDAO.IRealisateurDAO;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.Personne;
@@ -17,10 +18,10 @@ public class RealisateurDAO extends DAO implements IRealisateurDAO {
     }
 
     @Override
-    public ArrayList<Personne> getLesRealisateurs(int filmID) {
+    public List<Personne> getLesRealisateurs(int filmID) {
         ResultSet rset;
         Statement stmt;
-        ArrayList<Personne> listePersonne = new ArrayList();
+        List<Personne> listePersonne = new ArrayList<>();
         String query = "SELECT * FROM Personne LEFT JOIN Realise ON Personne.personneID = Realise.personneID WHERE filmID = " + filmID;
         try {
             stmt = connexionBD.createStatement();

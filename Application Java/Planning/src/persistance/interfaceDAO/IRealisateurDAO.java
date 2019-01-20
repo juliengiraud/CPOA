@@ -1,10 +1,10 @@
 package persistance.interfaceDAO;
 
-import java.util.ArrayList;
+import java.util.List;
 import metier.Personne;
 
 public interface IRealisateurDAO {
     
-    ArrayList<Personne> getLesRealisateurs(int filmID);
+    List<Personne> getLesRealisateurs(int filmID);
     
 }

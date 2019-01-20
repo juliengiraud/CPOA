@@ -25,7 +25,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
         Statement stmt;
         Film film = null;
         Categorie categorie;
-        ArrayList<Personne> realisateurs;
+        List<Personne> realisateurs;
         String query = "SELECT * FROM Film WHERE filmID = " + filmID;
         try {
             CategorieDAO categorieDAO = new CategorieDAO();
@@ -48,15 +48,14 @@ public class FilmDAO extends DAO implements IFilmDAO {
     public List<Film> getLesFilms() {
         ResultSet rset;
         Statement stmt;
-        List<Film> listeFilms = null;
+        List<Film> listeFilms = new ArrayList<>();
         Categorie categorie;
-        ArrayList<Personne> realisateurs;
+        List<Personne> realisateurs;
         String query = "SELECT * FROM Film";
         try {
             CategorieDAO categorieDAO = new CategorieDAO();
             RealisateurDAO realisateurDAO = new RealisateurDAO();
             stmt = connexionBD.createStatement();
-            listeFilms = new ArrayList<>();
             rset = stmt.executeQuery(query);
             while (rset.next()) {
                 categorie = categorieDAO.getCategoriByID(rset.getInt(4));
@@ -74,9 +73,9 @@ public class FilmDAO extends DAO implements IFilmDAO {
     public List<Film> getLesFilmsByTitre(String recherche) {
         ResultSet rset;
         Statement stmt;
-        List<Film> listeFilms = null;
+        List<Film> listeFilms = new ArrayList<>();
         Categorie categorie;
-        ArrayList<Personne> realisateurs;
+        List<Personne> realisateurs = null;
         String[] mots = recherche.split(" ");
         String query = "SELECT * FROM Film WHERE titre REGEXP'" + mots[0] + "'";
         for (int i = 1; i < mots.length; i++) {
@@ -88,7 +87,6 @@ public class FilmDAO extends DAO implements IFilmDAO {
             CategorieDAO categorieDAO = new CategorieDAO();
             RealisateurDAO realisateurDAO = new RealisateurDAO();
             stmt = connexionBD.createStatement();
-            listeFilms = new ArrayList<>();
             rset = stmt.executeQuery(query);
             while (rset.next()) {
                 categorie = categorieDAO.getCategoriByID(rset.getInt(4));

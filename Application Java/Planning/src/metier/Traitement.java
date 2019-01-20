@@ -1,10 +1,14 @@
 package metier;
 
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import persistance.modelDAO.*;
+import vue.MaCellule;
 import vue.Main;
+import vue.NewJFrame;
 
 public class Traitement {
     
@@ -22,7 +26,7 @@ public class Traitement {
     
     public Traitement() throws SQLException {
         Traitement.projectionDAO = new ProjectionDAO();
-        Traitement.projections = projectionDAO.getProjections();
+        //Traitement.projections = projectionDAO.getProjections();
         Traitement.filmDAO = new FilmDAO();
         Traitement.films = filmDAO.getLesFilms();
         Traitement.categorieDAO = new CategorieDAO();
@@ -32,14 +36,14 @@ public class Traitement {
     }
     
     public static void genererPlaning() throws SQLException {
-        System.out.println("Générer le planning");
+        //System.out.println("Générer le planning");
         projectionDAO.supprimerProjections();
         String dateLM;
         int nbFilmCM = 0, nbFilmLMC = 0, nbFilmLM = 0, nbFilmUCR = 0, date, heure, i = 0;
         Salle salle = null, salle2 = null;
         List<Film> file = new ArrayList<>();
         for (Film film : films) {
-            System.out.println("For film : " + ++i);
+            //System.out.println("For film : " + ++i);
             switch (film.getCategorie().getType()) {
                 case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
                     // 3 par jour max
@@ -116,9 +120,8 @@ public class Traitement {
             projectionDAO.ajouterProjection(dateLM, heuresLM[heure], false, salle, f);
             nbFilmLM = nbFilmLM + 1;
         }
-        System.out.println("Appel de update");
         updateProjection();
-        
+        selectionnerSeance(null);
     }
 
     public static void rechercherFilm(String film) {
@@ -147,6 +150,211 @@ public class Traitement {
         }
     }
     
+    public static void selectionnerSeance(java.awt.event.MouseEvent evt) {
+        NewJFrame f = Main.getFenetre();
+        JTable jTablePlanning = f.get_jTablePlanning();
+        int x, y;
+        if (evt == null) {
+            x = Main.getX();
+            y = Main.getY();
+        }
+        else {
+            x = jTablePlanning.columnAtPoint(evt.getPoint());
+            Main.setX(x);
+            y = jTablePlanning.rowAtPoint(evt.getPoint());
+            Main.setY(y);
+        }
+        if (jTablePlanning.getModel().getValueAt(y, x) != null) {
+            MaCellule c = (MaCellule) jTablePlanning.getModel().getValueAt(y, x);
+            if (c.getProjection() != null) {
+                Projection p = c.getProjection();
+                f.get_jLabelCategorie().setText("Catégorie : " + p.getFilm().getCategorie().getType());
+                f.get_jLabelCategorie().setVisible(true);
+                
+                f.get_jLabelDate().setText("Date : " + p.getDateProjection());
+                f.get_jLabelDate().setVisible(true);
+                
+                f.get_jLabelDuree().setText("Durée : " + p.getFilm().getDuree());
+                f.get_jLabelDuree().setVisible(true);
+                
+                f.get_jLabelHeure().setText("Heure : " + p.getHeureProjection());
+                f.get_jLabelHeure().setVisible(true);
+                
+                f.get_jLabelRealisateurs().setText("Réalisateur(s) : " + p.getFilm().getRealisateursToString());
+                f.get_jLabelRealisateurs().setVisible(true);
+                
+                f.get_jLabelSalle().setText("Salle : " + p.getSalle().getNom());
+                f.get_jLabelSalle().setVisible(true);
+                
+                f.get_jLabelSalleCapacite().setText("Capacité : " + p.getSalle().getCapacite() + " personnes");
+                f.get_jLabelSalleCapacite().setVisible(true);
+                
+                f.get_jLabelTitre().setText("Titre : " + p.getFilm().getTitre());
+                f.get_jLabelTitre().setVisible(true);
+                
+                f.get_jButtonSupprimerAjouterSeance().setText("Supprimer la séance");
+                f.get_jButtonSupprimerAjouterSeance().setVisible(true);
+                
+                f.get_jButtonRechercherFilm().setVisible(false);
+                f.get_textFieldRecherche().setVisible(false);
+            }
+            else if (c.getIsProjection()) {
+                System.out.println(c.toString());
+                f.get_jLabelCategorie().setVisible(false);
+                f.get_jLabelDuree().setVisible(false);
+                f.get_jLabelRealisateurs().setVisible(false);
+                f.get_jLabelTitre().setVisible(false);
+                
+                f.get_jButtonRechercherFilm().setVisible(true);
+                f.get_textFieldRecherche().setVisible(true);
+                
+                String date = null;
+                if (y < 5 || y > 11 && y > 18 || y > 25 && y < 51 || y > 52 && y < 58 || y > 65 && y < 71) {
+                    switch(x) {
+                        case 0:
+                            date = "09/05/2019";
+                            break;
+                        case 1:
+                            date = "10/05/2019";
+                            break;
+                        case 2:
+                            date = "11/05/2019";
+                            break;
+                        case 3:
+                            date = "12/05/2019";
+                            break;
+                        case 4:
+                            date = "13/05/2019";
+                            break;
+                        case 5:
+                            date = "14/05/2019";
+                            break;
+                        case 6:
+                            date = "15/05/2019";
+                            break;
+                    }
+                }
+                else {
+                    switch(x) {
+                        case 0:
+                            date = "16/05/2019";
+                            break;
+                        case 1:
+                            date = "17/05/2019";
+                            break;
+                        case 2:
+                            date = "18/05/2019";
+                            break;
+                        case 3:
+                            date = "19/05/2019";
+                            break;
+                        case 4:
+                            date = "20/05/2019";
+                            break;
+                        case 5:
+                            date = "21/05/2019";
+                            break;
+                        case 6:
+                            date = "22/05/2019";
+                            break;
+                        
+                    }
+                }
+                f.get_jLabelDate().setText("Date : " + date);
+                f.get_jLabelDate().setVisible(true);
+                
+                String heure = null;
+                if (y == 1 || y == 7 || y == 14 || y == 20 || y == 54 || y == 60 || y == 67 || y == 73) {
+                    heure = "09h00";
+                }
+                else if (y == 2 || y == 8 || y == 15 | y == 21 || y == 55 || y == 61 || y == 68 || y == 74) {
+                    heure = "12h30";
+                }
+                else if (y == 3 || y == 9 || y == 16 || y == 22 || y == 56 || y == 62 || y == 69 || y == 75) {
+                    heure = "16h00";
+                }
+                else if (y == 4 || y == 10 || y == 17 || y == 23 || y == 57 || y == 63 || y == 70 || y == 76) {
+                    heure = "19h30";
+                }
+                else if (y >= 27 && y < 51) {
+                    heure = heuresCM[y-27];
+                }
+                f.get_jLabelHeure().setText("Heure : " + heure);
+                f.get_jLabelHeure().setVisible(true);
+                
+                int salleID;
+                if (y < 11) {
+                    salleID = 0;
+                }
+                else if (y < 24) {
+                    salleID = 1;
+                }
+                else if (y < 51) {
+                    salleID = 2;
+                }
+                else if (y < 64) {
+                    salleID = 3;
+                }
+                else {
+                    salleID = 4;
+                }
+                Salle s = null;
+                for (Salle salle : salles) {
+                    if (salle.getSalleID() == salleID) {
+                        s = salle;
+                    }
+                }
+                f.get_jLabelSalle().setText("Salle : " + s.getNom());
+                f.get_jLabelSalle().setVisible(true);
+                
+                f.get_jLabelSalleCapacite().setText("Capacité : " + s.getCapacite());
+                f.get_jLabelSalleCapacite().setVisible(true);
+                
+                f.get_jButtonSupprimerAjouterSeance().setText("Ajouter la séance");
+                f.get_jButtonSupprimerAjouterSeance().setVisible(true);
+            }
+            else {
+                f.get_jLabelCategorie().setVisible(false);
+                f.get_jLabelDate().setVisible(false);
+                f.get_jLabelDuree().setVisible(false);
+                f.get_jLabelHeure().setVisible(false);
+                f.get_jLabelRealisateurs().setVisible(false);
+                f.get_jLabelSalle().setVisible(false);
+                f.get_jLabelSalleCapacite().setVisible(false);
+                f.get_jLabelTitre().setVisible(false);
+                f.get_jButtonSupprimerAjouterSeance().setVisible(false);
+                f.get_jButtonRechercherFilm().setVisible(false);
+                f.get_textFieldRecherche().setVisible(false);
+            }
+        }
+        else {
+            f.get_jLabelCategorie().setVisible(false);
+            f.get_jLabelDate().setVisible(false);
+            f.get_jLabelDuree().setVisible(false);
+            f.get_jLabelHeure().setVisible(false);
+            f.get_jLabelRealisateurs().setVisible(false);
+            f.get_jLabelSalle().setVisible(false);
+            f.get_jLabelSalleCapacite().setVisible(false);
+            f.get_jLabelTitre().setVisible(false);
+            f.get_jButtonSupprimerAjouterSeance().setVisible(false);
+            f.get_jButtonRechercherFilm().setVisible(false);
+            f.get_textFieldRecherche().setVisible(false);
+        }
+        
+    }
+
+    public static void supprimerSeance(ActionEvent evt) {
+        NewJFrame f = Main.getFenetre();
+        JTable jTablePlanning = f.get_jTablePlanning();
+        int x = Main.getX();
+        int y = Main.getY();
+        MaCellule c = (MaCellule) jTablePlanning.getModel().getValueAt(y, x);
+        Projection p = c.getProjection();
+        projectionDAO.supprimerProjection(p.getProjectionID());
+        c.setProjection(null);
+        Main.getFenetre().get_jTablePlanning().updateUI();
+    }
+    
     public static void updateProjection() {
         
         List<String> arrayDate = projectionDAO.getDates();
@@ -156,11 +364,10 @@ public class Traitement {
             dates[i] = arrayDate.get(i - 1);
         }
         Main.getFenetre().get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
-        System.out.println("Debut de update");
         int date = 0, x = 0, y = 0, j = 0;
-        List<Projection> ps = projectionDAO.getProjections();
-        for (Projection p : ps) {
-            System.out.println("Projection : " + ++j);
+        projections = projectionDAO.getProjections();
+        for (Projection p : projections) {
+            //System.out.println("Projection : " + ++j);
             date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
             x = (date + 5)%7;
             switch(p.getSalle().getSalleID()) {
@@ -205,8 +412,12 @@ public class Traitement {
                     break;
                 
             }
-            Main.getFenetre().get_jTablePlanning().getModel().setValueAt(p.toString(), y, x);
+            MaCellule mm = (MaCellule) Main.getFenetre().get_jTablePlanning().getModel().getValueAt(y, x);
+            mm.setProjection(p);
+            //System.out.println(mm.toString());
         }
+        
+        Main.getFenetre().get_jTablePlanning().updateUI();
     }
 
     private static String intToString(int date) {
@@ -224,6 +435,10 @@ public class Traitement {
     
     public static ProjectionDAO getProjectionDAO() {
         return Traitement.projectionDAO;
+    }
+    
+    public static List<Projection> getProjections() {
+        return Traitement.projections;
     }
 
 }
