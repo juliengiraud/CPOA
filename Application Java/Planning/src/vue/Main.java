@@ -38,6 +38,8 @@ public class Main {
             
             f.get_textFieldRecherche().setVisible(false);
             
+            f.get_jComboBoxResultatRecherche().setVisible(false);
+            
             f.get_jButtonSupprimerAjouterSeance().setVisible(false);
             
             f.get_jCheckBoxVoirSeanceLibre().setText("Voir les séances libres");

@@ -52,7 +52,8 @@ public class Film {
     
     @Override
     public String toString() {
-        return "Titre : " + this.titre + ", Durée : " + this.duree + ", FilmID : " + this.filmID + ", Catégorie : " + this.categorie.toString() + ", Réalisateurs : " + this.realisateurs.toString();
+        //return "Titre : " + this.titre + ", Durée : " + this.duree + ", FilmID : " + this.filmID + ", Catégorie : " + this.categorie.toString() + ", Réalisateurs : " + this.realisateurs.toString();
+        return this.titre;
     }
 
     String getRealisateursToString() {

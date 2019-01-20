@@ -82,7 +82,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
             query = query + " AND titre REGEXP'" + mots[i] + "'";
         }
         query = query + " ORDER BY titre";
-        System.out.println(query);
+        //System.out.println(query);
         try {
             CategorieDAO categorieDAO = new CategorieDAO();
             RealisateurDAO realisateurDAO = new RealisateurDAO();

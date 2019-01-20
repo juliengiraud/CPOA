@@ -124,8 +124,59 @@ public class Traitement {
         selectionnerSeance(null);
     }
 
-    public static void rechercherFilm(String film) {
-        System.out.println("Rechercher le film : " + film);
+    public static void rechercherFilm(String nomFilm) {
+        Film[] ftab;
+        NewJFrame f = Main.getFenetre();
+        List<Film> maListe = new ArrayList<>();
+        ArrayList<Film> tmp = new ArrayList<>();
+        int i;
+        if (nomFilm.length() > 0) {
+            List<Film> fs = Traitement.filmDAO.getLesFilmsByTitre(nomFilm);
+            for (i = 0; i < fs.size(); i++) {
+                maListe.add(fs.get(i));
+            }
+        }
+        else {
+            maListe = films;
+        }
+        for (i = 0; i < maListe.size(); i++) {
+            switch(maListe.get(i).getCategorie().getType()) {
+                case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
+                    if (f.get_jLabelSalle().getText().substring(8).equals("Grand Théâtre Lumière")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    else if (f.get_jLabelSalle().getText().substring(8).equals("Soixantième")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    break;
+
+                case "COURT METRAGE EN COMPETITION": // Buñuel
+                    if (f.get_jLabelSalle().getText().substring(8).equals("Buñuel")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    break;
+
+                case "UN CERTAIN REGARD": // Debussy, seance du lendemain a Bazin
+                    if (f.get_jLabelSalle().getText().substring(8).equals("Debussy")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    else if (f.get_jLabelSalle().getText().substring(8).equals("Bazin")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    break;
+
+                case "LONG METRAGE HORS COMPETITION": // Théâtre Lumière
+                    if (f.get_jLabelSalle().getText().substring(8).equals("Grand Théâtre Lumière")) {
+                        tmp.add(maListe.get(i));
+                    }
+                    break;
+            }
+        }
+        ftab = new Film[tmp.size()];
+        for (i = 0; i < tmp.size(); i++) {
+            ftab[i] = tmp.get(i);
+        }
+        f.get_jComboBoxResultatRecherche().setModel(new javax.swing.DefaultComboBoxModel<>(ftab));
     }
 
     public static void voirSeanceLibre(Boolean etat) {
@@ -197,9 +248,11 @@ public class Traitement {
                 
                 f.get_jButtonRechercherFilm().setVisible(false);
                 f.get_textFieldRecherche().setVisible(false);
+                f.get_jComboBoxResultatRecherche().setVisible(false);
+                f.get_jComboBoxResultatRecherche().setVisible(false);
             }
             else if (c.getIsProjection()) {
-                System.out.println(c.toString());
+                //System.out.println(c.toString());
                 f.get_jLabelCategorie().setVisible(false);
                 f.get_jLabelDuree().setVisible(false);
                 f.get_jLabelRealisateurs().setVisible(false);
@@ -207,6 +260,7 @@ public class Traitement {
                 
                 f.get_jButtonRechercherFilm().setVisible(true);
                 f.get_textFieldRecherche().setVisible(true);
+                f.get_jComboBoxResultatRecherche().setVisible(true);
                 
                 String date = null;
                 if (y < 5 || y > 11 && y > 18 || y > 25 && y < 51 || y > 52 && y < 58 || y > 65 && y < 71) {
@@ -312,6 +366,8 @@ public class Traitement {
                 
                 f.get_jButtonSupprimerAjouterSeance().setText("Ajouter la séance");
                 f.get_jButtonSupprimerAjouterSeance().setVisible(true);
+                
+                rechercherFilm("");
             }
             else {
                 f.get_jLabelCategorie().setVisible(false);
@@ -325,6 +381,8 @@ public class Traitement {
                 f.get_jButtonSupprimerAjouterSeance().setVisible(false);
                 f.get_jButtonRechercherFilm().setVisible(false);
                 f.get_textFieldRecherche().setVisible(false);
+                f.get_jComboBoxResultatRecherche().setVisible(false);
+                f.get_jComboBoxResultatRecherche().setVisible(false);
             }
         }
         else {
@@ -339,20 +397,41 @@ public class Traitement {
             f.get_jButtonSupprimerAjouterSeance().setVisible(false);
             f.get_jButtonRechercherFilm().setVisible(false);
             f.get_textFieldRecherche().setVisible(false);
+            f.get_jComboBoxResultatRecherche().setVisible(false);
+            f.get_jComboBoxResultatRecherche().setVisible(false);
         }
         
     }
 
-    public static void supprimerSeance(ActionEvent evt) {
+    public static void supprimerAjouterSeance(ActionEvent evt) {
         NewJFrame f = Main.getFenetre();
         JTable jTablePlanning = f.get_jTablePlanning();
         int x = Main.getX();
         int y = Main.getY();
         MaCellule c = (MaCellule) jTablePlanning.getModel().getValueAt(y, x);
-        Projection p = c.getProjection();
-        projectionDAO.supprimerProjection(p.getProjectionID());
-        c.setProjection(null);
-        Main.getFenetre().get_jTablePlanning().updateUI();
+        if (c.getProjection() != null) { // Mode supprimerProjection
+            Projection p = c.getProjection();
+            projectionDAO.supprimerProjection(p.getProjectionID());
+            c.setProjection(null);
+            Main.getFenetre().get_jTablePlanning().updateUI();
+        }
+        else { // Mode ajouterProjection
+            Salle salle = null;
+            String date = f.get_jLabelDate().getText().substring(7);
+            String heure = f.get_jLabelHeure().getText().substring(8);
+            for (Salle s : salles) {
+                if (s.getNom().equals(f.get_jLabelSalle().getText().substring(8))) {
+                    salle = s;
+                }
+            }
+            Film film = (Film) f.get_jComboBoxResultatRecherche().getSelectedItem();
+            int o = film.getCategorie().getCategorieID();
+            boolean officielle = (o == 0 || o == 1 || o == 2 || o == 6);
+            
+            projectionDAO.ajouterProjection(date, heure, officielle, salle, film);
+            //System.out.println("Ajout de la projection...");
+            updateProjection();
+        }
     }
     
     public static void updateProjection() {
@@ -439,6 +518,10 @@ public class Traitement {
     
     public static List<Projection> getProjections() {
         return Traitement.projections;
+    }
+    
+    public static List<Film> getFilms() {
+        return Traitement.films;
     }
 
 }
