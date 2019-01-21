@@ -2,37 +2,27 @@
 
 
 <!--  Début de la page -->
-<?php if (!$_SESSION['logged']) { ?>
 
-<!--  Zone message d'alerte -->
-<h1><?= TITRE_PAGE_CONNEXION ?></h1>
 
-<?php } ?>
 
-<?php require_once(PATH_VIEWS . 'alert.php'); ?>
+
+
 
 <?php if (!$_SESSION['logged']) { ?>
-
-	<div class="col-xs-8 col-sm-6 col-md-4">
-
-		<form action="index.php?page=connexion" method="post" class="well">
-			<div class="form-group">
-				<label><?= FORM_CONNEXION_IDENTIFIANT ?></label>
-				<input type="text" name="username">
-			</div>
-
-			<div class="form-group">
-				<label><?= FORM_CONNEXION_MDP ?></label>
-				<input type="password" name="pass">
-			</div>
-        
+	<div class="container text-center">
+		<form action="index.php?page=connexion" class="form-signin" method="post">
+			<img class="mb-4" src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="150">
+			<h1 class="h3 mb-3 font-weight-normal"><?= TITRE_PAGE_CONNEXION ?></h1>
 			<br>
-        
-			<input class="btn" type="submit" value="<?= BUTTON_CONNEXION ?>">
-
+			<div class="container text-center col-md-4">
+			<!--  Zone message d'alerte -->
+			<?php require_once(PATH_VIEWS . 'alert.php'); ?>
+				<input type="text" class="form-control" placeholder="Identifiant" name="username">
+				<input type="password" class="form-control" placeholder="Mot de passe" name="pass">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</div>
 		</form>
-</div>
-
+	</div>
 <?php } ?>
 
 

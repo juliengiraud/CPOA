@@ -9,7 +9,10 @@ require_once(PATH_MODELS.'PersonneDAO.php');
 <?php require_once(PATH_VIEWS . 'alert.php'); ?>
 
 <!--  Début de la page -->
-<h1><?= TITRE_PAGE_ACCUEIL ?></h1>
+<div class = "row">
+</br>
+	<h1><?= TITRE_PAGE_ACCUEIL ?></h1>
+</div>
 
 <?php if(isset($recherche)){ ?>
 	<?='Vous avez recherché : '.$recherche?>
@@ -19,23 +22,27 @@ require_once(PATH_MODELS.'PersonneDAO.php');
 
 <?php
 if($VIPS!=null){
-	echo '<div id = "tableau"><table class="table"><th>Nom</th><th>Prénom</th>';
+	echo '<div class = "row"><table class="table"><thead class="thead-dark"><tr><th scope="col">ID</th><th scope="col">Nom</th><th scope="col">Prénom</th></thead><tbody>';
 	foreach ($VIPS as $VIP) {
 		$personne = $VIP -> getPersonne();
 		echo '<tr onclick="location.href="index.php?page=vip&id=';
 		echo $VIP -> getVIPID();
 		echo '"><td><a href="index.php?page=vip&id=';
 		echo $VIP -> getVIPID();
+		echo '" style="display:block;width:100%;height:100%;">'.$VIP -> getVIPID().'</a></td>';
+		echo '<td><a href="index.php?page=vip&id=';
+		echo $VIP -> getVIPID();
 		echo '" style="display:block;width:100%;height:100%;">'.$personne -> getNom().'</a></td><td><a href="index.php?page=vip&id=';
 		echo $VIP -> getVIPID();
 		echo '" style="display:block;width:100%;height:100%;">'.$personne -> getPrenom().'</a></td></tr>';
 	}
-	echo '</table></div>';
-	?>
+	echo '</tbody></table></div>';
+?>
 	<form action="index.php?page=ajouterVIP" method="post">
-		<input class='btn' type='submit' value='Ajouter un VIP'></input>
+		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Ajouter un VIP</button>
 	</form>
 <?php }
+
 else{ ?>
 	<script>alert("<?php echo htmlspecialchars('Aucun VIP ne correspond à cette recherche', ENT_QUOTES); ?>")</script>
 	<?php

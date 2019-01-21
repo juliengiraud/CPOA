@@ -29,7 +29,7 @@ require_once(PATH_MODELS.'PersonneDAO.php');
 		<input type="text" name="PrenomC" value="<?php if(isset($Compagnon)) echo $Compagnon -> getPrenom();?>"></br>
 		<h5>Nom</h5>
 		<input type="text" name="NomC" value="<?php if(isset($Compagnon)) echo $Compagnon -> getNom();?>"></br></br>
-		<input class="btn" type="submit" value="Modifier">
+		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Modifier</button>
 	</form>
 </div>
 

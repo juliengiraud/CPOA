@@ -26,10 +26,10 @@ require_once(PATH_MODELS.'PersonneDAO.php');
 
 <div>
 	<form action="index.php?page=modifierVIP&id=<?= $VIP -> getVIPID();?>" method="post">
-		<input class='btn' type='submit' value='Modifier'></input>
+		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Modifier</button>
 	</form>
 	<form action="index.php?page=suppressionVIP&id=<?= $VIP -> getVIPID();?>" method="post">
-		<input class='btn' type='submit' value='Supprimer'></input>
+		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Supprimer</button>
 	</form>
 </div>
 
