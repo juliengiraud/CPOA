@@ -15,6 +15,7 @@ import vue.NewJFrame;
 
 public class Traitement {
     
+    // Déclaration des attributs de la classe
     private static ProjectionDAO projectionDAO = null;
     private static List<Projection> projections = null;
     //private static List<Projection> projectionsAffichables = null;
@@ -27,6 +28,7 @@ public class Traitement {
     private static final String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
     private static final String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
     
+    // Initialisation de la classe
     public Traitement() throws SQLException {
         Traitement.projectionDAO = new ProjectionDAO();
         //Traitement.projections = projectionDAO.getProjections();
@@ -39,22 +41,22 @@ public class Traitement {
     }
     
     public static void genererPlaning() throws SQLException {
+        // Déclaration des variables
         //System.out.println("Générer le planning");
         projectionDAO.supprimerProjections();
         String dateLM;
         int nbFilmCM = 0, nbFilmLMC = 0, nbFilmLM = 0, nbFilmUCR = 0, date, heure, i = 0;
         Salle salle = null, salle2 = null;
         List<Film> file = new ArrayList<>();
-        for (Film film : films) {
-            //System.out.println("For film : " + ++i);
-            switch (film.getCategorie().getType()) {
+        for (Film film : films) { // Pour chaque film
+            switch (film.getCategorie().getType()) { // Selon la catégorie du film
                 case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
                     // 3 par jour max
                     // 2 par jour min
                     // 2 fois par jour
                     // Tout doit etre place dans les 11 premiers jours
                     // Seance du lendemain
-                    for (Salle s : salles) {
+                    for (Salle s : salles) { // Récupération de la salle
                         if (s.getSalleID() == 0) {
                             salle = s;
                         }
@@ -62,8 +64,8 @@ public class Traitement {
                             salle2 = s;
                         }
                     }
-                    date = 9 + (nbFilmLMC/2);
-                    heure = (nbFilmLMC%2);
+                    date = 9 + (nbFilmLMC/2); // 2 films différents par jour, avec la première projection le 09 du mois
+                    heure = (nbFilmLMC%2); // index du créneau horaire du film
                     dateLM = intToString(date) + "/05/2019";
                     projectionDAO.ajouterProjection(dateLM, heuresLM[heure], true, salle, film);
                     projectionDAO.ajouterProjection(dateLM, heuresLM[(heure + 2)%4], true, salle, film);
@@ -110,19 +112,20 @@ public class Traitement {
             } // Fin du switch
             
         } // Fin du for
-        for (Film f : file) {
+        for (Film f : file) { // On complète la salle Lumière avec les long métrages hors compétition
             //Compléter les séances du théâtre Lumière
             for (Salle s : salles) {
                 if (s.getSalleID() == 0) {
                     salle = s;
                 }
             }
-            date = 9 + nbFilmLMC/2 + 1 + nbFilmLM/4;
-            heure = nbFilmLM%4;
+            date = 9 + nbFilmLMC/2 + 1 + nbFilmLM/4; // Renvoi le numéro du jour
+            heure = nbFilmLM%4; // index de l'heure (4 films par jour)
             dateLM = intToString(date) + "/05/2019";
             projectionDAO.ajouterProjection(dateLM, heuresLM[heure], false, salle, f);
             nbFilmLM = nbFilmLM + 1;
         }
+        // Mises à jour BD / UI
         updateProjection();
         selectionnerSeance(null);
     }
@@ -134,15 +137,15 @@ public class Traitement {
         ArrayList<Film> tmp = new ArrayList<>();
         int i;
         if (nomFilm.length() > 0) {
-            List<Film> fs = Traitement.filmDAO.getLesFilmsByTitre(nomFilm);
+            List<Film> fs = Traitement.filmDAO.getLesFilmsByTitre(nomFilm); // Films à trier
             for (i = 0; i < fs.size(); i++) {
                 maListe.add(fs.get(i));
             }
         }
         else {
-            maListe = films;
+            maListe = films; // Films à trier
         }
-        for (i = 0; i < maListe.size(); i++) {
+        for (i = 0; i < maListe.size(); i++) { // Tri des films
             switch(maListe.get(i).getCategorie().getType()) {
                 case "LONG METRAGE EN COMPETITION": // Théâtre Lumière, seance du lendemain a Soixantième
                     if (f.get_jLabelSalle().getText().substring(8).equals("Grand Théâtre Lumière")) {
@@ -175,18 +178,21 @@ public class Traitement {
                     break;
             }
         }
-        ftab = new Film[tmp.size()];
+        ftab = new Film[tmp.size()]; // Tableau final des films à afficher
         for (i = 0; i < tmp.size(); i++) {
             ftab[i] = tmp.get(i);
         }
+        // Mise à jour des films à afficher
         f.get_jComboBoxResultatRecherche().setModel(new javax.swing.DefaultComboBoxModel<>(ftab));
     }
 
     public static void voirSeanceLibre(Boolean etat) {
+        // En vu de continuer le projet
         System.out.println(etat ? "Voir les séances libres" : "Voir toutes les séances");
     }
 
     public static void selectionnerSalle(String salle) {
+        // En vu de continuer le projet
         if (!salle.equals("Sélectionner une salle")) {
             System.out.println("Affichage des séances de la salle " + salle);
         }
@@ -196,6 +202,7 @@ public class Traitement {
     }
     
     public static void selectionnerDate(String date) {
+        // En vu de continuer le projet
         if (!date.equals("Sélectionner une date")) {
             System.out.println("Affichage des séances du " + date);
         }
@@ -208,19 +215,20 @@ public class Traitement {
         NewJFrame f = Main.getFenetre();
         JTable jTablePlanning = f.get_jTablePlanning();
         int x, y;
-        if (evt == null) {
+        if (evt == null) { // Si une cellule était déjà sélectionnée
             x = Main.getX();
             y = Main.getY();
         }
-        else {
+        else { // Sinon récupération de la cellule sélectionnée
             x = jTablePlanning.columnAtPoint(evt.getPoint());
             Main.setX(x);
             y = jTablePlanning.rowAtPoint(evt.getPoint());
             Main.setY(y);
         }
-        if (jTablePlanning.getModel().getValueAt(y, x) != null) {
+        if (jTablePlanning.getModel().getValueAt(y, x) != null) { // Si la cellule est une séance
             MaCellule c = (MaCellule) jTablePlanning.getModel().getValueAt(y, x);
-            if (c.getProjection() != null) {
+            if (c.getProjection() != null) { // Et que cette séance contient une projection
+                // Mise à jour des composants de l'IHM
                 Projection p = c.getProjection();
                 f.get_jLabelCategorie().setText("Catégorie : " + p.getFilm().getCategorie().getType());
                 f.get_jLabelCategorie().setVisible(true);
@@ -254,7 +262,8 @@ public class Traitement {
                 f.get_jComboBoxResultatRecherche().setVisible(false);
                 f.get_jComboBoxResultatRecherche().setVisible(false);
             }
-            else if (c.getIsProjection()) {
+            else if (c.getIsProjection()) { // La cellule sélectionnée est une séance qui ne contient pas de projection
+                // Mise à jour des composants de l'IHM
                 //System.out.println(c.toString());
                 f.get_jLabelCategorie().setVisible(false);
                 f.get_jLabelDuree().setVisible(false);
@@ -265,6 +274,7 @@ public class Traitement {
                 f.get_textFieldRecherche().setVisible(true);
                 f.get_jComboBoxResultatRecherche().setVisible(true);
                 
+                // Récupération des informations de la séance
                 String date = null;
                 if (y < 5 || y > 11 && y < 18 || y > 25 && y < 51 || y > 52 && y < 58 || y > 65 && y < 71) {
                     switch(x) {
@@ -374,7 +384,8 @@ public class Traitement {
                 rechercherFilm("");
                 updateProjection();
             }
-            else {
+            else { // Il ne s'agit pas d'une séance
+                // Mise à jour des composants de l'IHM
                 f.get_jLabelCategorie().setVisible(false);
                 f.get_jLabelDate().setVisible(false);
                 f.get_jLabelDuree().setVisible(false);
@@ -390,7 +401,8 @@ public class Traitement {
                 f.get_jComboBoxResultatRecherche().setVisible(false);
             }
         }
-        else {
+        else { // Il ne s'agit pas d'une séance
+            // Mise à jour des composants de l'IHM
             f.get_jLabelCategorie().setVisible(false);
             f.get_jLabelDate().setVisible(false);
             f.get_jLabelDuree().setVisible(false);
@@ -422,8 +434,9 @@ public class Traitement {
         }
         else { // Mode ajouterProjection
             Salle salle = null;
-            String date = f.get_jLabelDate().getText().substring(7);
-            String heure = f.get_jLabelHeure().getText().substring(8);
+            String date = f.get_jLabelDate().getText().substring(7); // Pour filtrer le texte : "Date : "
+            String heure = f.get_jLabelHeure().getText().substring(8); // Pour filtrer le texte : "Heure : "
+            // Récupération des caractéristiques de la projection
             for (Salle s : salles) {
                 if (s.getNom().equals(f.get_jLabelSalle().getText().substring(8))) {
                     salle = s;
@@ -437,6 +450,7 @@ public class Traitement {
             //System.out.println("Ajout de la projection...");
             updateProjection();
         }
+        // Mises à jour
         selectionnerSeance(null);
     }
     
@@ -454,12 +468,12 @@ public class Traitement {
         for (Projection p : projections) {
             //System.out.println("Projection : " + ++j);
             date = 10 * (p.getDateProjection().charAt(0) - 48) + (p.getDateProjection().charAt(1) - 48);
-            x = (date + 5)%7;
-            switch(p.getSalle().getSalleID()) {
+            x = (date + 5)%7; // Pour tomber pile à cause de la date de la première projection
+            switch(p.getSalle().getSalleID()) { // Filtre des films en fonction des salles attitrées
                 case 0: // Grand Théâtre Lumière
                     for (int i = 0; i < heuresLM.length; i++) {
                         if (p.getHeureProjection().equals(heuresLM[i])) {
-                            y = (date < 16) ? i + 1 : i + 7;
+                            y = (date < 16) ? i + 1 : i + 7; // y change selon la première ou la deuxième semaine
                         }
                     }
                     break;
@@ -497,20 +511,23 @@ public class Traitement {
                     break;
                 
             }
+            // On attend que la fenêtre soit ouverte avant de récupérer son contenu au premier lancement
             try {
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Traitement.class.getName()).log(Level.SEVERE, null, ex);
             }
+            // Récupération de la cellule sélectionnée si elle existe
             MaCellule mm = (MaCellule) Main.getFenetre().get_jTablePlanning().getModel().getValueAt(y, x);
             mm.setProjection(p);
             //System.out.println(mm.toString());
         }
-        
+        // Mises à jour
         Main.getFenetre().get_jTablePlanning().updateUI();
     }
 
     public static void viderPlanning() {
+        // Supprime toutes les projections en base puis met à jour l'IHM
         Traitement.projectionDAO.supprimerProjections();
         TableModel t = Main.getFenetre().get_jTablePlanning().getModel();
         for (int i = 0; i < t.getColumnCount(); i++) {
@@ -526,6 +543,7 @@ public class Traitement {
     }
 
     private static String intToString(int date) {
+        // Retourne un int en string de 2 caractères (sans compter le caractère de fin)
         String sdate;
         int nb1 = 0, nb2 = 0;
         if (date < 10) {
@@ -537,6 +555,7 @@ public class Traitement {
         return sdate;
     }
     
+    // Getters des attributs de la classe
     
     public static ProjectionDAO getProjectionDAO() {
         return Traitement.projectionDAO;
@@ -548,6 +567,10 @@ public class Traitement {
     
     public static List<Film> getFilms() {
         return Traitement.films;
+    }
+
+    public static SalleDAO getSalleDAO() {
+        return Traitement.salleDAO;
     }
 
 }

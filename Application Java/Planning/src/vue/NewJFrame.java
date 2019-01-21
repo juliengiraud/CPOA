@@ -250,6 +250,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGenererPlaningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererPlaningActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         try {
             Traitement.genererPlaning();
         } catch (SQLException ex) {
@@ -258,39 +259,47 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGenererPlaningActionPerformed
 
     private void textFieldRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRechercheActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         String film = textFieldRecherche.getText();
         Traitement.rechercherFilm(film);
     }//GEN-LAST:event_textFieldRechercheActionPerformed
 
     private void jButtonRechercherFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechercherFilmActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         String film = textFieldRecherche.getText();
         Traitement.rechercherFilm(film);
     }//GEN-LAST:event_jButtonRechercherFilmActionPerformed
 
     private void jCheckBoxVoirSeanceLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxVoirSeanceLibreActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         Boolean etat = jCheckBoxVoirSeanceLibre.isSelected();
         Traitement.voirSeanceLibre(etat);
     }//GEN-LAST:event_jCheckBoxVoirSeanceLibreActionPerformed
 
     private void jComboBoxSelectionnerSalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectionnerSalleActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         String salle = (String) jComboBoxSelectionnerSalle.getSelectedItem();
         Traitement.selectionnerSalle(salle);
     }//GEN-LAST:event_jComboBoxSelectionnerSalleActionPerformed
 
     private void jComboBoxSelectionnerDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectionnerDateActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         String date = (String) jComboBoxSelectionnerDate.getSelectedItem();
         Traitement.selectionnerDate(date);
     }//GEN-LAST:event_jComboBoxSelectionnerDateActionPerformed
 
     private void jTablePlanningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePlanningMouseClicked
+        // Appel de la méthode correspondante dans la classe Traitement
         Traitement.selectionnerSeance(evt);
     }//GEN-LAST:event_jTablePlanningMouseClicked
 
     private void jButtonSupprimerAjouterSeanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerAjouterSeanceActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         Traitement.supprimerAjouterSeance(evt);
     }//GEN-LAST:event_jButtonSupprimerAjouterSeanceActionPerformed
 
     private void jButtonViderPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViderPlanningActionPerformed
+        // Appel de la méthode correspondante dans la classe Traitement
         Traitement.viderPlanning();
     }//GEN-LAST:event_jButtonViderPlanningActionPerformed
    
@@ -317,6 +326,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private java.awt.TextField textFieldRecherche;
     // End of variables declaration//GEN-END:variables
 
+    // Getters des éléments de l'IHM
+    
     public javax.swing.JButton get_jButtonGenererPlaning() {
         return this.jButtonGenererPlaning;
     }

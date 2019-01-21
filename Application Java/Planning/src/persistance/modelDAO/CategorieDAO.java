@@ -18,6 +18,7 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
     }
 
     @Override
+    // Retourne la catégorie dont l'ID correspond
     public Categorie getCategoriByID(int id) {
         
         ResultSet rset;
@@ -38,6 +39,7 @@ public class CategorieDAO extends DAO implements ICategorieDAO {
     }
 
     @Override
+    // Retourne la liste de toutes les catégories en base
     public List<Categorie> getLesCategories() {
         ResultSet rset;
         Statement stmt;

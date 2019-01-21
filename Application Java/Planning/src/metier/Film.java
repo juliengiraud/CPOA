@@ -8,7 +8,7 @@ public class Film {
     private String titre;
     private int filmID;
     private Categorie categorie;
-    private List<Personne> realisateurs;
+    private final List<Personne> realisateurs;
     
     public Film(String newDuree, String newTitre, int newID, Categorie newCate, List<Personne> newRealisateurs) {
         this.duree = newDuree;
@@ -55,7 +55,8 @@ public class Film {
         //return "Titre : " + this.titre + ", Durée : " + this.duree + ", FilmID : " + this.filmID + ", Catégorie : " + this.categorie.toString() + ", Réalisateurs : " + this.realisateurs.toString();
         return this.titre;
     }
-
+    
+    // Pour l'affichage des réalisateurs en fonction de leur nombre
     String getRealisateursToString() {
         String r = "";
         for (int i = 0; i < realisateurs.size(); i ++) {

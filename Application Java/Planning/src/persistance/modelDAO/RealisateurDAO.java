@@ -18,6 +18,7 @@ public class RealisateurDAO extends DAO implements IRealisateurDAO {
     }
 
     @Override
+    // Retourne la liste des réalisateurs d'un film (à partir de son filmID)
     public List<Personne> getLesRealisateurs(int filmID) {
         ResultSet rset;
         Statement stmt;

@@ -3,7 +3,7 @@ package metier;
 import java.util.ArrayList;
 
 public class Jury {
-    private int nbSeanceMax;
+    private int nbSeanceMax; // En vue de vérifier plus de contraintes
     private int juryID;
     private Categorie categorie;
     private ArrayList<Personne> membres;
@@ -14,6 +14,8 @@ public class Jury {
         this.categorie = newCategorie;
         this.membres.addAll(membres);
     }
+    
+    // Getters / Setters
     
     public int getNbSeanceMax() {
         return this.nbSeanceMax;

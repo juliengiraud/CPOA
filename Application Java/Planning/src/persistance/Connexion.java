@@ -35,7 +35,9 @@ public class Connexion extends MariaDbDataSource {
                 }
                 finally {
                     try {
-                        fichier.close();
+                        if (fichier != null) {
+                            fichier.close();
+                        }
                     }
                     catch (IOException ex) {
                         System.out.print("Problème d'entree/sortie" + ex.getMessage());

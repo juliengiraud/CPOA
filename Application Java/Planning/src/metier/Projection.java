@@ -1,6 +1,5 @@
 package metier;
 
-
 public class Projection {
 
     private String dateProjection;
@@ -18,6 +17,8 @@ public class Projection {
         this.salle = newSalle;
         this.film = newFilm;
     }
+    
+    // Getters / Setters
     
     public String getDateProjection() {
         return this.dateProjection;
@@ -72,7 +73,8 @@ public class Projection {
         return this.heureProjection + " - " + this.film.getTitre();
         
     }
-
+    
+    // Pour un affichage complet
     public String toString2() {
         return "ProjectionID : " + this.projectionID + ", Date : " + this.dateProjection + ", Heure de projection : " + this.heureProjection + ", Officielle : " + this.officielle + ", " + this.salle.toString() + ", " + this.film.toString();
     }

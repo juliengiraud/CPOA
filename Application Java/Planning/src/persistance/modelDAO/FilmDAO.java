@@ -20,6 +20,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
     }
     
     @Override
+    // Retourne le film dont l'ID correspond
     public Film getFilm(int filmID) {
         ResultSet rset;
         Statement stmt;
@@ -45,6 +46,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
     }
     
     @Override
+    // Retourne une liste de tous les films en base
     public List<Film> getLesFilms() {
         ResultSet rset;
         Statement stmt;
@@ -70,6 +72,7 @@ public class FilmDAO extends DAO implements IFilmDAO {
     }
 
     @Override
+    // Retourne la liste de tous les films dont le titre contient les mots de la recherche
     public List<Film> getLesFilmsByTitre(String recherche) {
         ResultSet rset;
         Statement stmt;
@@ -101,8 +104,9 @@ public class FilmDAO extends DAO implements IFilmDAO {
     }
 
     @Override
+    // En vue d'une optimisation des requêtes
     public List<Film> getLesFilmsByCategorie(Categorie categorie) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
     
 }

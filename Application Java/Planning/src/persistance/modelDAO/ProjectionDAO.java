@@ -18,6 +18,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
 
     @Override
+    // Retourne la liste des dates où il y a une(des) projection(s)
     public List<String> getDates() {
         ResultSet rset;
         Statement stmt;
@@ -38,6 +39,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
     
     @Override
+    // Ajoute la projection en base
     public int ajouterProjection(String date, String heure, Boolean newOfficielle, Salle salle, Film film) {
         ResultSet rset;
         Statement stmt;
@@ -60,6 +62,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
 
     @Override
+    // Retourne la liste de toutes les projections
     public List<Projection> getProjections() {
         ResultSet rset;
         Statement stmt;
@@ -106,6 +109,8 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
         return listeProjections;
     }
 
+    @Override
+    // Retourne un identifiant de projection libre (à optimiser)
     public int getNewProjectionID() {
         ResultSet rset;
         Statement stmt;
@@ -125,6 +130,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
     
     @Override
+    // Supprime la projection dont l'ID correspond
     public void supprimerProjection(int id) {
         ResultSet rset;
         Statement stmt;
@@ -139,6 +145,7 @@ public class ProjectionDAO extends DAO implements IProjectionDAO {
     }
 
     @Override
+    // Supprime toutes les projections
     public void supprimerProjections() {
         ResultSet rset;
         Statement stmt;

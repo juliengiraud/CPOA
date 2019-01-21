@@ -18,6 +18,7 @@ public class SalleDAO extends DAO implements ISalleDAO {
     }
 
     @Override
+    // Retourne la liste des salles
     public List<Salle> getSalles() {
         ResultSet rset;
         Statement stmt;
@@ -37,6 +38,7 @@ public class SalleDAO extends DAO implements ISalleDAO {
     }
 
     @Override
+    // Retourne la salle dont l'ID correspond, sinon null
     public Salle getSalle(int id) {
         ResultSet rset;
         Statement stmt;

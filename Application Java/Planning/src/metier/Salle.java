@@ -11,6 +11,8 @@ public class Salle {
         this.capacite = newCapacite;
         this.nom = newNom;
     }
+    
+    // Getters / Setters
 
     public int getSalleID() {
         return this.salleID;

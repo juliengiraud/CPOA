@@ -6,17 +6,21 @@ import persistance.modelDAO.*;
 
 public class Main {
     
-    private static NewJFrame f;
+    private static NewJFrame f; // Fenêtre de l'IHM
+    
+    // Coordonnées de la cellule sélectionnée dans le planning
     private static int x;
     private static int y;
     
     public static void main(String args[]) throws SQLException {
         
-        Traitement t = new Traitement();
-        SalleDAO salleDAO = new SalleDAO();
+        Traitement t = new Traitement(); // Permet d'initialiser les attributs statiques de la classe Traitement
+        SalleDAO salleDAO = Traitement.getSalleDAO();
+        
+        // Jours de la semaine pour le planning
         String[] semaine = new String[] {"Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"};
         
-        // Création de la fenêtre du planning
+        // Création de la fenêtre du planning (code en partie auto-généré)
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -28,7 +32,10 @@ public class Main {
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
+            // Récupération de la fenêtre de l'IHM
             Main.f = new NewJFrame();
+            
+            // Initialisation des éléments de la fenêtre
             f.get_jButtonGenererPlaning().setText("Générer le planing");
             
             f.get_jButtonViderPlanning().setText("Vider le planning");
@@ -42,9 +49,26 @@ public class Main {
             
             f.get_jButtonSupprimerAjouterSeance().setVisible(false);
             
+            f.get_jLabelCategorie().setVisible(false);
+            
+            f.get_jLabelDate().setVisible(false);
+                   
+            f.get_jLabelDuree().setVisible(false);
+
+            f.get_jLabelHeure().setVisible(false);
+
+            f.get_jLabelRealisateurs().setVisible(false);
+
+            f.get_jLabelSalle().setVisible(false);
+
+            f.get_jLabelSalleCapacite().setVisible(false);
+
+            f.get_jLabelTitre().setVisible(false);
+            
             //f.get_jCheckBoxVoirSeanceLibre().setText("Voir les séances libres");
             f.get_jCheckBoxVoirSeanceLibre().setVisible(false);
             
+            // Partie en cours de développement, en vu de continuer le projet
             /*List<Salle> arraySalle = salleDAO.getSalles();
             String[] salles = new String[arraySalle.size() + 1];
             salles[0] = "Sélectionner une salle";
@@ -59,6 +83,7 @@ public class Main {
             f.get_jComboBoxSelectionnerDate().setVisible(false);
             //f.get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
             
+            // Création du modèle texte du planning vide
             String[][] planning = {
        /*0*/{"Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière"},
             {"09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière", "09h00 - Théâtre Lumière"},
@@ -139,7 +164,10 @@ public class Main {
             {"19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin", "19h30 - Bazin"},
             {null, null, null, null, null, null, null}};
             
+            // Création du modèle d'objet du planning
             MaCellule[][] planningB = new MaCellule[planning.length][7];
+            
+            // Remplissage du modèle d'objet avec le texte
             for (int i = 0; i < planning.length; i++) {
                 for (int j = 0; j < 7; j++) {
                     if (planning[i][j] != null) {
@@ -153,30 +181,18 @@ public class Main {
                 }
             }
             
+            // Ajout du modèle d'objet au planning
             f.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(planningB, semaine));
             
-            
-            f.get_jLabelCategorie().setVisible(false);
-            
-            f.get_jLabelDate().setVisible(false);
-                   
-            f.get_jLabelDuree().setVisible(false);
-
-            f.get_jLabelHeure().setVisible(false);
-
-            f.get_jLabelRealisateurs().setVisible(false);
-
-            f.get_jLabelSalle().setVisible(false);
-
-            f.get_jLabelSalleCapacite().setVisible(false);
-
-            f.get_jLabelTitre().setVisible(false);
-            
+            // Affichage de la fenêtre
             f.setVisible(true);
         });
+        
+        // Mise à jour du planning avec les données enregistrées en base
         Traitement.updateProjection();
-    
     }
+    
+    // Getters des attributs de la classe
     
     public static NewJFrame getFenetre() {
         return f;

@@ -13,6 +13,7 @@ public class JuryDAO extends DAO implements IJuryDAO {
     }
 
     @Override
+    // En vue de la sélection d'un jury
     public List<Jury> getJurys() {
         return null;
     }

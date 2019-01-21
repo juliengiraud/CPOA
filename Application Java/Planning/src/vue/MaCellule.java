@@ -5,9 +5,9 @@ import metier.*;
 
 public class MaCellule extends JButton {
 
-    private Projection projection;
-    private String defautText;
-    private boolean isProjection;
+    private Projection projection; // Séance
+    private String defautText; // Texte à afficher si la séance est null
+    private boolean isProjection; // true s'il s'agit d'une projection officielle
     
     public MaCellule(String d, boolean p) {
         super();
@@ -15,6 +15,8 @@ public class MaCellule extends JButton {
         this.defautText = d;
         this.isProjection = p;
     }
+    
+    // Getters / Setters
     
     public Projection getProjection() {
         return this.projection;

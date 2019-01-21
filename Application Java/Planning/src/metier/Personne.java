@@ -20,6 +20,8 @@ public class Personne {
          this.dateNaissance = newDateNaissance;
     }
     
+    // Getters / Setters
+    
     public String getNom() {
         return this.nom;
     }
@@ -68,6 +70,7 @@ public class Personne {
         this.dateNaissance = newDateNaissance;
     }
     
+    @Override
     public String toString() {
         return "Nom : " + this.nom + ", Prénom : " + this.prenom + ", Nationalité : " + this.nationnalite + ", PersonneID : " + this.personneID + ", Age : " + this.age + ", Date de naissance : " + this.dateNaissance;
     }

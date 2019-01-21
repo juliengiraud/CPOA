@@ -2,13 +2,15 @@ package metier;
 
 public class Categorie {
      
-    private String type;
+    private String type; // ex : "Long métrage en compétition"
     private int categorieID;
     
     public Categorie(String newType, int id) {
         this.type = newType;
         this.categorieID = id;
     }
+    
+    // Getters / Setters
     
     public String getType() {
         return type;
