@@ -25,3 +25,13 @@ Séance du 08/01/2019 :
 	Avancement de l'affichage PHP
 	Ajout de quelques nouvelles valeurs en BD pour les tests
 	Quelques correctifs sur le projet en Java
+
+Séance du 10/01/2019 :
+
+Séance du 14/01/2019 :
+
+Séance du 15/01/2019 :
+
+Séance du 16/01/2019 :
+
+Séance du 21/01/2019 :
