@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import persistance.modelDAO.*;
@@ -264,7 +266,7 @@ public class Traitement {
                 f.get_jComboBoxResultatRecherche().setVisible(true);
                 
                 String date = null;
-                if (y < 5 || y > 11 && y > 18 || y > 25 && y < 51 || y > 52 && y < 58 || y > 65 && y < 71) {
+                if (y < 5 || y > 11 && y < 18 || y > 25 && y < 51 || y > 52 && y < 58 || y > 65 && y < 71) {
                     switch(x) {
                         case 0:
                             date = "09/05/2019";
@@ -494,6 +496,11 @@ public class Traitement {
                     }
                     break;
                 
+            }
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Traitement.class.getName()).log(Level.SEVERE, null, ex);
             }
             MaCellule mm = (MaCellule) Main.getFenetre().get_jTablePlanning().getModel().getValueAt(y, x);
             mm.setProjection(p);
