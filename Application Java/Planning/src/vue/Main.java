@@ -1,7 +1,6 @@
 package vue;
 
 import java.sql.SQLException;
-import java.util.List;
 import metier.*;
 import persistance.modelDAO.*;
 
@@ -14,7 +13,6 @@ public class Main {
     public static void main(String args[]) throws SQLException {
         
         Traitement t = new Traitement();
-        Traitement.getProjectionDAO().supprimerProjections();
         SalleDAO salleDAO = new SalleDAO();
         String[] semaine = new String[] {"Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"};
         
@@ -33,6 +31,8 @@ public class Main {
             Main.f = new NewJFrame();
             f.get_jButtonGenererPlaning().setText("Générer le planing");
             
+            f.get_jButtonViderPlanning().setText("Vider le planning");
+            
             f.get_jButtonRechercherFilm().setText("Rechercher un film");
             f.get_jButtonRechercherFilm().setVisible(false);
             
@@ -42,19 +42,22 @@ public class Main {
             
             f.get_jButtonSupprimerAjouterSeance().setVisible(false);
             
-            f.get_jCheckBoxVoirSeanceLibre().setText("Voir les séances libres");
+            //f.get_jCheckBoxVoirSeanceLibre().setText("Voir les séances libres");
+            f.get_jCheckBoxVoirSeanceLibre().setVisible(false);
             
-            List<Salle> arraySalle = salleDAO.getSalles();
+            /*List<Salle> arraySalle = salleDAO.getSalles();
             String[] salles = new String[arraySalle.size() + 1];
             salles[0] = "Sélectionner une salle";
             for (int i = 1; i < arraySalle.size() + 1; i++) {
                 salles[i] = arraySalle.get(i - 1).getNom();
-            }
-            f.get_jComboBoxSelectionnerSalle().setModel(new javax.swing.DefaultComboBoxModel<>(salles));
+            }*/
+            //f.get_jComboBoxSelectionnerSalle().setModel(new javax.swing.DefaultComboBoxModel<>(salles));
+            f.get_jComboBoxSelectionnerSalle().setVisible(false);
             
-            String[] dates = new String[1];
-            dates[0] = "Sélectionner une date";
-            f.get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
+            //String[] dates = new String[1];
+            //dates[0] = "Sélectionner une date";
+            f.get_jComboBoxSelectionnerDate().setVisible(false);
+            //f.get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
             
             String[][] planning = {
        /*0*/{"Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière", "Semaine 1 - Lumière"},
@@ -171,7 +174,7 @@ public class Main {
             
             f.setVisible(true);
         });
-        
+        Traitement.updateProjection();
     
     }
     

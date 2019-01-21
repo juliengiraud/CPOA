@@ -82,7 +82,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
-                      <Component id="jButtonGenererPlaning" min="-2" pref="139" max="-2" attributes="0"/>
+                      <Component id="jButtonGenererPlaning" min="-2" pref="188" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonViderPlanning" min="-2" pref="186" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -93,7 +95,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButtonGenererPlaning" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonGenererPlaning" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonViderPlanning" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jComboBoxSelectionnerSalle" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -302,6 +307,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonViderPlanning">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vider le planning"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonViderPlanningActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

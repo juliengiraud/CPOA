@@ -3,8 +3,8 @@ package vue;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JTable;
 import metier.Traitement;
 
 /*
@@ -54,6 +54,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabelRealisateurs = new javax.swing.JLabel();
         jButtonSupprimerAjouterSeance = new javax.swing.JButton();
         jComboBoxResultatRecherche = new javax.swing.JComboBox<>();
+        jButtonViderPlanning = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 700));
@@ -147,6 +148,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jComboBoxResultatRecherche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButtonViderPlanning.setText("Vider le planning");
+        jButtonViderPlanning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonViderPlanningActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,14 +201,18 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jCheckBoxVoirSeanceLibre))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(415, 415, 415)
-                        .addComponent(jButtonGenererPlaning, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonGenererPlaning, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonViderPlanning, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonGenererPlaning)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonGenererPlaning)
+                    .addComponent(jButtonViderPlanning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxSelectionnerSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,12 +289,17 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButtonSupprimerAjouterSeanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerAjouterSeanceActionPerformed
         Traitement.supprimerAjouterSeance(evt);
     }//GEN-LAST:event_jButtonSupprimerAjouterSeanceActionPerformed
+
+    private void jButtonViderPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViderPlanningActionPerformed
+        Traitement.viderPlanning();
+    }//GEN-LAST:event_jButtonViderPlanningActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonGenererPlaning;
     private javax.swing.JButton jButtonRechercherFilm;
     private javax.swing.JButton jButtonSupprimerAjouterSeance;
+    private javax.swing.JButton jButtonViderPlanning;
     private javax.swing.JCheckBox jCheckBoxVoirSeanceLibre;
     private javax.swing.JComboBox<String> jComboBoxResultatRecherche;
     private javax.swing.JComboBox<String> jComboBoxSelectionnerDate;
@@ -370,6 +387,10 @@ public class NewJFrame extends javax.swing.JFrame {
     
     public JComboBox get_jComboBoxResultatRecherche() {
         return this.jComboBoxResultatRecherche;
+    }
+    
+    public JButton get_jButtonViderPlanning() {
+        return this.jButtonViderPlanning;
     }
     
 }

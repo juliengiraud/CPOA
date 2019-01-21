@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 import persistance.modelDAO.*;
 import vue.MaCellule;
 import vue.Main;
@@ -14,15 +15,15 @@ public class Traitement {
     
     private static ProjectionDAO projectionDAO = null;
     private static List<Projection> projections = null;
-    private static List<Projection> projectionsAffichables = null;
+    //private static List<Projection> projectionsAffichables = null;
     private static FilmDAO filmDAO = null;
     private static List<Film> films = null;
     private static CategorieDAO categorieDAO = null;
     private static List<Categorie> categories = null;
     private static SalleDAO salleDAO = null;
     private static List<Salle> salles = null;
-    private static String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
-    private static String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
+    private static final String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
+    private static final String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
     
     public Traitement() throws SQLException {
         Traitement.projectionDAO = new ProjectionDAO();
@@ -358,16 +359,18 @@ public class Traitement {
                         s = salle;
                     }
                 }
-                f.get_jLabelSalle().setText("Salle : " + s.getNom());
+                if (s != null) {
+                    f.get_jLabelSalle().setText("Salle : " + s.getNom());
+                    f.get_jLabelSalleCapacite().setText("Capacité : " + s.getCapacite());
+                }
                 f.get_jLabelSalle().setVisible(true);
-                
-                f.get_jLabelSalleCapacite().setText("Capacité : " + s.getCapacite());
                 f.get_jLabelSalleCapacite().setVisible(true);
                 
                 f.get_jButtonSupprimerAjouterSeance().setText("Ajouter la séance");
                 f.get_jButtonSupprimerAjouterSeance().setVisible(true);
                 
                 rechercherFilm("");
+                updateProjection();
             }
             else {
                 f.get_jLabelCategorie().setVisible(false);
@@ -432,18 +435,19 @@ public class Traitement {
             //System.out.println("Ajout de la projection...");
             updateProjection();
         }
+        selectionnerSeance(null);
     }
     
     public static void updateProjection() {
         
-        List<String> arrayDate = projectionDAO.getDates();
+        /*List<String> arrayDate = projectionDAO.getDates();
         String[] dates = new String[arrayDate.size() + 1];
         dates[0] = "Sélectionner une date";
         for (int i = 1; i < arrayDate.size() + 1; i++) {
             dates[i] = arrayDate.get(i - 1);
-        }
-        Main.getFenetre().get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
-        int date = 0, x = 0, y = 0, j = 0;
+        }*/
+        //Main.getFenetre().get_jComboBoxSelectionnerDate().setModel(new javax.swing.DefaultComboBoxModel<>(dates));
+        int date, x, y = 0, j = 0;
         projections = projectionDAO.getProjections();
         for (Projection p : projections) {
             //System.out.println("Projection : " + ++j);
@@ -497,6 +501,21 @@ public class Traitement {
         }
         
         Main.getFenetre().get_jTablePlanning().updateUI();
+    }
+
+    public static void viderPlanning() {
+        Traitement.projectionDAO.supprimerProjections();
+        TableModel t = Main.getFenetre().get_jTablePlanning().getModel();
+        for (int i = 0; i < t.getColumnCount(); i++) {
+            for (int j = 0; j < t.getRowCount(); j++) {
+                if (t.getValueAt(j, i) != null) {
+                    MaCellule m = (MaCellule) t.getValueAt(j, i);
+                    m.setProjection(null);
+                }
+            }
+        }
+        updateProjection();
+        selectionnerSeance(null);
     }
 
     private static String intToString(int date) {
