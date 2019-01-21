@@ -2,20 +2,18 @@ package vue;
 
 import java.sql.SQLException;
 import metier.*;
-import persistance.modelDAO.*;
 
 public class Main {
     
     private static NewJFrame f; // Fenêtre de l'IHM
     
     // Coordonnées de la cellule sélectionnée dans le planning
-    private static int x = -1;
-    private static int y = -1;
+    private static int x;
+    private static int y;
     
     public static void main(String args[]) throws SQLException {
         
         Traitement t = new Traitement(); // Permet d'initialiser les attributs statiques de la classe Traitement
-        SalleDAO salleDAO = Traitement.getSalleDAO();
         
         // Jours de la semaine pour le planning
         String[] semaine = new String[] {"Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"};
@@ -183,13 +181,14 @@ public class Main {
             
             // Ajout du modèle d'objet au planning
             f.get_jTablePlanning().setModel(new javax.swing.table.DefaultTableModel(planningB, semaine));
+
+            // Mise à jour du planning avec les données enregistrées en base
+            Traitement.updateProjection();
             
             // Affichage de la fenêtre
             f.setVisible(true);
         });
         
-        // Mise à jour du planning avec les données enregistrées en base
-        Traitement.updateProjection();
     }
     
     // Getters des attributs de la classe

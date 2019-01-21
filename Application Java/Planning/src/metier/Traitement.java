@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import persistance.modelDAO.*;
@@ -25,9 +23,8 @@ public class Traitement {
     private static List<Categorie> categories = null;
     private static SalleDAO salleDAO = null;
     private static List<Salle> salles = null;
-    private static final String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
-    private static final String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
-    public static boolean mutex = true; // Permet de régler un problème de synchronisation
+    private static String[] heuresCM = {"09h00", "09h30", "10h00", "10h30", "11h00", "11h30", "12h00", "12h30", "13h00", "13h30", "14h00", "14h30", "15h00", "15h30", "16h00", "16h30", "17h00", "17h30", "18h00", "18h30", "19h00", "19h30", "20h00", "20h30"};
+    private static String[] heuresLM = {"09h00", "12h30", "16h00", "19h30"};
     
     // Initialisation de la classe
     public Traitement() throws SQLException {
@@ -512,21 +509,11 @@ public class Traitement {
                     break;
                 
             }
-            while (mutex) {
-                // On attend que la fenêtre soit ouverte avant de récupérer son contenu au premier lancement
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Traitement.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            
             // Récupération de la cellule sélectionnée si elle existe
-            try {
-                MaCellule mm = (MaCellule) Main.getFenetre().get_jTablePlanning().getModel().getValueAt(y, x);
-                mm.setProjection(p);
-            } catch (Exception e){
-                System.out.println(e.toString());
-            }
+            MaCellule mm = (MaCellule) Main.getFenetre().get_jTablePlanning().getModel().getValueAt(y, x);
+            mm.setProjection(p);
+            
             //System.out.println(mm.toString());
         }
         // Mises à jour

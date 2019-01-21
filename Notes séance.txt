@@ -27,11 +27,31 @@ Séance du 08/01/2019 :
 	Quelques correctifs sur le projet en Java
 
 Séance du 10/01/2019 :
+	Avancement dans les fonctions Java + correction de bugs
+	Modification de la base de données (table de réalisateurs)
+	Ajout des fonctions de recherche fonctionnelles en PHP et Java
 
 Séance du 14/01/2019 :
+	Ajout des fonctions sur les projections en Java (fonctionnel)
+	Début de l'IHM Java
+	Correctifs sur les fonctions du model VIP en PHP
 
 Séance du 15/01/2019 :
+	Début de la génération automatique du planning en Java
+	Ajout du système d'affichage des projections en IHM
+	Correctifs model VIP PHP
 
 Séance du 16/01/2019 :
+	Avancement sur la génération automatique du planning en Java
+	Modification des controleurs en PHP
 
 Séance du 21/01/2019 :
+	Java terminé :
+		Génération automatique du planning
+		Ajout/Suppression/Modification
+		Améliorations de l'interface (responsive)
+		Optimisation du code
+		Ajout des commentaires
+	PHP terminé :
+		Affichage/Ajout/Modification/Suppression VIP
+		Améliorations du responsive design et du graphisme
