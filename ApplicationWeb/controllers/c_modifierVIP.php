@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
 
 if(isset($_FILES['Photo']))
 { 
-     $dossier = ".\assets\images\\";
+     $dossier = PATH_IMAGES;
      $fichier = basename($_FILES['Photo']['name']);
      move_uploaded_file($_FILES['Photo']['tmp_name'], $dossier . $fichier);
 }
