@@ -11,7 +11,7 @@
 <?php if (!$_SESSION['logged']) { ?>
 	<div class="container text-center">
 		<form action="index.php?page=connexion" class="form-signin" method="post">
-			<img class="mb-4" src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="150">
+			<img class="mb-4" src="<?= PATH_LOGO1 ?>" alt="<?= LOGO ?>" height="150">
 			<h1 class="h3 mb-3 font-weight-normal"><?= TITRE_PAGE_CONNEXION ?></h1>
 			<br>
 			<div class="container text-center col-md-4">

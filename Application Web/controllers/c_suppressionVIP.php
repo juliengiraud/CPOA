@@ -15,13 +15,15 @@ if(isset($_GET['id'])){
 	$Personne = $VIP -> getPersonne();
 	$Photo = $VIP -> getPhoto();
 	$Compagnon = $VIP -> getCompagnon();
-}
 
-if (isset($_POST['Supp'])) {
-	$VIPDAO -> supprimerVIP($_GET['id']);
-	header('Refresh:0; url=index.php');
+	if (isset($_POST['Supp'])) {;
+		$PersonneDAO = new PersonneDAO();
+		$VIPDAO -> supprimerVIP($_GET['id']);
+		$PersonneDAO -> supprimerPersonne($Personne -> getPersonneID());
+		
+		header('Refresh:0; url=index.php');
+	}
 }
-
 
 // Appel de la vue
 require_once(PATH_VIEWS . $page . '.php');
