@@ -6,7 +6,7 @@ const DEBUG = true; // production : false; dev : true
 const BD_HOST = 'iutdoua-web.univ-lyon1.fr';
 const BD_DBNAME = 'p1704709';
 const BD_USER = 'p1704709';
-const BD_PWD = 'cpe7ay5u';
+const BD_PWD = 'fkt8af4j';
 
 // Langue du site
 const LANG ='FR-fr';
