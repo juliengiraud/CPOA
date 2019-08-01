@@ -32,6 +32,7 @@ define('PATH_GALERIE', 'galerie/');
 
 // Fichiers
 //define('LOG_BDD', 'logbdd.txt');
+define('PATH_LOGO1', PATH_IMAGES . 'logo1.png');
 define('PATH_LOGO', PATH_IMAGES . 'logo.png');
 define('PATH_MENU', PATH_VIEWS . 'menu.php');
 

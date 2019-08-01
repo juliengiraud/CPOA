@@ -18,8 +18,19 @@ if(isset($_GET['id'])){
 	
 }
 
-if (isset($_POST['Prenom']) && isset($_POST['Nom']) && isset($_POST['Metier']) && isset($_POST['Age']) && isset($_POST['Date']) && isset($_POST['Nationalite']) && isset($_POST['PrenomC']) && isset($_POST['NomC'])) {
+if(isset($_FILES['Photo']))
+{ 
+     $dossier = ".\assets\images\\";
+     $fichier = basename($_FILES['Photo']['name']);
+     move_uploaded_file($_FILES['Photo']['tmp_name'], $dossier . $fichier);
+}
+
+if (isset($_POST['Prenom']) && isset($_POST['Nom']) && isset($_FILES['Photo']) && isset($_POST['Metier']) && isset($_POST['Age']) && isset($_POST['Date']) && isset($_POST['Nationalite']) && isset($_POST['PrenomC']) && isset($_POST['NomC'])) {
+	$VIP = $VIPDAO -> getVIP($_GET['id']);
+	$personne = $VIP -> getPersonne();
+	$personneDAO = new PersonneDAO();
 	$VIPDAO -> supprimerVIP($_GET['id']);
+	$personneDAO -> supprimerPersonne($personne -> getPersonneID());
 	
     $prenom = htmlspecialchars($_POST['Prenom']);
 	$nom = htmlspecialchars($_POST['Nom']);
@@ -29,7 +40,7 @@ if (isset($_POST['Prenom']) && isset($_POST['Nom']) && isset($_POST['Metier']) &
 	$nationalite = htmlspecialchars($_POST['Nationalite']);
 	$prenomCompagnon = htmlspecialchars($_POST['PrenomC']);
 	$nomCompagnon = htmlspecialchars($_POST['NomC']);
-	$nomPhoto = '';
+	$nomPhoto = htmlspecialchars($_FILES['Photo']['name']);
 	
 	$VIPDAO = new VIPDAO();
 	$VIPID = $VIPDAO -> ajouterVIP($nom, $prenom, $metier, $nationalite, $age, $nomCompagnon, $prenomCompagnon, $nomPhoto);

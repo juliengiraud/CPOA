@@ -114,6 +114,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTablePlanning.setAutoscrolls(false);
         jTablePlanning.setCellSelectionEnabled(true);
         jTablePlanning.setRequestFocusEnabled(false);
+        jTablePlanning.setRowHeight(25);
         jTablePlanning.getTableHeader().setReorderingAllowed(false);
         jTablePlanning.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -219,7 +220,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jComboBoxSelectionnerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBoxVoirSeanceLibre))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,7 +244,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jLabelCategorie)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelDuree)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
 
         pack();

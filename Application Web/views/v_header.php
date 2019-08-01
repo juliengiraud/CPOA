@@ -16,44 +16,42 @@
 			<section class="container" >
 				<div class = "row">
 					<?php if ($_SESSION['logged']) { ?>
-					<div class = "col-md-2 col-sm-2 col-xs-12">
-						<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="60"/>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffa62b;">
+					
+					<!-- Menu -->
+						<nav class="navbar navbar-expand-lg navbar-light container-fluid" style="background-color: #ffa62b;">
+							<img src="<?= PATH_LOGO ?>" alt="<?= LOGO ?>" height="50" style="margin-left:5rem;"/>
 							<div class="container-fluid">
 								<ul class="nav nav-pills navbar-nav">
-								  <li class="nav-item" <?php echo ($page=='accueil' ? 'class="active"':'') ?>>
-									<a class="nav-link active" href="index.php" style="text-align : center;"><?= MENU_ACCUEIL ?></a>
-								  </li>
-								  </ul>
-								  <ul class="nav navbar-nav nav-pills navbar-right">
-								   <li class="nav-item">
-									<form class="form-inline my-2 my-lg-0" action="index.php?page=accueil" method="post">
-										<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='recherche'>
-										<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-									</form>
-								  </li>
-								  <li class="nav-item">
-									<form class="form-inline my-2 my-lg-0" action="index.php?page=deconnexion" method="post">
-										<button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><?= MENU_DECONNEXION ?></button>
-									</form>
-								  </li>
+									<li class="nav-item" <?php echo ($page=='accueil' ? 'class="active"':'') ?>>
+										<a class="btn btn-outline-success my-2 my-sm-0" href="index.php" style="text-align : center;"><?= MENU_ACCUEIL ?></a>
+									</li>
+								</ul>
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<form class="form-inline" action="index.php?page=accueil" method="post">
+											<input class="form-control mr-sm-2" type="search" placeholder="Recherche" name='recherche' style="width=auto;">
+											<button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin:auto;">Rechercher</button>
+										</form>
+									</li>
+								</ul>
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<form class="form-inline my-2 my-lg-0" action="index.php?page=deconnexion" method="post">
+											<button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><?= MENU_DECONNEXION ?></button>
+										</form>
+									</li>
 								</ul>
 							</div>
 						</nav>
-						
-					</div>
+
 					<?php } ?>
 				</div>
 			</section>
 		</header>
-		<!-- Menu -->
-		<?php include(PATH_VIEWS . 'menu.php'); ?>
 		<!-- Vue -->
 			<section class="container">
 				<div class = "row">
 					<?php if ($_SESSION['logged']) { ?>
-						<h3>Vous êtes connecté en temps que : <b><?= $_SESSION["user"] -> getUsername() ?></b></h3>
+						<h5 style="color:#a7ccb8;">Vous êtes connecté en temps que : <b><?= $_SESSION["user"] -> getUsername() ?></b></h5>
 					<?php } ?>
 				</div>
